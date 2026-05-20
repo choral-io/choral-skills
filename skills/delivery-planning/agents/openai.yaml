@@ -1,0 +1,6 @@
+interface:
+  display_name: "Delivery Planning"
+  short_description: "Draft Kanban plans"
+  default_prompt: "Use $delivery-planning to propose a dry-run Kanban plan."
+policy:
+  allow_implicit_invocation: true

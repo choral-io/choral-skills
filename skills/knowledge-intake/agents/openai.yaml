@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Intake"
+  short_description: "Route knowledge-base changes"
+  default_prompt: "Use $knowledge-intake to decide how this should update the knowledge base."
+policy:
+  allow_implicit_invocation: true

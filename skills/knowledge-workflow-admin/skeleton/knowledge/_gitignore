@@ -1,0 +1,5 @@
+# Local-only member workspace state.
+workspace/*/local/
+
+# Obsidian vault settings and cache.
+.obsidian/

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Kanban Maintenance"
+  short_description: "Update approved Kanban cards"
+  default_prompt: "Use $kanban-maintenance to apply these approved delivery board changes."
+policy:
+  allow_implicit_invocation: true

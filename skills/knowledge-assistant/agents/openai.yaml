@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Assistant"
+  short_description: "Guide repository knowledge workflows"
+  default_prompt: "Use $knowledge-assistant to explain the workflow, route my request, or diagnose the next safe step."
+policy:
+  allow_implicit_invocation: true
