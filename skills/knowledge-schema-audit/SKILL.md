@@ -13,10 +13,10 @@ Use this skill to inspect non-task knowledge schema quality. This skill is read-
 
 ## Workflow
 
-1. Read `<knowledge_dir>/schemas/common.md`.
-2. Read relevant area schemas under `<knowledge_dir>/schemas/`.
+1. Read `<knowledge_dir>/.workflow/schemas/common.md`.
+2. Read relevant area schemas under `<knowledge_dir>/.workflow/schemas/`.
 3. Scan `<knowledge_dir>/**/*.md`.
-4. Exclude workflow infrastructure: `<knowledge_dir>/schemas/**` and `<knowledge_dir>/templates/**`.
+4. Exclude workflow infrastructure: `<knowledge_dir>/.workflow/**` and `<knowledge_dir>/.feedback/**`.
 5. Exclude delivery surfaces: `<knowledge_dir>/tasks/**` and `<knowledge_dir>/planning/KANBAN.md`; task metadata, readiness, dependencies, and Kanban consistency belong to `task-metadata-audit`.
 6. Exclude local-only state: `<knowledge_dir>/workspace/*/local/**`.
 7. Parse frontmatter, filenames, links, and localized-file suffixes.

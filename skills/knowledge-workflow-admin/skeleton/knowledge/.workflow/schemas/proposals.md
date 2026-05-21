@@ -89,4 +89,4 @@ After conversion, update `proposal_status: converted`, set or confirm `target`, 
 
 ## Template
 
-Use `templates/proposal.md` as the reference template.
+Use `{{knowledge_dir}}/.workflow/templates/proposal.md` as the reference template.

@@ -65,8 +65,8 @@ Safe for next-task-selection
 - example-implementation-task
 
 Sources
-- <knowledge_dir>/schemas/tasks.md
-- <knowledge_dir>/planning/WORKFLOW.md
+- <knowledge_dir>/.workflow/schemas/tasks.md
+- <knowledge_dir>/.workflow/rules/delivery.md
 ```
 
 ## Finding Format

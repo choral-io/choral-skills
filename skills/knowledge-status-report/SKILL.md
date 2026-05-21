@@ -45,7 +45,7 @@ If the user asks for a statistic that does not fit a predefined scope, keep the 
 
 1. Read `<knowledge_dir>/.workflow/manifest.yml` when present; use its `knowledge_dir`, `agent_skills`, `worktree_dir`, and `canonical_language`.
 2. Read the knowledge workflow block in root `AGENTS.md`.
-3. Read `<knowledge_dir>/README.md`, `<knowledge_dir>/schemas/common.md`, and the relevant schemas under `<knowledge_dir>/schemas/`.
+3. Read `<knowledge_dir>/README.md`, relevant rules under `<knowledge_dir>/.workflow/rules/`, `<knowledge_dir>/.workflow/schemas/common.md`, and the relevant schemas under `<knowledge_dir>/.workflow/schemas/`.
 4. Read only the knowledge areas needed for the requested mode.
 5. Read `<knowledge_dir>/planning/KANBAN.md` and task items only for delivery-related modes.
 6. Prefer explicit frontmatter, Kanban columns, wikilinks, and schema-defined fields over inference from prose.
@@ -60,7 +60,7 @@ If the user asks for a statistic that does not fit a predefined scope, keep the 
 - State the report scope and reliability near the top of the output.
 - State any filter or facet used for a non-standard statistic.
 - Do not treat localized files as canonical sources.
-- Do not treat `<knowledge_dir>/schemas/**` or `<knowledge_dir>/templates/**` as project facts, delivery candidates, or health-report subject documents.
+- Do not treat `<knowledge_dir>/.workflow/**` or `<knowledge_dir>/.feedback/**` as project facts, delivery candidates, or health-report subject documents.
 - Do not treat local-only notes, WORKLIST entries, or work logs as shared delivery state unless the user explicitly scopes the report to local work.
 - Do not count a requirement, decision, or task as delivered only because prose suggests it; prefer linked Done cards, task metadata, or explicit delivered references.
 - Do not count proposals as project facts, accepted decisions, task items, or delivery commitments.

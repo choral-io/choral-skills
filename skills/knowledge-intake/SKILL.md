@@ -15,7 +15,7 @@ Use this skill to decide whether discussion should affect the knowledge base and
 
 1. Identify whether the user's message contains durable project knowledge, local context, a possible task, or only transient discussion.
 2. When routing current-member local context, shared workspace notes, or promotion from personal material, determine the current member id with `git config user.name`; read relevant sections from `<knowledge_dir>/members/<member-id>.md`; read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if personal routing preferences may apply.
-3. Read `<knowledge_dir>/README.md` and `<knowledge_dir>/schemas/common.md` when the request may affect knowledge structure.
+3. Read `<knowledge_dir>/README.md`, `<knowledge_dir>/.workflow/rules/knowledge.md`, and `<knowledge_dir>/.workflow/schemas/common.md` when the request may affect knowledge structure.
 4. Search existing canonical knowledge before proposing a new document.
 5. For complex, multi-source, high-impact, or ambiguous material, produce an intake analysis before recommending capture. Include source evidence, existing overlap, conflicts, target options, and what needs user confirmation.
 6. Route the information to the right area:

@@ -15,6 +15,8 @@ manifest_version: 1
 knowledge_dir: <knowledge_dir>
 worktree_dir: <worktree_dir>
 canonical_language: "<bcp47>"
+feedback:
+    enabled: false
 agent_skills:
     required: []
 installed_at: "<iso8601>"
@@ -29,6 +31,7 @@ skipped_patterns: []
 ```
 
 `knowledge_dir`, `worktree_dir`, and `canonical_language` are stable installation keys after manifest creation.
+`feedback.enabled` records whether `knowledge-assistant` may write local workflow feedback under `<knowledge_dir>/.feedback/`; fresh init defaults it to `false`.
 `agent_skills.required` records the required Skill names this installation expects as external runtime capabilities.
 
 ## Managed Files
@@ -42,6 +45,8 @@ manifest_version: 1
 knowledge_dir: <knowledge_dir>
 worktree_dir: <worktree_dir>
 canonical_language: "<bcp47>"
+feedback:
+    enabled: false
 agent_skills:
     required:
         - knowledge-assistant
@@ -70,35 +75,35 @@ managed:
         - <knowledge_dir>/.gitignore
         - <worktree_dir>/.gitignore
         - <knowledge_dir>/README.md
-        - <knowledge_dir>/planning/WORKFLOW.md
-        - <knowledge_dir>/schemas/README.md
-        - <knowledge_dir>/schemas/architecture.md
-        - <knowledge_dir>/schemas/common.md
-        - <knowledge_dir>/schemas/concepts.md
-        - <knowledge_dir>/schemas/decisions.md
-        - <knowledge_dir>/schemas/design.md
-        - <knowledge_dir>/schemas/discovery.md
-        - <knowledge_dir>/schemas/groups.md
-        - <knowledge_dir>/schemas/guidelines.md
-        - <knowledge_dir>/schemas/members.md
-        - <knowledge_dir>/schemas/planning.md
-        - <knowledge_dir>/schemas/product.md
-        - <knowledge_dir>/schemas/proposals.md
-        - <knowledge_dir>/schemas/sprints.md
-        - <knowledge_dir>/schemas/tasks.md
-        - <knowledge_dir>/schemas/workspace.md
-        - <knowledge_dir>/templates/group.md
-        - <knowledge_dir>/templates/member.md
-        - <knowledge_dir>/templates/proposal.md
-        - <knowledge_dir>/templates/worklist.md
-        - <knowledge_dir>/templates/handoff.md
-        - <knowledge_dir>/templates/task.md
+        - <knowledge_dir>/.workflow/rules/knowledge.md
+        - <knowledge_dir>/.workflow/rules/delivery.md
+        - <knowledge_dir>/.workflow/rules/workspace.md
+        - <knowledge_dir>/.workflow/schemas/README.md
+        - <knowledge_dir>/.workflow/schemas/architecture.md
+        - <knowledge_dir>/.workflow/schemas/common.md
+        - <knowledge_dir>/.workflow/schemas/concepts.md
+        - <knowledge_dir>/.workflow/schemas/decisions.md
+        - <knowledge_dir>/.workflow/schemas/design.md
+        - <knowledge_dir>/.workflow/schemas/discovery.md
+        - <knowledge_dir>/.workflow/schemas/groups.md
+        - <knowledge_dir>/.workflow/schemas/guidelines.md
+        - <knowledge_dir>/.workflow/schemas/members.md
+        - <knowledge_dir>/.workflow/schemas/planning.md
+        - <knowledge_dir>/.workflow/schemas/product.md
+        - <knowledge_dir>/.workflow/schemas/proposals.md
+        - <knowledge_dir>/.workflow/schemas/sprints.md
+        - <knowledge_dir>/.workflow/schemas/tasks.md
+        - <knowledge_dir>/.workflow/schemas/workspace.md
+        - <knowledge_dir>/.workflow/templates/group.md
+        - <knowledge_dir>/.workflow/templates/member.md
+        - <knowledge_dir>/.workflow/templates/proposal.md
+        - <knowledge_dir>/.workflow/templates/worklist.md
+        - <knowledge_dir>/.workflow/templates/handoff.md
+        - <knowledge_dir>/.workflow/templates/task.md
 
 protected:
     - <knowledge_dir>/planning/KANBAN.md
-    - path: <knowledge_dir>/planning/**
-      except:
-          - <knowledge_dir>/planning/WORKFLOW.md
+    - <knowledge_dir>/planning/**
     - <knowledge_dir>/tasks/**
     - <knowledge_dir>/workspace/**
     - <knowledge_dir>/workspace/*/local/**
@@ -143,6 +148,8 @@ manifest_version: 1
 knowledge_dir: <knowledge_dir>
 worktree_dir: <worktree_dir>
 canonical_language: "<bcp47>"
+feedback:
+    enabled: false
 agent_skills:
     required:
         - knowledge-assistant

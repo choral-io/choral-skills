@@ -69,6 +69,12 @@ Default local worktree directory: `.worktrees/`.
 
 Use a user-named worktree directory when present; otherwise use `.worktrees/`. Reject absolute paths, `..`, `.git/`, `.agents/`, `.claude/`, the selected knowledge directory, source package directories, build outputs, dependency folders, editor caches, or tool caches.
 
+### Feedback Mode
+
+Default feedback mode: disabled.
+
+Fresh init writes `feedback.enabled: false` in `<knowledge_dir>/.workflow/manifest.yml`. Maintainers may later enable it with `knowledge-workflow-admin:config` when the team wants `knowledge-assistant` to write local workflow feedback under `<knowledge_dir>/.feedback/`.
+
 ## Init Workflow
 
 1. Resolve and validate `knowledge_dir`, `worktree_dir`, and `canonical_language`.
@@ -98,6 +104,7 @@ Before writing files, output:
 - knowledge_dir: <knowledge_dir>
 - worktree_dir: <worktree_dir>
 - canonical_language: <bcp47>
+- feedback.enabled: false
 
 ### Render Inventory
 
@@ -128,11 +135,13 @@ Missing required Skills are warnings, not blockers. Conflicts in managed target 
 
 1. Read root `AGENTS.md` to find the explicit knowledge directory.
 2. Read `<knowledge_dir>/.workflow/manifest.yml`.
-3. Validate required manifest fields, managed/protected path shapes, and the marked root `AGENTS.md` workflow block.
+3. Validate required manifest fields, managed/protected path shapes, current baseline paths, and the marked root `AGENTS.md` workflow block.
 4. Read `agent_skills.required`.
-5. Check whether each required Skill is available to the current Agent runtime.
-6. Report available and missing Skills. For missing Skills, tell the maintainer to install the corresponding `skills/<skill-name>/` directory from the Choral Skills distribution into the Agent runtime's Skill directory or with a cross-Agent Skill manager such as `npx skills`.
-7. Do not copy Skill files into the target repository and do not update the manifest unless the required Skill list itself is intentionally changed.
+5. If `feedback.enabled` is `true`, verify `<knowledge_dir>/.gitignore` excludes `.feedback/`.
+6. Check whether each required Skill is available to the current Agent runtime.
+7. If an existing installation has old workflow support paths, missing current baseline paths, or manifest paths that no longer match the installed Skill baseline, read `references/upgrade.md` and report a migration-needed finding with the safest next maintainer prompt.
+8. Report available and missing Skills. For missing Skills, tell the maintainer to install the corresponding `skills/<skill-name>/` directory from the Choral Skills distribution into the Agent runtime's Skill directory or with a cross-Agent Skill manager such as `npx skills`.
+9. Do not copy Skill files into the target repository and do not update the manifest unless the required Skill list itself is intentionally changed.
 
 ## Check Report Shape
 
@@ -145,12 +154,15 @@ Missing required Skills are warnings, not blockers. Conflicts in managed target 
 - knowledge_dir: <knowledge_dir>
 - worktree_dir: <worktree_dir>
 - canonical_language: <bcp47>
+- feedback.enabled: true | false
 
 ### Findings
 
-| Severity | Area   | Finding                | Suggested next action    |
-| -------- | ------ | ---------------------- | ------------------------ |
-| warning  | skills | missing required Skill | install in Agent runtime |
+| Severity | Area     | Finding                                              | Suggested next action                                        |
+| -------- | -------- | ---------------------------------------------------- | ------------------------------------------------------------ |
+| warning  | skills   | missing required Skill                               | install in Agent runtime                                     |
+| warning  | feedback | enabled but `.feedback/` is not ignored              | update `<knowledge_dir>/.gitignore` or disable feedback mode |
+| warning  | upgrade  | installed support files differ from current baseline | run approved migration dry run                               |
 
 ### Required Skills
 

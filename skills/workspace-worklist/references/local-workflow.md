@@ -8,7 +8,7 @@ Use these details after `workspace-worklist` has triggered.
 - Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` before changing the member workspace or running worklist items when it exists.
 - Use `local/scratch/` for raw observations, rough notes, and inbox-style captures that are not executable.
 - Use `local/drafts/` for structured personal drafts that may later be promoted.
-- Create missing `local/`, `WORKLIST.md`, and `logs/` files on demand from `<knowledge_dir>/templates/worklist.md`.
+- Create missing `local/`, `WORKLIST.md`, and `logs/` files on demand from `<knowledge_dir>/.workflow/templates/worklist.md`.
 
 ## Worktrees
 

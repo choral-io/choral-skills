@@ -17,8 +17,8 @@ Use this skill to recommend the next accepted delivery task from `<knowledge_dir
 2. Read `Responsibilities` and `Focus Areas` from `<knowledge_dir>/members/<member-id>.md` when present; read `Availability` only when the user asks for capacity-aware selection.
 3. Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` only when the user asks for automatic start, personal execution preferences, or a member-personal recommendation. Use it only as a preference signal.
 4. Read `<knowledge_dir>/planning/KANBAN.md`.
-5. Read `<knowledge_dir>/planning/WORKFLOW.md`.
-6. Read `<knowledge_dir>/schemas/tasks.md`.
+5. Read `<knowledge_dir>/.workflow/rules/delivery.md`.
+6. Read `<knowledge_dir>/.workflow/schemas/tasks.md`.
 7. Prefer `Ready` cards over `Backlog` cards.
 8. Open each candidate's linked task item.
 9. Exclude localized files, local-only notes, archived notes, cards in `Blocked`, and tasks with unresolved `blocked_by` entries.

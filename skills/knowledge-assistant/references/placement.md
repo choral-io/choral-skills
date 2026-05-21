@@ -28,8 +28,8 @@ Project facts come from canonical knowledge and code. Shared workspace material 
 
 Use `knowledge-capture` for approved member and group creation.
 
-- Member profiles live in `members/<member-id>.md` and should use `templates/member.md`.
-- Group documents live in `groups/<group-id>.md` and should use `templates/group.md`.
+- Member profiles live in `members/<member-id>.md` and should use `.workflow/templates/member.md`.
+- Group documents live in `groups/<group-id>.md` and should use `.workflow/templates/group.md`.
 - When creating a member, ask the user to choose groups manually or infer likely target groups from public responsibilities and ask for confirmation; record confirmed membership in the selected group documents' `members` lists.
 - When creating a group, ask the user to choose members manually or infer likely target members from public responsibilities and ask for confirmation.
 - `groups/*.md` frontmatter `members` is the structured membership source. Do not write group membership into member profile frontmatter.

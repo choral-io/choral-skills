@@ -46,7 +46,7 @@ Use sections that fit the document:
 ## Rules
 
 - Use `guidelines/` for rules that apply across multiple knowledge areas.
-- Keep durable workflow mechanics in `planning/WORKFLOW.md` when they define delivery process gates.
-- Keep area-specific writing contracts in `schemas/`.
+- Keep durable workflow mechanics in `.workflow/rules/delivery.md` when they define delivery process gates.
+- Keep area-specific writing contracts in `.workflow/schemas/`.
 - Keep product, design, architecture, concept, decision, and task facts in their owning areas.
 - Link to the relevant schema or workflow document when a guideline explains how to apply an existing rule.

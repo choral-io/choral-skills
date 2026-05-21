@@ -19,7 +19,7 @@ Use this skill to apply approved changes to `<knowledge_dir>/planning/KANBAN.md`
 
 ## Workflow
 
-1. Read `<knowledge_dir>/planning/WORKFLOW.md`.
+1. Read `<knowledge_dir>/.workflow/rules/delivery.md`.
 2. Open `<knowledge_dir>/planning/KANBAN.md`.
 3. Resolve card wikilinks to task items by task id or file basename.
 4. Check the requested transition against the Move Matrix in `references/cards.md`.

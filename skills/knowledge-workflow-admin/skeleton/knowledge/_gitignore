@@ -1,5 +1,8 @@
 # Local-only member workspace state.
 workspace/*/local/
 
+# Local-only workflow feedback for improving the workflow itself.
+.feedback/
+
 # Obsidian vault settings and cache.
 .obsidian/

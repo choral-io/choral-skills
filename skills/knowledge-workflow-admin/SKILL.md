@@ -1,6 +1,6 @@
 ---
 name: knowledge-workflow-admin
-description: Use when a maintainer explicitly needs Knowledge Workflow setup, checks, manifest work, or approved configuration updates.
+description: Use when a maintainer explicitly needs Knowledge Workflow setup, checks, upgrade migration, manifest work, or approved configuration updates.
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Use this maintainer skill to install or administer the knowledge workflow in a target repository when a maintainer explicitly selects it.
 
-This maintainer skill should run from an external installed copy. It supports fresh init, checks, manifest work, and approved configuration management.
+This maintainer skill should run from an external installed copy. It supports fresh init, checks, manifest work, generic post-upgrade migration guidance, and approved configuration management.
 
 ## References
 
@@ -18,6 +18,7 @@ Read only the reference needed for the active mode:
 - `references/install.md`: skeleton rendering, render inventory, init, and workflow checks.
 - `references/manifest.md`: manifest fields and managed-file tracking.
 - `references/config.md`: configuration design and approved update workflow.
+- `references/upgrade.md`: generic post-upgrade migration guidance when an existing installation differs from the current workflow baseline.
 
 ## Modes
 
@@ -53,7 +54,7 @@ Use `init` only for a maintainer-approved workflow installation. Read `reference
 
 ## Check Workflow
 
-Use `check` when the user asks to verify workflow setup, manifest consistency, managed/protected paths, root `AGENTS.md` workflow context, or required Skill availability. Read `references/install.md`; report missing Skills with installation advice. Do not copy Skills into the target repository.
+Use `check` when the user asks to verify workflow setup, manifest consistency, managed/protected paths, root `AGENTS.md` workflow context, required Skill availability, or post-upgrade migration needs. Read `references/install.md`; read `references/upgrade.md` when an existing installation appears older than the current baseline or has layout mismatches. Report missing Skills with installation advice. Do not copy Skills into the target repository.
 
 ## Guardrails
 

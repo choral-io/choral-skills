@@ -65,7 +65,7 @@ Safe after approval
 - product/example-note.md tags normalization.
 
 Sources
-- <knowledge_dir>/schemas/product.md
+- <knowledge_dir>/.workflow/schemas/product.md
 ```
 
 ## Finding Format

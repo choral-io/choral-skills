@@ -50,7 +50,7 @@ workspace/<member-id>/
 Use these directories deliberately:
 
 - `summaries/`: edited daily, weekly, milestone, session, retrospective, or ad hoc summaries.
-- `handoffs/`: handoff notes that help another member continue work with clear context. Use `templates/handoff.md` as a reference template when a handoff needs a durable shared file.
+- `handoffs/`: handoff notes that help another member continue work with clear context. Use `{{knowledge_dir}}/.workflow/templates/handoff.md` as a reference template when a handoff needs a durable shared file.
 - `research/`: member-led exploration or investigation notes that are useful to the team but not yet promoted into project knowledge.
 - `local/`: local-only member state for Agent collaboration, including `AGENTS.md`, `WORKLIST.md`, `logs/*.md`, `scratch/`, and `drafts/`. It must stay uncommitted.
 
@@ -77,7 +77,7 @@ Stable member identity, responsibilities, focus areas, and public collaboration 
 Copy the template from:
 
 ```text
-templates/worklist.md
+{{knowledge_dir}}/.workflow/templates/worklist.md
 ```
 
 to:

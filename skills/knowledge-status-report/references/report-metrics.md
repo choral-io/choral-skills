@@ -22,4 +22,4 @@ Use these metric ids when the user asks for common status statistics:
 
 If a request matches one of these metrics, use the metric id in `Counts.Area`. If no metric id fits, keep the nearest scope and add `Filter` or `Facet` in the report.
 
-Exclude `schemas/**` and `templates/**` from project fact, health, orphan, link-gap, ownership, and knowledge-by-area counts unless the user explicitly asks about workflow infrastructure. Schema and template files are workflow infrastructure, not product, design, architecture, decision, proposal, task, or member knowledge.
+Exclude `.workflow/**` and `.feedback/**` from project fact, health, orphan, link-gap, ownership, and knowledge-by-area counts unless the user explicitly asks about workflow infrastructure or local workflow feedback. Workflow support files are not product, design, architecture, decision, proposal, task, or member knowledge.

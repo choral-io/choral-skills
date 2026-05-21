@@ -15,7 +15,7 @@ Answer:
 ```md
 ## Boundary
 
-`knowledge-assistant` is read-only, so I will not create the task item or edit the Kanban board from this help request.
+`knowledge-assistant` cannot modify shared knowledge or workflow state, so I will not create the task item or edit the Kanban board from this help request.
 
 ## Recommended Path
 

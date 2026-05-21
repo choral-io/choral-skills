@@ -18,7 +18,7 @@ Agents writing or reorganizing knowledge must:
 
 1. Read `{{knowledge_dir}}/README.md`.
 2. Read this common schema.
-3. Read the relevant area schema under `{{knowledge_dir}}/schemas/`.
+3. Read the relevant area schema under `{{knowledge_dir}}/.workflow/schemas/`.
 4. Follow the area schema when it is more specific than this file.
 
 ## Audit And Fix Flow

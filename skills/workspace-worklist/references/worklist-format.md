@@ -9,7 +9,7 @@
 Create from:
 
 ```text
-<knowledge_dir>/templates/worklist.md
+<knowledge_dir>/.workflow/templates/worklist.md
 ```
 
 ## Sections

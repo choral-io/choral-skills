@@ -17,7 +17,7 @@ Use this skill to implement a selected Kanban card and keep code, tests, and kno
 2. Read the linked task item and source knowledge.
 3. If implementing as the current member, determine the member id with `git config user.name`; read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if it exists; read relevant sections from `<knowledge_dir>/members/<member-id>.md` only when assignment, ownership, review, or handoff context is needed.
 4. If the developer is taking the task into personal execution, use `workspace-worklist:intake-task` to create or update the local WORKLIST item before implementation.
-5. Read `<knowledge_dir>/schemas/common.md` and relevant area schemas under `<knowledge_dir>/schemas/` before updating knowledge.
+5. Read `<knowledge_dir>/.workflow/rules/knowledge.md`, `<knowledge_dir>/.workflow/schemas/common.md`, and relevant area schemas under `<knowledge_dir>/.workflow/schemas/` before updating knowledge.
 6. Inspect relevant project code or documents before editing.
 7. Produce or confirm an implementation plan using the format in `references/checklist.md`.
 8. Implement the smallest coherent change.
@@ -73,7 +73,7 @@ Use this structure when handing implementation to review or reporting blocked wo
 ## Review Request
 ```
 
-Create a formal shared handoff under `<knowledge_dir>/workspace/<member-id>/handoffs/` only when the handoff is cross-member, long-lived, complex enough to survive the chat, or explicitly requested. Use `<knowledge_dir>/templates/handoff.md` as a reference template. Do not write into another member's workspace.
+Create a formal shared handoff under `<knowledge_dir>/workspace/<member-id>/handoffs/` only when the handoff is cross-member, long-lived, complex enough to survive the chat, or explicitly requested. Use `<knowledge_dir>/.workflow/templates/handoff.md` as a reference template. Do not write into another member's workspace.
 
 ## Knowledge Updates
 

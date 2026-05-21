@@ -6,7 +6,7 @@ owners: []
 
 # Kanban
 
-Rules: [[planning/WORKFLOW]]
+Rules: `.workflow/rules/delivery.md`
 
 ## Backlog
 

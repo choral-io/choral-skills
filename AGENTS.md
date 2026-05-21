@@ -41,7 +41,7 @@ Current Skills include a repository-backed knowledge workflow suite, but future 
 
 ## Knowledge Workflow Suite Rules
 
-- `knowledge-assistant` is the ordinary team-facing help entry point and must remain strictly read-only.
+- `knowledge-assistant` is the ordinary team-facing help entry point. It must not modify shared knowledge or workflow state; its only write exception is explicit-only local workflow feedback under SCM-excluded `.feedback/` when manifest feedback mode is enabled.
 - `knowledge-workflow-admin` is the maintainer/admin entry point for setup, manifest state, workflow checks, and approved configuration updates. It must not become ordinary team help.
 - Audit Skills must remain read-only.
 - Write-capable workflow Skills must preserve their approval and ownership boundaries.
@@ -63,5 +63,5 @@ Before committing:
 - Search `skills/` for project-specific residue.
 - Verify `knowledge-workflow-admin` remains maintainer-scoped and `allow_implicit_invocation` stays disabled.
 - Verify `knowledge-workflow-admin` keeps `disable-model-invocation: true` in `SKILL.md`.
-- Verify `knowledge-assistant` remains strictly read-only.
+- Verify `knowledge-assistant` does not modify shared knowledge or workflow state, and any local feedback path remains manifest-gated and SCM-excluded.
 - Commit only intentional skill distribution changes.

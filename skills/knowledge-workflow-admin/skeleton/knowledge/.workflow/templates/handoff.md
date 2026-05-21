@@ -19,7 +19,7 @@ Use this template for durable shared handoffs under:
 This is a lightweight reference template, not a lifecycle system.
 
 The frontmatter above uses only the common workspace document fields from
-{{knowledge_dir}}/schemas/workspace.md.
+{{knowledge_dir}}/.workflow/schemas/workspace.md.
 
 Field notes:
 - owners: member wikilinks for people responsible for maintaining this handoff document.

@@ -7,6 +7,8 @@ Config mode manages configuration in two places:
 - `<knowledge_dir>/.workflow/manifest.yml`
 - root `AGENTS.md` -> marked Knowledge Workflow block -> `Project-Specific Rules`
 
+It may also update `<knowledge_dir>/.gitignore` only to add the `.feedback/` exclusion required when enabling feedback mode.
+
 Use `knowledge-assistant` for ordinary read-only configuration or project rules explanation. Use this maintainer mode only when the user asks to define, update, or save configuration, or accepts a recommendation after a check finds missing or inconsistent configuration.
 
 ## Configuration Topics
@@ -15,6 +17,7 @@ Supported manifest configuration:
 
 - `canonical_language`: the BCP 47 language tag for canonical knowledge files.
 - `worktree_dir`: the local-only worktree directory.
+- `feedback.enabled`: whether `knowledge-assistant` may write local workflow feedback under `<knowledge_dir>/.feedback/`.
 - `agent_skills.required`: the required Skills expected by this installation.
 - `managed`, `protected`, `local_overrides`, and `skipped_patterns`: managed/protected path strategy.
 - `template_version` and `manifest_version`: workflow skeleton and manifest schema versions.
@@ -35,7 +38,7 @@ If the user asks for a configuration topic outside these areas, handle it here o
 Use this mode when:
 
 - the user asks to design, configure, update, audit, or save configuration;
-- the user asks to change manifest values such as `canonical_language`, `worktree_dir`, or `agent_skills.required`;
+- the user asks to change manifest values such as `canonical_language`, `worktree_dir`, `feedback.enabled`, or `agent_skills.required`;
 - the user asks to define, update, or save project-specific rules;
 - `workspace-worklist:run-goal` or `run-loop` wants `auto-review`, but `Project-Specific Rules` lacks enough execution boundaries and the user chooses to configure them.
 
@@ -49,7 +52,7 @@ If the user asks general workflow education or read-only project rules explanati
 4. Read `references/manifest.md` when changing manifest fields or ownership strategy.
 5. Locate the block's final `### Project-Specific Rules` subsection when changing root project rules.
 6. Preserve all existing project-specific rules and manifest fields unless the user explicitly changes them.
-7. Write only the approved manifest fields or the approved root workflow-block subsection. Do not edit ordinary project engineering instructions outside the marked block.
+7. Write only the approved manifest fields, the approved root workflow-block subsection, or the `.feedback/` exclusion in `<knowledge_dir>/.gitignore` when enabling feedback mode. Do not edit ordinary project engineering instructions outside the marked block.
 
 If the marked block, manifest, or project-specific subsection needed for the requested change is missing, stop and recommend workflow init, `check`, or manual repair.
 
@@ -94,6 +97,9 @@ Rules:
 - Keep `knowledge_dir` stable after init unless the user explicitly asks for a full workflow relocation plan.
 - Keep `canonical_language` explicit; validate it as a BCP 47-like tag such as `en`, `zh-CN`, or `ja-JP`.
 - Validate `worktree_dir` as a repository-relative local-only path. Reject absolute paths, `..`, `.git/`, `.agents/`, `.claude/`, the selected knowledge directory, source package directories, build outputs, dependency folders, editor caches, and tool caches.
+- Enable `feedback.enabled` only after explicit maintainer approval. Before enabling it, present the feedback-mode privacy summary: feedback is local-only, stored under `<knowledge_dir>/.feedback/`, not automatically submitted externally, fully reviewable by the user, and unsuitable for secrets, private customer data, unrelated project facts, or personal notes.
+- When enabling `feedback.enabled`, verify `<knowledge_dir>/.gitignore` excludes `.feedback/`; if it does not, include the `.gitignore` update in the approved config dry run or block the enablement.
+- Feedback files remain local-only, must stay under `<knowledge_dir>/.feedback/`, and must be excluded from SCM.
 - Treat `agent_skills.required` as external runtime requirements only; never copy Skill files into the target repository.
 - Change `managed`, `protected`, `local_overrides`, or `skipped_patterns` only when the managed/protected path strategy itself changes.
 

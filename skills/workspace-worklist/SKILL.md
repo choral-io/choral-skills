@@ -45,7 +45,7 @@ For mode details, read `references/local-workflow.md`.
 2. Read relevant sections from `<knowledge_dir>/members/<member-id>.md` if public member context is needed. Avoid full-file reads unless editing, auditing, or resolving ambiguity.
 3. Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if it exists. Treat it as subordinate to root `AGENTS.md`, workflow rules, schemas, task acceptance criteria, safety, privacy, approval, local-only, and review rules.
 4. Ensure the local worklist exists.
-5. Read `<knowledge_dir>/README.md` and `<knowledge_dir>/schemas/workspace.md`, then load the relevant reference:
+5. Read `<knowledge_dir>/README.md`, `<knowledge_dir>/.workflow/rules/workspace.md`, and `<knowledge_dir>/.workflow/schemas/workspace.md`, then load the relevant reference:
     - `references/worklist-format.md` for worklist edits.
     - `references/log-format.md` for execution logs.
     - `references/routing.md` for deciding whether to stay local, promote, or intake a team task.

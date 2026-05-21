@@ -20,32 +20,32 @@ The bundled profile in this repository is intentionally oriented toward software
 
 ## What The Skills Provide
 
-- A repository-local knowledge structure with schemas, templates, workflow rules, and a manifest.
-- Read-only help, audit, and reporting Skills for safe navigation and diagnosis.
+- A repository-local knowledge structure plus support files for rules, schemas, templates, and manifest state.
+- Team-facing help and local workflow feedback capture, plus read-only audit and reporting Skills for safe navigation and diagnosis.
 - Approval-gated capture and delivery Skills for shared knowledge writes, Kanban changes, implementation, and review.
 - Member-local execution support through `workspace-worklist`, with local-only worklists and logs kept out of project facts.
-- Maintainer-only administration through `knowledge-workflow-admin` for init, checks, manifest state, and approved configuration updates.
+- Maintainer-only administration through `knowledge-workflow-admin` for init, checks, upgrade migration, manifest state, and approved configuration updates.
 
 ## Responsibility Boundaries
 
 The suite is split so each Skill has a narrow authority boundary:
 
-| Area                              | Owning Skills                                                              | Boundary                                                                   |
-| --------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Setup and configuration           | `knowledge-workflow-admin`                                                 | Maintainer-scoped; not ordinary team help.                                 |
-| Help and routing                  | `knowledge-assistant`                                                      | Strictly read-only.                                                        |
-| Unapproved ideas and evidence     | `knowledge-intake`                                                         | Recommends routing before writes.                                          |
-| Approved knowledge writes         | `knowledge-capture`                                                        | Writes only after the target and change are approved.                      |
-| Knowledge health and task checks  | `knowledge-schema-audit`, `task-metadata-audit`, `knowledge-status-report` | Read-only diagnostics and dry-run fixes.                                   |
-| Delivery planning and board state | `delivery-planning`, `kanban-maintenance`, `next-task-selection`           | Planning is dry-run; board mutation requires approval.                     |
-| Implementation and review         | `delivery-implementation`, `delivery-review`                               | Work from accepted task/Kanban context and report validation evidence.     |
-| Personal execution                | `workspace-worklist`                                                       | Current-member local flow only; does not write another member's workspace. |
+| Area                              | Owning Skills                                                              | Boundary                                                                                                                                                                                   |
+| --------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Setup and configuration           | `knowledge-workflow-admin`                                                 | Maintainer-scoped; not ordinary team help.                                                                                                                                                 |
+| Help, routing, and local feedback | `knowledge-assistant`                                                      | Does not modify shared knowledge or workflow state; may write SCM-excluded `.feedback/` notes only when manifest feedback mode is enabled and the user explicitly asks to record feedback. |
+| Unapproved ideas and evidence     | `knowledge-intake`                                                         | Recommends routing before writes.                                                                                                                                                          |
+| Approved knowledge writes         | `knowledge-capture`                                                        | Writes only after the target and change are approved.                                                                                                                                      |
+| Knowledge health and task checks  | `knowledge-schema-audit`, `task-metadata-audit`, `knowledge-status-report` | Read-only diagnostics and dry-run fixes.                                                                                                                                                   |
+| Delivery planning and board state | `delivery-planning`, `kanban-maintenance`, `next-task-selection`           | Planning is dry-run; board mutation requires approval.                                                                                                                                     |
+| Implementation and review         | `delivery-implementation`, `delivery-review`                               | Work from accepted task/Kanban context and report validation evidence.                                                                                                                     |
+| Personal execution                | `workspace-worklist`                                                       | Current-member local flow only; does not write another member's workspace.                                                                                                                 |
 
 ## Repository Model
 
 A repository using the workflow declares runtime context in root `AGENTS.md` and stores installation state in `<knowledge_dir>/.workflow/manifest.yml`. Required Skills are external Agent runtime capabilities; the workflow does not copy Skill files into target repositories.
 
-The knowledge directory is Markdown-first and editor-friendly. Schemas define writing contracts, templates provide starting points, task files hold durable delivery context, and `planning/KANBAN.md` tracks delivery status. Member `workspace/<member-id>/local/` content is local-only execution state and must not be treated as shared project knowledge.
+The knowledge directory is Markdown-first and editor-friendly. Support files live under `.workflow/`: schemas define writing contracts, templates provide starting points, rules define process boundaries, and the manifest records installation state. Task files hold durable delivery context, and `planning/KANBAN.md` tracks delivery status. Member `workspace/<member-id>/local/` content is local-only execution state and must not be treated as shared project knowledge.
 
 In this model, the knowledge directory is not just where outputs are stored. It is the place where repeated Agent interactions accumulate: source material becomes structured knowledge, questions can become durable analysis, audits find stale or conflicting claims, and delivery work can refer back to accepted intent instead of reconstructing it from conversation history.
 
@@ -74,10 +74,18 @@ workspace-worklist
 
 For maintainers, additionally install or explicitly invoke `knowledge-workflow-admin` when initializing or upgrading a Knowledge Workflow installation, checking required Skills, updating the manifest, or applying approved configuration changes.
 
-For read-only reviewers, install `knowledge-assistant`, `knowledge-schema-audit`, `task-metadata-audit`, `knowledge-status-report`, and `delivery-review`.
+For reviewers who should avoid shared knowledge writes, install `knowledge-assistant`, `knowledge-schema-audit`, `task-metadata-audit`, `knowledge-status-report`, and `delivery-review`. Do not enable the assistant's local feedback capture unless the team wants local workflow-improvement notes.
 
 After Skills are installed in the Agent runtime, initialize or check a target repository with `knowledge-workflow-admin`. The target repository should declare runtime context in root `AGENTS.md`, including the knowledge directory, the manifest path, required Skills, and any project-specific rules under the Knowledge Workflow section.
 
+## Upgrades
+
+Skill upgrades and repository migrations are separate steps. Installing a newer Skill version changes what the Agent knows how to do; it does not rewrite an already initialized repository.
+
+After upgrading the Skills, the target repository's knowledge maintainer should run `knowledge-workflow-admin:check`. When the repository-side support files differ from the current baseline, the admin Skill should inventory the old and current paths, classify support files, project facts, and local state, produce an upgrade migration dry run, and require approval before moving support files or updating the manifest.
+
+Do not run `init` over an existing repository as a migration shortcut. Project facts and local state are not automatically overwritten by generic migration. A migration may still propose content structure, link, frontmatter, or similar changes in project fact files when needed to align with current templates, schemas, or rules, but only as explicit path-level changes in the dry run and only after the repository knowledge maintainer approves them.
+
 ## Default Use
 
-Start with `knowledge-assistant` when the next step is unclear. Use intake before deciding whether material should become shared knowledge, capture only after approval, audit/report Skills for read-only checks, and delivery Skills only when work has a task or Kanban context. Use `knowledge-workflow-admin` only for maintainer setup and approved configuration.
+Start with `knowledge-assistant` when the next step is unclear. Use intake before deciding whether material should become shared knowledge, capture only after approval, audit/report Skills for read-only checks, and delivery Skills only when work has a task or Kanban context. Use the assistant's `.feedback/` path only when manifest feedback mode is enabled and the feedback is about the workflow itself. Use `knowledge-workflow-admin` only for maintainer setup and approved configuration.

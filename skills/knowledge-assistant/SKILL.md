@@ -1,6 +1,6 @@
 ---
 name: knowledge-assistant
-description: Use when a user asks how to use Knowledge Workflow in a repository, where content belongs, which skill applies, what project rules mean, or how to recover safely.
+description: Use when a user asks how to use Knowledge Workflow in a repository, where content belongs, which skill applies, what project rules mean, how to recover safely, or how to record local workflow feedback.
 ---
 
 # Knowledge Assistant
@@ -20,11 +20,12 @@ Use this skill for:
 - deciding where information should live;
 - diagnosing stuck, obsolete, failed, or unclear workflow state;
 - explaining project-specific rules in read-only mode;
+- recording local workflow feedback under `<knowledge_dir>/.feedback/` only when explicitly requested;
 - recommending the next prompt or handoff path.
 
-This skill is strictly read-only. It must not write files, install skills, change root `AGENTS.md`, edit the manifest, mutate Kanban, edit WORKLIST, create tasks, or change project facts.
+This skill must not write shared knowledge or workflow state. Its only write authority is explicit local workflow feedback under `<knowledge_dir>/.feedback/`, and only when manifest `feedback.enabled` is `true` and that directory is excluded from SCM before writing. It must not install skills, change root `AGENTS.md`, edit the manifest, mutate Kanban, edit WORKLIST, create tasks, or change project facts.
 
-If the user explicitly asks this skill to perform a write or state-changing operation, do not perform it. Explain the boundary and, when the requested action is clear, provide a concrete prompt the user can manually give to the owning write-capable skill.
+If the user explicitly asks this skill to perform any other write or state-changing operation, do not perform it. Explain the boundary and, when the requested action is clear, provide a concrete prompt the user can manually give to the owning write-capable skill.
 
 ## Workflow
 
@@ -35,7 +36,8 @@ If the user explicitly asks this skill to perform a write or state-changing oper
 5. Read only the narrow `knowledge-assistant` reference and installed docs needed for the question.
 6. If the question is member-scoped, determine the current member id with `git config user.name`; read member or local preference files only when they matter.
 7. Infer the user's likely workflow intent from the current question and repository context.
-8. Give one recommended path, the reason, and unsafe actions to avoid. Add a concrete next prompt only when the user's intent and execution direction are clear enough to make it useful.
+8. If the user asks to record workflow feedback, follow `references/project-guidance.md`: explain feedback mode and privacy first, verify manifest `feedback.enabled`, and either write allowed feedback or route confirmed enablement to `knowledge-workflow-admin:config`.
+9. Give one recommended path, the reason, and unsafe actions to avoid. Add a concrete next prompt only when the user's intent and execution direction are clear enough to make it useful.
 
 ## Project Rules Boundary
 
@@ -48,8 +50,13 @@ If rules are missing, partial, or need to be saved, ask a maintainer to use `kno
 - Prefer routing to the owning workflow skill over answering with broad generic advice.
 - Report source conflicts instead of silently choosing one.
 - Do not treat proposals, local notes, loose task items, or localized files as accepted project facts.
+- Do not treat `.feedback/` files as shared project facts, task inputs, delivery state, or accepted workflow changes.
 - Do not bypass approval gates by suggesting direct edits from help output.
 - Do not continue into the recommended write-capable skill inside the same invocation; stop after giving the suggested prompt.
+- Do not write feedback unless manifest `feedback.enabled` is `true` and the user explicitly asks to record feedback.
+- Do not infer feedback capture from complaints, confusion, bug reports, suggestions, repeated friction, or optimization discussions.
+- Do not proactively suggest feedback capture in ordinary help, routing, recovery, review, or check answers; feedback capture consumes user attention and Agent tokens.
+- Do not enable feedback mode yourself; route manifest updates to `knowledge-workflow-admin:config` after user confirmation.
 - Do not let prompt-level rules weaken baseline safety, privacy, local-only, ownership, approval, or review rules.
 
 ## References

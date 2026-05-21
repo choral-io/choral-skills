@@ -15,8 +15,8 @@ Task items are candidates and context until an approved Kanban card links to the
 
 ## Workflow
 
-1. Read `<knowledge_dir>/planning/WORKFLOW.md`.
-2. Read `<knowledge_dir>/schemas/common.md` and `<knowledge_dir>/schemas/tasks.md`.
+1. Read `<knowledge_dir>/.workflow/rules/delivery.md`.
+2. Read `<knowledge_dir>/.workflow/schemas/common.md` and `<knowledge_dir>/.workflow/schemas/tasks.md`.
 3. Collect candidate task items and source knowledge.
 4. Exclude local workspace notes, archived notes, and localized files.
 5. When proposing assignees, reviewers, ownership fit, or handoffs, read only the relevant sections from `<knowledge_dir>/members/<member-id>.md`, such as `Responsibilities`, `Focus Areas`, `Collaboration`, or `Availability`.

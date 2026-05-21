@@ -15,7 +15,7 @@ Use this skill to independently review delivery work after implementation and be
 
 1. Read the selected card in `<knowledge_dir>/planning/KANBAN.md`.
 2. Read the linked task item and source knowledge.
-3. Read `<knowledge_dir>/schemas/common.md` and relevant area schemas under `<knowledge_dir>/schemas/` for changed knowledge.
+3. Read `<knowledge_dir>/.workflow/rules/knowledge.md`, `<knowledge_dir>/.workflow/schemas/common.md`, and relevant area schemas under `<knowledge_dir>/.workflow/schemas/` for changed knowledge.
 4. Inspect the local diff or pull request changes.
 5. Compare implementation against acceptance criteria, out-of-scope notes, and related decisions.
 6. Check that tests cover meaningful behavior changes.
@@ -43,7 +43,7 @@ When available, `superpowers:verification-before-completion` output can be used 
 
 Default review handoffs are not separate files. Put ordinary return-to-implementation or acceptance context in the review report, local work log, task item update, or Kanban maintenance request.
 
-Create a formal shared handoff under `<knowledge_dir>/workspace/<member-id>/handoffs/` only when the review handoff is cross-member, long-lived, complex enough to survive the chat, or explicitly requested. Use `<knowledge_dir>/templates/handoff.md` as a reference template. Do not write into another member's workspace.
+Create a formal shared handoff under `<knowledge_dir>/workspace/<member-id>/handoffs/` only when the review handoff is cross-member, long-lived, complex enough to survive the chat, or explicitly requested. Use `<knowledge_dir>/.workflow/templates/handoff.md` as a reference template. Do not write into another member's workspace.
 
 ## Guardrails
 

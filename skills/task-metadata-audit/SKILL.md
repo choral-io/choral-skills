@@ -13,9 +13,9 @@ Use this skill to inspect task metadata and report issues. This skill is read-on
 
 ## Workflow
 
-1. Read `<knowledge_dir>/schemas/common.md`.
-2. Read `<knowledge_dir>/schemas/tasks.md`.
-3. Read `<knowledge_dir>/planning/WORKFLOW.md`.
+1. Read `<knowledge_dir>/.workflow/schemas/common.md`.
+2. Read `<knowledge_dir>/.workflow/schemas/tasks.md`.
+3. Read `<knowledge_dir>/.workflow/rules/delivery.md`.
 4. Read `<knowledge_dir>/planning/KANBAN.md`.
 5. Scan `<knowledge_dir>/tasks/*.md`, excluding localized files.
 6. Parse frontmatter and task body sections.

@@ -12,7 +12,7 @@ This directory is the project knowledge base for this project. It stores shared 
 
 The bundled profile is optimized for software product development teams. Its default areas and workflow rules focus on product knowledge, design notes, architecture decisions, delivery tasks, implementation review, and reusable product development experience.
 
-Read [schemas/common.md](schemas/common.md) before writing or reorganizing knowledge files. Then read the relevant area schema under [schemas/](schemas/).
+Read [.workflow/schemas/common.md](.workflow/schemas/common.md) before writing or reorganizing knowledge files. Then read the relevant area schema under [.workflow/schemas/](.workflow/schemas/).
 
 ## Where To Start
 
@@ -40,44 +40,45 @@ Use `knowledge-assistant` when the next process step is unclear.
 - `planning/`: roadmap, sprint planning, and sprint summaries.
 - `proposals/`: optional review buffer for valuable but unconfirmed knowledge, task, or decision candidates.
 - `tasks/`: durable delivery task context and acceptance criteria.
-- `schemas/`: writing contracts for knowledge metadata, body structure, naming, and link rules.
-- `templates/`: reusable Markdown templates for task, proposal, member, group, handoff, and worklist files.
+- `.workflow/`: workflow manifest, rules, schemas, and templates. These files support workflow operation and are not project knowledge.
 
 ## Schemas
 
 Use these schema files when writing or auditing knowledge:
 
-| Target              | Schema                                             |
-| ------------------- | -------------------------------------------------- |
-| Any knowledge file  | [schemas/common.md](schemas/common.md)             |
-| `discovery/`        | [schemas/discovery.md](schemas/discovery.md)       |
-| `product/`          | [schemas/product.md](schemas/product.md)           |
-| `design/`           | [schemas/design.md](schemas/design.md)             |
-| `architecture/`     | [schemas/architecture.md](schemas/architecture.md) |
-| `concepts/`         | [schemas/concepts.md](schemas/concepts.md)         |
-| `decisions/`        | [schemas/decisions.md](schemas/decisions.md)       |
-| `guidelines/`       | [schemas/guidelines.md](schemas/guidelines.md)     |
-| `planning/`         | [schemas/planning.md](schemas/planning.md)         |
-| `planning/sprints/` | [schemas/sprints.md](schemas/sprints.md)           |
-| `proposals/`        | [schemas/proposals.md](schemas/proposals.md)       |
-| `tasks/`            | [schemas/tasks.md](schemas/tasks.md)               |
-| `members/`          | [schemas/members.md](schemas/members.md)           |
-| `groups/`           | [schemas/groups.md](schemas/groups.md)             |
-| `workspace/`        | [schemas/workspace.md](schemas/workspace.md)       |
+| Target              | Schema                                                                 |
+| ------------------- | ---------------------------------------------------------------------- |
+| Any knowledge file  | [.workflow/schemas/common.md](.workflow/schemas/common.md)             |
+| `discovery/`        | [.workflow/schemas/discovery.md](.workflow/schemas/discovery.md)       |
+| `product/`          | [.workflow/schemas/product.md](.workflow/schemas/product.md)           |
+| `design/`           | [.workflow/schemas/design.md](.workflow/schemas/design.md)             |
+| `architecture/`     | [.workflow/schemas/architecture.md](.workflow/schemas/architecture.md) |
+| `concepts/`         | [.workflow/schemas/concepts.md](.workflow/schemas/concepts.md)         |
+| `decisions/`        | [.workflow/schemas/decisions.md](.workflow/schemas/decisions.md)       |
+| `guidelines/`       | [.workflow/schemas/guidelines.md](.workflow/schemas/guidelines.md)     |
+| `planning/`         | [.workflow/schemas/planning.md](.workflow/schemas/planning.md)         |
+| `planning/sprints/` | [.workflow/schemas/sprints.md](.workflow/schemas/sprints.md)           |
+| `proposals/`        | [.workflow/schemas/proposals.md](.workflow/schemas/proposals.md)       |
+| `tasks/`            | [.workflow/schemas/tasks.md](.workflow/schemas/tasks.md)               |
+| `members/`          | [.workflow/schemas/members.md](.workflow/schemas/members.md)           |
+| `groups/`           | [.workflow/schemas/groups.md](.workflow/schemas/groups.md)             |
+| `workspace/`        | [.workflow/schemas/workspace.md](.workflow/schemas/workspace.md)       |
 
-Schema files are workflow rules, not product facts or delivery candidates.
+Schema files are workflow writing contracts, not product facts or delivery candidates.
 
-Knowledge documents use `.md` or `.mdx`. Files under `templates/` are reusable starting points and are not knowledge documents, graph nodes, task inputs, or delivery candidates.
+Knowledge documents use `.md` or `.mdx`. Files under `.workflow/templates/` are reusable starting points and are not knowledge documents, graph nodes, task inputs, or delivery candidates.
 
-Editors may treat template files as Markdown for editing and formatting, while Foam should exclude `templates/` from the knowledge graph.
+Editors may treat template files as Markdown for editing and formatting, while Foam should exclude `.workflow/` from the knowledge graph.
 
 ## Source Of Truth
 
 - Project facts live in `{{knowledge_dir}}/` and code.
 - Delivery status lives in `{{knowledge_dir}}/planning/KANBAN.md`.
+- Workflow rules, schemas, templates, and manifest state live under `{{knowledge_dir}}/.workflow/`.
 - Proposals are candidates for review; they are not project facts, accepted decisions, task items, or delivery commitments until converted into the appropriate canonical document.
 - Member workspace notes can inform project knowledge, but they do not become project facts until promoted into a project-scoped document.
 - Member `local/` directories are local-only personal state and must not be committed.
+- `.feedback/` is local-only feedback about the workflow itself. It is not shared project knowledge, task context, delivery state, or accepted process change. It is used only when `feedback.enabled: true` is set in `.workflow/manifest.yml`.
 - External editor features, including Foam graph and backlinks, are navigation aids rather than sources of truth.
 
 ## Scope And Precedence
@@ -86,7 +87,7 @@ Use the narrowest context that is sufficient for the task, but apply stronger go
 
 ```text
 root AGENTS.md and repository safety rules
-> knowledge schemas, workflow rules, and accepted decisions
+> workflow rules, schemas, and accepted decisions
 > canonical project knowledge and code
 > shared workspace summaries, handoffs, and research
 > personal local notes, worklists, logs, and local AGENTS.md
@@ -99,7 +100,7 @@ When two sources conflict and the answer affects facts, delivery scope, permissi
 
 ## Terminology And Language
 
-Use `guidelines/` for cross-area guidance that applies to multiple knowledge areas. Keep area-specific writing contracts in `schemas/`, delivery process gates in `planning/WORKFLOW.md`, reusable starting points in `templates/`, and product/design/architecture/concept/decision facts in their owning areas.
+Use `guidelines/` for cross-area guidance that applies to multiple knowledge areas. Keep workflow writing contracts in `.workflow/schemas/`, workflow process gates in `.workflow/rules/`, reusable starting points in `.workflow/templates/`, and product/design/architecture/concept/decision facts in their owning areas.
 
 Name guideline files with a clear topic phrase in kebab case. Avoid vague names such as `guidelines.md`, `rules.md`, or `notes.md`.
 
@@ -113,7 +114,7 @@ Foam is an optional human-facing editor experience for VS Code. Team members may
 
 Obsidian can also open `{{knowledge_dir}}/` as a normal Vault through core Markdown, frontmatter, wikilinks, backlinks, graph, and tags. The project must not rely on Obsidian-only plugin features such as Dataview, Obsidian Kanban settings, Templater, or plugin-specific syntax.
 
-Agents should treat plain Markdown files, `{{knowledge_dir}}/schemas/*.md`, repository skills, and `{{knowledge_dir}}/planning/KANBAN.md` as the operational rules. Agents must not rely on the Foam VS Code extension or any external Foam tool to understand or update project knowledge.
+Agents should treat plain Markdown files, `{{knowledge_dir}}/.workflow/rules/*.md`, `{{knowledge_dir}}/.workflow/schemas/*.md`, repository skills, and `{{knowledge_dir}}/planning/KANBAN.md` as the operational rules. Agents must not rely on the Foam VS Code extension or any external Foam tool to understand or update project knowledge.
 
 Project wikilink rules:
 
@@ -132,7 +133,11 @@ Project wikilink rules:
 
 ## Workflow
 
-The full collaboration and delivery workflow is defined in `{{knowledge_dir}}/planning/WORKFLOW.md`.
+Workflow rules are split by concern:
+
+- `{{knowledge_dir}}/.workflow/rules/knowledge.md`: knowledge placement, source precedence, assets, and localization.
+- `{{knowledge_dir}}/.workflow/rules/delivery.md`: tasks, readiness, Kanban, implementation, review, blocked, and Done rules.
+- `{{knowledge_dir}}/.workflow/rules/workspace.md`: member workspace, local execution, worklists, logs, handoffs, and worktrees.
 
 Summary:
 
@@ -175,6 +180,6 @@ Use that value as the member id to select the matching member profile in `{{know
 
 When member context matters, prefer section-scoped reads from `{{knowledge_dir}}/members/<member-id>.md`. Read the full member file only when editing, auditing, or resolving ambiguity. Personal Agent collaboration preferences may live in `{{knowledge_dir}}/workspace/<member-id>/local/AGENTS.md`; that file is local-only and must not override project workflow rules.
 
-Use `{{knowledge_dir}}/templates/member.md` when adding a project-visible member profile. Confirm membership manually or by matching responsibilities to existing groups, then update the confirmed group documents' `members` lists.
+Use `{{knowledge_dir}}/.workflow/templates/member.md` when adding a project-visible member profile. Confirm membership manually or by matching responsibilities to existing groups, then update the confirmed group documents' `members` lists.
 
-Use `{{knowledge_dir}}/templates/group.md` when adding a project-visible group, team, review board, or working group. Confirm members manually or by matching group responsibilities to existing member profiles before writing `members`. Treat `groups/*.md` frontmatter `members` as the structured membership source.
+Use `{{knowledge_dir}}/.workflow/templates/group.md` when adding a project-visible group, team, review board, or working group. Confirm members manually or by matching group responsibilities to existing member profiles before writing `members`. Treat `groups/*.md` frontmatter `members` as the structured membership source.

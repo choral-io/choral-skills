@@ -28,7 +28,7 @@ Promote durable material into the right project area:
 
 ## Members And Groups
 
-- Create member profiles in `<knowledge_dir>/members/` when the user approves a project-visible member record. Use `<knowledge_dir>/templates/member.md`; ask for or confirm `member_id`, `display_name`, public responsibilities, focus areas, and collaboration context.
-- Create group documents in `<knowledge_dir>/groups/` when the user approves a project-visible team, review board, maintainer group, or working group. Use `<knowledge_dir>/templates/group.md`; ask for or confirm `group_id`, `display_name`, purpose, responsibility scope, owners, and members.
+- Create member profiles in `<knowledge_dir>/members/` when the user approves a project-visible member record. Use `<knowledge_dir>/.workflow/templates/member.md`; ask for or confirm `member_id`, `display_name`, public responsibilities, focus areas, and collaboration context.
+- Create group documents in `<knowledge_dir>/groups/` when the user approves a project-visible team, review board, maintainer group, or working group. Use `<knowledge_dir>/.workflow/templates/group.md`; ask for or confirm `group_id`, `display_name`, purpose, responsibility scope, owners, and members.
 - For member creation, ask the user to manually choose groups or infer likely target groups from responsibilities, then ask for confirmation before updating group documents' `members` lists. Do not write a `groups` field to the member profile.
 - For group creation, ask the user to manually choose members or infer likely target members from responsibilities, then ask for confirmation before writing `members`.

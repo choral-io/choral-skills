@@ -121,7 +121,7 @@ Use a `## Sources` section for canonical source knowledge:
 ## Sources
 
 - [[product/example-source-note]]
-- [[planning/WORKFLOW]]
+- `.workflow/rules/delivery.md`
 ```
 
 Sources should point to canonical-language project knowledge, accepted decisions, architecture, product, design, or explicitly selected workspace summaries, handoffs, or research. Do not use local workspace notes or localized files as the only source.
