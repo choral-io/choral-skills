@@ -134,6 +134,7 @@ Use rendered target paths, not placeholder paths, in the manifest. Required Skil
 
 Skeleton file `knowledge/_gitignore` renders to target `<knowledge_dir>/.gitignore`; the manifest records the rendered target path.
 Skeleton file `worktrees/_gitignore` renders to target `<worktree_dir>/.gitignore`; the manifest records the rendered target path.
+Skeleton file `knowledge/.workflow/local.yml` renders to target `<knowledge_dir>/.workflow/local.yml` as a local-only comment template; the manifest does not record it as managed, and `<knowledge_dir>/.gitignore` must exclude it from SCM.
 
 `skipped_patterns` is only for workflow-scope paths that the workflow deliberately excludes during init. Do not use it to record arbitrary unrelated repository files, untracked artifacts, editor scratch files, build outputs, or project files outside the selected knowledge workflow surface.
 

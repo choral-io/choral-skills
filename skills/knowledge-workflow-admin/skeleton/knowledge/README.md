@@ -170,13 +170,24 @@ Localized files may become stale. If freshness matters, add `translated_at` and 
 
 ## Current User
 
-Agents must determine the current member from the local Git identity:
+Agents must resolve the current member id in this order:
+
+1. Explicit member id provided by the user for the current operation.
+2. `current_member.member_id` in local-only `{{knowledge_dir}}/.workflow/local.yml`.
+3. The local Git identity:
 
 ```sh
 git config user.name
 ```
 
-Use that value as the member id to select the matching member profile in `{{knowledge_dir}}/members/` and the matching workspace in `{{knowledge_dir}}/workspace/<member-id>/`. The member id does not need to match the display name. Do not infer the current user from the operating system account, machine name, shell prompt, or chat participant name.
+`{{knowledge_dir}}/.workflow/local.yml` is SCM-ignored and defaults to comments only. It currently supports only the local current-member override:
+
+```yaml
+current_member:
+    member_id: Gavroche
+```
+
+Use the resolved value as the member id to select the matching member profile in `{{knowledge_dir}}/members/` and the matching workspace in `{{knowledge_dir}}/workspace/<member-id>/`. The member id does not need to match the display name. Do not infer the current user from the operating system account, machine name, shell prompt, or chat participant name. Do not slugify or otherwise transform the resolved value. If `{{knowledge_dir}}/members/<member-id>.md` does not exist, stop and report a diagnostic instead of writing to a guessed member path.
 
 When member context matters, prefer section-scoped reads from `{{knowledge_dir}}/members/<member-id>.md`. Read the full member file only when editing, auditing, or resolving ambiguity. Personal Agent collaboration preferences may live in `{{knowledge_dir}}/workspace/<member-id>/local/AGENTS.md`; that file is local-only and must not override project workflow rules.
 

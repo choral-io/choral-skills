@@ -12,6 +12,7 @@ Skeleton mapping:
 
 - `knowledge/` path segment -> selected `<knowledge_dir>/`.
 - `knowledge/_gitignore` -> `<knowledge_dir>/.gitignore`.
+- `knowledge/.workflow/local.yml` -> local-only `<knowledge_dir>/.workflow/local.yml`.
 - `worktrees/_gitignore` -> `<worktree_dir>/.gitignore`.
 - Root skeleton `AGENTS.md` -> marked root `AGENTS.md` append block.
 
@@ -20,6 +21,7 @@ Treat skeleton rendering as an inventory operation:
 - Build a complete source-to-target inventory before writing files or reporting the dry run.
 - Include parent directories required by rendered files.
 - Render every knowledge and AGENTS skeleton file individually; do not use wildcard copy commands.
+- Create `<knowledge_dir>/.workflow/local.yml` from the comment-only skeleton when absent, keep it SCM-ignored, and do not record it as a managed manifest path.
 - Do not create empty knowledge area directories during init; create them on demand when writing files later.
 
 ## On-Demand Knowledge Directories
@@ -80,7 +82,7 @@ Fresh init writes `feedback.enabled: false` in `<knowledge_dir>/.workflow/manife
 1. Resolve and validate `knowledge_dir`, `worktree_dir`, and `canonical_language`.
 2. Precheck the skeleton tree: root AGENTS block, `knowledge/_gitignore`, `worktrees/_gitignore`, and required workflow files.
 3. Check required Skills by name; record missing Skills as validation findings, not blockers.
-4. Build a complete render inventory covering rendered file parent directories, managed knowledge files, `<worktree_dir>/.gitignore`, root AGENTS append block, and manifest file.
+4. Build a complete render inventory covering rendered file parent directories, managed knowledge files, local-only `<knowledge_dir>/.workflow/local.yml`, `<worktree_dir>/.gitignore`, root AGENTS append block, and manifest file.
 5. Build a dry run showing `create`, `mkdir`, `append`, `skip`, and `conflict`.
 6. Create rendered file parent directories separately from file rendering.
 7. Never overwrite an existing Kanban board, member profile, member workspace, task item, or business knowledge file.
@@ -88,7 +90,7 @@ Fresh init writes `feedback.enabled: false` in `<knowledge_dir>/.workflow/manife
 9. Include the final `### Project-Specific Rules` heading inside the marked block. Ask for project-specific rules only when the user mentions them or wants customization.
 10. Render `<worktree_dir>/.gitignore` so worktree contents are ignored while the directory's `.gitignore` remains trackable.
 11. After user confirmation, write files and create `<knowledge_dir>/.workflow/manifest.yml`.
-12. Validate rendered workflow files, root AGENTS block, `<knowledge_dir>/.gitignore`, `<worktree_dir>/.gitignore`, manifest fields, and required Skill availability.
+12. Validate rendered workflow files, root AGENTS block, `<knowledge_dir>/.gitignore`, ignored local-only `<knowledge_dir>/.workflow/local.yml`, `<worktree_dir>/.gitignore`, manifest fields, and required Skill availability.
 13. Treat editor settings as optional unmanaged convenience; do not edit `.vscode/settings.json` or `.zed/settings.json` unless explicitly asked.
 14. Report created directories, created files, missing required Skills, skipped/protected paths, conflicts, and validation findings.
 

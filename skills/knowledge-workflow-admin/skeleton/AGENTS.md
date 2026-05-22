@@ -6,7 +6,7 @@
 
 - Knowledge directory: `{{knowledge_dir}}/`.
 - Read `{{knowledge_dir}}/.workflow/manifest.yml` before workflow work; use its `knowledge_dir`, `agent_skills.required`, `worktree_dir`, and `canonical_language: {{canonical_language}}` values.
-- Determine the current member id with `git config user.name`; do not infer it from OS, machine, shell, or chat names.
+- Resolve the current member id in order: explicit user-provided member id for this operation, `current_member.member_id` in SCM-ignored `{{knowledge_dir}}/.workflow/local.yml`, then `git config user.name`. Do not infer it from OS, machine, shell, or chat names, and do not slugify or otherwise transform it. If `{{knowledge_dir}}/members/<member-id>.md` does not exist, stop and report a diagnostic instead of writing to a guessed member path.
 - Before writing knowledge, read `{{knowledge_dir}}/.workflow/rules/knowledge.md`, `{{knowledge_dir}}/.workflow/schemas/common.md`, and the relevant `{{knowledge_dir}}/.workflow/schemas/*.md`; before changing delivery cards, read `{{knowledge_dir}}/.workflow/rules/delivery.md`.
 - When member context matters, prefer section-scoped reads from `{{knowledge_dir}}/members/<member-id>.md`; read `{{knowledge_dir}}/workspace/<member-id>/local/AGENTS.md` when acting on that member's local workspace, worklist, or personal execution style.
 

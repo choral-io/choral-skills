@@ -2,7 +2,7 @@
 
 Use this for `WORKLIST.md`, "continue", "run next", "run loop", local logs, handoffs, worktrees, or subagents.
 
-- Determine the current member with `git config user.name`.
+- Resolve the current member using the order defined in root `AGENTS.md`.
 - Default to `run-next` for one item unless the user authorizes `run-loop` or `run-goal`.
 - `run-loop` needs `max-items`; parallel execution also needs `parallel-work-items` and independent items.
 - `run-goal` coordinates accepted Kanban/worklist tasks toward review readiness; it is not open-ended discovery. It composes `next-task-selection`, `workspace-worklist`, `delivery-implementation`, `delivery-review`, and approved `kanban-maintenance` under a confirmed run contract.

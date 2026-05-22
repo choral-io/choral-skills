@@ -13,7 +13,7 @@ Use this skill to write approved knowledge changes and move information from loc
 
 ## Workflow
 
-1. Determine the current member id with `git config user.name`.
+1. Resolve the current member id using the order defined in root `AGENTS.md`.
 2. If writing current-member workspace content or promoting current-member local material, read relevant sections from `<knowledge_dir>/members/<member-id>.md` and read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` when it exists.
 3. Classify the material as local context, shared member context, project knowledge, or task candidate.
 4. Read `<knowledge_dir>/.workflow/rules/knowledge.md`.

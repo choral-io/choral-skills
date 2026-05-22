@@ -16,7 +16,7 @@ Read only what the question needs:
     - relevant `<knowledge_dir>/.workflow/rules/*.md`
     - `<knowledge_dir>/.workflow/schemas/common.md`
     - relevant `<knowledge_dir>/.workflow/schemas/*.md`
-5. For member-scoped questions, use `git config user.name` as the member id; read public member sections first and local workspace rules only when personal execution style matters.
+5. For member-scoped questions, resolve the current member id using the order defined in root `AGENTS.md`; read public member sections first and local workspace rules only when personal execution style matters.
 
 If the block or manifest is missing, give pre-install help only. Recommend defaults such as `knowledge/`, required Skills, and `.worktrees/` as examples, require an explicit canonical language for init, and route setup to `knowledge-workflow-admin:init`.
 

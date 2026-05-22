@@ -78,7 +78,7 @@ Task items are durable task context, not accepted execution queue items by thems
 
 Before intake:
 
-- Determine the current member id with `git config user.name`.
+- Resolve the current member id using the order defined in root `AGENTS.md`.
 - Read the Kanban card and linked task, requirement, design, or decision documents.
 - Confirm the task is assigned to the current member, unassigned, or explicitly selected by the user.
 - If the task is assigned to another member, ask before taking it.

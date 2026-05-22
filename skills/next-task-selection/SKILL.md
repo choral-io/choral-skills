@@ -13,7 +13,7 @@ Use this skill to recommend the next accepted delivery task from `<knowledge_dir
 
 ## Workflow
 
-1. Determine the current member id with `git config user.name`.
+1. Resolve the current member id using the order defined in root `AGENTS.md`.
 2. Read `Responsibilities` and `Focus Areas` from `<knowledge_dir>/members/<member-id>.md` when present; read `Availability` only when the user asks for capacity-aware selection.
 3. Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` only when the user asks for automatic start, personal execution preferences, or a member-personal recommendation. Use it only as a preference signal.
 4. Read `<knowledge_dir>/planning/KANBAN.md`.

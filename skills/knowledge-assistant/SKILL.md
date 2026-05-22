@@ -34,7 +34,7 @@ If the user explicitly asks this skill to perform any other write or state-chang
 3. Extract the explicit knowledge directory, then read `<knowledge_dir>/.workflow/manifest.yml` when it exists.
 4. If the block or manifest is missing, give pre-install or repair guidance only; do not guess workflow paths as facts.
 5. Read only the narrow `knowledge-assistant` reference and installed docs needed for the question.
-6. If the question is member-scoped, determine the current member id with `git config user.name`; read member or local preference files only when they matter.
+6. If the question is member-scoped, resolve the current member id using the order defined in root `AGENTS.md`; read member or local preference files only when they matter.
 7. Infer the user's likely workflow intent from the current question and repository context.
 8. If the user asks to record workflow feedback, follow `references/project-guidance.md`: explain feedback mode and privacy first, verify manifest `feedback.enabled`, and either write allowed feedback or route confirmed enablement to `knowledge-workflow-admin:config`.
 9. Give one recommended path, the reason, and unsafe actions to avoid. Add a concrete next prompt only when the user's intent and execution direction are clear enough to make it useful.

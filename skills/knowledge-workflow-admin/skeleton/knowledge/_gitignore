@@ -4,5 +4,8 @@ workspace/*/local/
 # Local-only workflow feedback for improving the workflow itself.
 .feedback/
 
+# Local-only workflow execution context.
+.workflow/local.yml
+
 # Obsidian vault settings and cache.
 .obsidian/

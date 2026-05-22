@@ -13,7 +13,7 @@ Use this skill for personal, local member work under `<knowledge_dir>/workspace/
 
 ## Core Rules
 
-- Determine the current member id with `git config user.name`.
+- Resolve the current member id using the order defined in root `AGENTS.md`.
 - Use `<knowledge_dir>/workspace/<member-id>/local/WORKLIST.md` as the local worklist for executable or nearly executable personal work.
 - Use `<knowledge_dir>/workspace/<member-id>/local/logs/YYYY-MM-DD.md` as the local daily execution log.
 - Treat `local/` as local-only personal state. Never stage or commit it.
@@ -41,7 +41,7 @@ For mode details, read `references/local-workflow.md`.
 
 ## Workflow
 
-1. Determine current member id with `git config user.name`.
+1. Resolve the current member id using the order defined in root `AGENTS.md`.
 2. Read relevant sections from `<knowledge_dir>/members/<member-id>.md` if public member context is needed. Avoid full-file reads unless editing, auditing, or resolving ambiguity.
 3. Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if it exists. Treat it as subordinate to root `AGENTS.md`, workflow rules, schemas, task acceptance criteria, safety, privacy, approval, local-only, and review rules.
 4. Ensure the local worklist exists.
