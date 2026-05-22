@@ -1,20 +1,24 @@
 ---
 scope: project
 type: task
+priority: P2
+severity:
+value: M
+module: knowledge
+
 owners: []
 assignees: []
 reviewers: []
 tags:
     - knowledge
-priority: P2
-severity:
-value: M
-module: knowledge
+
 effort: M
 readiness: needs-refinement
 sprint:
+
 blocked_by: []
 related_to: []
+
 reported_by:
 affected_area:
 ---

@@ -18,6 +18,11 @@ Task documents describe durable delivery context. The Kanban board tracks status
 ---
 scope: project
 type: task
+priority: P1
+severity:
+value: H
+module: app
+
 owners:
     - "[[members/Gavroche]]"
 assignees:
@@ -26,15 +31,16 @@ reviewers:
     - "[[members/Éponine]]"
 tags:
     - app
-priority: P1
-value: H
-module: app
+
 effort: M
 readiness: ready
 sprint: Sprint 1
+
 blocked_by: []
 related_to:
     - "[[tasks/example-related-task]]"
+reported_by:
+affected_area:
 ---
 ```
 
@@ -51,6 +57,7 @@ related_to:
 - `owners`: member or group wikilinks for durable task ownership. `owners: []` is allowed while a task is being drafted or refined, but `readiness: ready`, Kanban promotion, and active delivery require non-empty owners that resolve to existing member or group documents.
 - `assignees`: member wikilinks for people currently responsible for moving the task forward. Group assignees mean a team or group pool, not assignment to the current member.
 - `reviewers`: member or group wikilinks for expected reviewers for delivery acceptance.
+- `tags`: searchable labels for area, topic, or workflow classification.
 - `blocked_by`: hard blocker relationships. Entries may remain after blockers are resolved; a task is blocked only when one or more entries are unresolved.
 - `related_to`: context links that do not block work.
 - `reported_by`: optional source, member id, role, channel, or anonymized reporter for issue, bug, or defect tasks.
