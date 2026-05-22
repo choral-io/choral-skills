@@ -80,7 +80,7 @@ Use the nearest template when the requested mode matches. Keep reports read-only
 | Area                             | Count | Basis                    | Notes |
 | -------------------------------- | ----- | ------------------------ | ----- |
 | `proposals.by_status`            |       | field-based              |       |
-| `proposals.accepted_unconverted` |       | field-based + link check |       |
+| `proposals.accepted_unconverted` |       | field-based + link-based |       |
 | `decisions.by_status`            |       | field-based or inferred  |       |
 
 ## Queues

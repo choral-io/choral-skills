@@ -4,9 +4,12 @@
 
 Choose exactly one routing decision before recommending a next step:
 
+Rows are ordered by source-of-truth safety: no repository write, deferred or rejected material, current-member local material, shared knowledge candidates, delivery planning, then visible people/group metadata.
+
 | Decision              | Use when                                                                 | Default next step                                        |
 | --------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------- |
 | `no-change`           | No durable or useful local project information emerged                   | Answer in chat; do not write                             |
+| `ignore-or-defer`     | Duplicative, premature, sensitive, or intentionally deferred             | Explain why no repository write should happen            |
 | `local-scratch`       | Raw personal observation, rough idea, inbox-style capture                | Write only if user asks; target current `local/scratch/` |
 | `local-draft`         | Structured personal draft not approved for team sharing                  | Draft under current `local/drafts/` after approval       |
 | `shared-workspace`    | Public member summary, handoff, or shareable investigation               | Route approved write to `knowledge-capture`              |
@@ -15,7 +18,6 @@ Choose exactly one routing decision before recommending a next step:
 | `task-candidate`      | Executable team work not yet accepted onto Kanban                        | Create or refine task item after approval                |
 | `kanban-planning`     | Accepted task item needs board proposal                                  | Route to `delivery-planning`                             |
 | `member-or-group`     | Project-visible member or group profile/change                           | Route approved write to `knowledge-capture`              |
-| `ignore-or-defer`     | Duplicative, premature, sensitive, or intentionally deferred             | Explain why no repository write should happen            |
 
 If multiple decisions appear plausible, choose the highest row that preserves safety and source-of-truth boundaries, then list the rejected alternatives in the response.
 

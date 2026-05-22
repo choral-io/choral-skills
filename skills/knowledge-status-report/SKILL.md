@@ -13,12 +13,23 @@ Use this skill to summarize repository knowledge status without changing files.
 
 ## Modes
 
+Overview and quality:
+
 - `overview`: concise project knowledge and delivery summary.
 - `health`: source traceability, orphaned documents, link gaps, stale proposals, ownership gaps, and schema risks.
+
+Delivery:
+
 - `delivery`: Kanban, task items, readiness, blockers, review queues, and Done counts.
+
+Knowledge queues:
+
 - `decisions`: proposed, accepted, rejected, superseded, and unresolved decisions.
 - `requirements`: product requirement coverage, planned work, delivered work, and gaps.
 - `proposals`: open proposals, proposals by type/status, accepted proposals not yet converted, and proposal risks.
+
+Responsibility, risk, and activity:
+
 - `ownership`: owners, assignees, reviewers, and member responsibility coverage.
 - `risks`: blockers, stale references, missing source traceability, unclear ownership, and workflow gaps.
 - `activity`: recent knowledge and delivery changes, using git history when available.
@@ -31,8 +42,8 @@ Choose the narrowest useful report scope before reading broadly:
 
 - `project-wide`: default for broad status questions.
 - `discovery-only`: requirement discovery, market context, business assumptions, customer research, and environmental analysis.
-- `delivery-only`: Kanban, task items, readiness, blockers, and review queues.
 - `product-only`: requirements, product scope, delivery links, and product risks.
+- `delivery-only`: Kanban, task items, readiness, blockers, and review queues.
 - `member-specific`: one member's public responsibilities, assignments, reviews, handoffs, and shared workspace material.
 - `sprint-specific`: one sprint or planning period.
 - `module-specific`: one module, component, feature area, or knowledge area.
@@ -49,7 +60,7 @@ If the user asks for a statistic that does not fit a predefined scope, keep the 
 4. Read only the knowledge areas needed for the requested mode.
 5. Read `<knowledge_dir>/planning/KANBAN.md` and task items only for delivery-related modes.
 6. Prefer explicit frontmatter, Kanban columns, wikilinks, and schema-defined fields over inference from prose.
-7. Clearly label counts as `field-based`, `board-based`, `git-based`, or `inferred`.
+7. Clearly label counts as `field-based`, `board-based`, `path-based`, `link-based`, `git-based`, or `inferred`.
 8. Assign report reliability as `high`, `medium`, or `low`.
 9. Report findings and recommended next actions without editing files.
 

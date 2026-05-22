@@ -25,15 +25,18 @@ Task items may include:
 ```yaml
 priority: P1
 value: H
-effort: M
-readiness: ready
 module: app
+
 owners:
     - "[[members/Gavroche]]"
 assignees:
     - "[[members/Gavroche]]"
 reviewers:
     - "[[members/Éponine]]"
+
+effort: M
+readiness: ready
+
 blocked_by:
     - "[[tasks/example-upstream-task]]"
 related_to:
@@ -46,10 +49,12 @@ Use task knowledge-reference wikilinks in relationship fields, not display title
 
 - `priority`: team priority. Suggested values: `P0`, `P1`, `P2`, `P3`.
 - `value`: expected product or engineering value. Suggested values: `H`, `M`, `L`.
-- `effort`: expected implementation size. Suggested values: `S`, `M`, `L`.
-- `readiness`: execution readiness. Suggested values: `ready`, `needs-refinement`, `blocked`.
+- `module`: affected module, component, or delivery area.
+- `owners`: member or group wikilinks for durable responsibility.
 - `assignees`: member wikilinks for people currently responsible for moving the task forward.
 - `reviewers`: member wikilinks for expected reviewers for delivery acceptance.
+- `effort`: expected implementation size. Suggested values: `S`, `M`, `L`.
+- `readiness`: execution readiness. Suggested values: `ready`, `needs-refinement`, `blocked`.
 - `blocked_by`: hard blockers that prevent work from starting.
 - `related_to`: useful context or adjacent work, not a blocker.
 - Downstream unlocks are derived by reverse-looking up other tasks whose `blocked_by` references the candidate.

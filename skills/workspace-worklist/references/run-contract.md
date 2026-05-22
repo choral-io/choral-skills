@@ -8,14 +8,17 @@ Before a long-running `run-goal`, present and confirm:
 goal:
 scope:
 current-member:
+
 candidate-source: Reviewing | Doing | Ready | Backlog | mixed
 max-tasks:
 max-items:
 deadline:
 parallel-work-items:
+
 approval-mode:
 isolation:
 stop-at:
+
 rule-sources:
 project-rules-status:
 runtime-permission-model:
@@ -23,6 +26,7 @@ git-sync-rules:
 kanban-rules:
 review-rules:
 source-stability-rules:
+
 allowed-paths:
 forbidden-actions:
 protected-surfaces:

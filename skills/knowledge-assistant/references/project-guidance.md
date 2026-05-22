@@ -6,7 +6,7 @@ Use this for status reports, project rules, local workflow feedback, installatio
 
 For project status, delivery progress, decisions, requirements, ownership, or risks, recommend `knowledge-status-report`.
 
-Ask it to choose the narrowest useful scope, state `Reliability: high | medium | low`, label counts as `field-based`, `board-based`, `git-based`, or `inferred`, and list source paths. If the user asks to report and fix, report first; route approved fixes to the owning skill.
+Ask it to choose the narrowest useful scope, state `Reliability: high | medium | low`, label counts as `field-based`, `board-based`, `path-based`, `link-based`, `git-based`, or `inferred`, and list source paths. If the user asks to report and fix, report first; route approved fixes to the owning skill.
 
 Use predefined report templates for weekly delivery, knowledge health, proposal/decision queue, member workload, and blocked work reports.
 
@@ -64,10 +64,12 @@ Use a dated file such as `<knowledge_dir>/.feedback/YYYY-MM-DD-<short-slug>.md`.
 ```md
 ---
 type: workflow-feedback
-status: open
 scope: local-project | reusable-workflow | public-skill
+status: open
+
 related_skill:
     - knowledge-assistant
+
 created_at: YYYY-MM-DD
 ---
 

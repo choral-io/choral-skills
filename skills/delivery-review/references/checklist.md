@@ -65,6 +65,8 @@ Classify P0/P1 findings as `rework-required` unless they are external blockers. 
 
 Use this structure when review needs follow-up:
 
+This compact chat summary uses the core sections of `<knowledge_dir>/.workflow/templates/handoff.md`. When creating a formal shared handoff file, use the full template instead.
+
 ```md
 ## Purpose
 

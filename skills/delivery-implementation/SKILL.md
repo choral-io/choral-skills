@@ -55,6 +55,8 @@ Default implementation handoffs are not separate files. Put ordinary review hand
 
 Use this structure when handing implementation to review or reporting blocked work:
 
+This compact chat summary uses the core sections of `<knowledge_dir>/.workflow/templates/handoff.md`. When creating a formal shared handoff file, use the full template instead.
+
 ```md
 ## Purpose
 

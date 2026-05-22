@@ -15,17 +15,23 @@ manifest_version: 1
 knowledge_dir: <knowledge_dir>
 worktree_dir: <worktree_dir>
 canonical_language: "<bcp47>"
-feedback:
-    enabled: false
-agent_skills:
-    required: []
 installed_at: "<iso8601>"
 updated_at: "<iso8601>"
+
+feedback:
+    enabled: false
+
+agent_skills:
+    required: []
+
 append_blocks: []
+
 managed:
     version: 1
     paths: []
+
 protected: []
+
 local_overrides: []
 skipped_patterns: []
 ```
@@ -45,8 +51,12 @@ manifest_version: 1
 knowledge_dir: <knowledge_dir>
 worktree_dir: <worktree_dir>
 canonical_language: "<bcp47>"
+installed_at: "<iso8601>"
+updated_at: "<iso8601>"
+
 feedback:
     enabled: false
+
 agent_skills:
     required:
         - knowledge-assistant
@@ -61,8 +71,6 @@ agent_skills:
         - kanban-maintenance
         - delivery-implementation
         - delivery-review
-installed_at: "<iso8601>"
-updated_at: "<iso8601>"
 
 append_blocks:
     - path: AGENTS.md
@@ -143,13 +151,18 @@ Recommended strategies:
 Fresh init writes these baseline manifest values:
 
 ```yaml
+template_id: knowledge-workflow
 template_version: 1
 manifest_version: 1
 knowledge_dir: <knowledge_dir>
 worktree_dir: <worktree_dir>
 canonical_language: "<bcp47>"
+installed_at: "<iso8601>"
+updated_at: "<iso8601>"
+
 feedback:
     enabled: false
+
 agent_skills:
     required:
         - knowledge-assistant
@@ -164,10 +177,12 @@ agent_skills:
         - kanban-maintenance
         - delivery-implementation
         - delivery-review
+
 append_blocks:
     - path: AGENTS.md
       block: knowledge-workflow
       version: 1
+
 managed:
     version: 1
 ```

@@ -18,10 +18,12 @@ Label each reported metric by how it was derived:
 | ------------- | -------------------------------------------------------------- |
 | `field-based` | Counted from explicit frontmatter or schema-defined fields.    |
 | `board-based` | Counted from `planning/KANBAN.md` columns or linked cards.     |
+| `path-based`  | Counted from repository paths, filenames, or area directories. |
+| `link-based`  | Counted from Markdown links, wikilinks, or link graph checks.  |
 | `git-based`   | Counted from committed file history or recent changed files.   |
 | `inferred`    | Estimated from prose, links, headings, or partial conventions. |
 
-Prefer `field-based` and `board-based` metrics. Use `inferred` only when the user needs a directional report and the limitation is clearly stated.
+Prefer `field-based`, `board-based`, `path-based`, and `link-based` metrics. Use `inferred` only when the user needs a directional report and the limitation is clearly stated.
 
 ## Scope
 
