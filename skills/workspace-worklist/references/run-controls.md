@@ -28,7 +28,7 @@ Before dispatch:
 5. Select an independent batch no larger than `parallel-work-items`.
 6. Dispatch only low- or medium-risk independent items.
 
-Use isolated `<worktree_dir>/slot-XX/` worktrees for parallel workers. Do not run parallel workers in the main worktree or shared serial worktree.
+Use isolated `<worktrees_dir>/slot-XX/` worktrees for parallel workers. Do not run parallel workers in the main worktree or shared serial worktree.
 
 Parallel eligibility requires:
 

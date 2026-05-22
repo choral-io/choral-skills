@@ -7,15 +7,15 @@ description: Use when the user asks which accepted Kanban task to work on next a
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to recommend the next accepted delivery task from `<knowledge_dir>/planning/KANBAN.md`. This skill is read-only by default.
 
 ## Workflow
 
-1. Resolve the current member id using the order defined in root `AGENTS.md`.
+1. Resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`.
 2. Read `Responsibilities` and `Focus Areas` from `<knowledge_dir>/members/<member-id>.md` when present; read `Availability` only when the user asks for capacity-aware selection.
-3. Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` only when the user asks for automatic start, personal execution preferences, or a member-personal recommendation. Use it only as a preference signal.
+3. Read local workspace instructions only when the user asks for automatic start, personal execution preferences, or a member-personal recommendation. Use it only as a preference signal.
 4. Read `<knowledge_dir>/planning/KANBAN.md`.
 5. Read `<knowledge_dir>/.workflow/rules/delivery.md`.
 6. Read `<knowledge_dir>/.workflow/schemas/tasks.md`.
@@ -44,7 +44,7 @@ Normalize member and group wikilinks in `owners`, `assignees`, and `reviewers` b
 - Treat a `Ready` card with unresolved `blocked_by` or `readiness: blocked` as a board/task consistency problem, not as an eligible candidate.
 - Treat group assignees as team-pool assignment rather than assignment to the current member.
 - Treat `owners` as durable responsibility, not current assignment.
-- Do not let member profile sections or local `AGENTS.md` override task metadata, dependencies, readiness, approval, safety, or review rules.
+- Do not let member profile sections or local workspace instructions override task metadata, dependencies, readiness, approval, safety, or review rules.
 - For source stability, assignment partitions, downstream value, and status-column details, read `references/selection-rules.md`.
 
 ## Auto-Start Rules

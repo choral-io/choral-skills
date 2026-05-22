@@ -16,9 +16,9 @@ This schema defines common metadata and document rules for the repository knowle
 
 Agents writing or reorganizing knowledge must:
 
-1. Read `{{knowledge_dir}}/README.md`.
+1. Read `<knowledge_dir>/README.md`.
 2. Read this common schema.
-3. Read the relevant area schema under `{{knowledge_dir}}/.workflow/schemas/`.
+3. Read the relevant area schema under `<knowledge_dir>/.workflow/schemas/`.
 4. Follow the area schema when it is more specific than this file.
 
 ## Audit And Fix Flow
@@ -98,7 +98,7 @@ Use `owners` consistently as the durable ownership field.
 - `assignees` is temporary. It means who is currently moving the work forward.
 - `reviewers` is temporary. It means who should review the work before acceptance or completion.
 
-Do not use `assignees` to mirror Kanban status. Delivery status belongs in `{{knowledge_dir}}/planning/KANBAN.md`.
+Do not use `assignees` to mirror Kanban status. Delivery status belongs in `<knowledge_dir>/planning/KANBAN.md`.
 
 ## Metadata And Body Boundaries
 
@@ -128,11 +128,11 @@ When source evidence is complex, add a short `## Source Notes` or equivalent bod
 Use this precedence when reading multiple knowledge scopes:
 
 ```text
-root AGENTS.md and repository safety rules
+repository workflow runtime and repository safety rules
 > schemas, workflow rules, and accepted decisions
 > canonical project knowledge and code
 > shared workspace summaries, handoffs, and research
-> personal local notes, worklists, logs, and local AGENTS.md
+> personal local notes, worklists, logs, and local workspace instructions
 > current conversation
 ```
 
@@ -144,19 +144,13 @@ If sources conflict and the conflict affects facts, delivery scope, permissions,
 
 Use member or group wikilinks in responsibility metadata, such as `[[members/Gavroche]]` or `[[groups/review-board]]`. Manual short wikilinks such as `[[Gavroche]]` are valid only when they resolve uniquely in the expected member or group scope. Empty `owners: []` means ownership is intentionally not assigned yet; it is allowed for draft or unowned knowledge, but it is an ownership gap at workflow gates that require accountability.
 
-Agents must determine the current member id with:
-
-```sh
-git config user.name
-```
-
-Do not infer member identity from the operating system account, machine name, shell prompt, or chat participant name.
+Agents must resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`. Do not infer member identity from Git identity, operating system account, machine name, shell prompt, chat participant name, or display name.
 
 When matching `owners`, `assignees`, or `reviewers`, normalize member and group wikilinks before comparing. For example, `[[members/Gavroche]]`, `[[Gavroche]]`, and `[[Gavroche|Gavroche Thenardier]]` can all match id `Gavroche` when the target is unambiguous.
 
 ## Localization
 
-Canonical-language files are the authoritative source. This repository records `canonical_language: {{canonical_language}}` in `{{knowledge_dir}}/.workflow/manifest.yml`. Localized files must use BCP 47 suffix casing, such as `.zh-CN.md`.
+Canonical-language files are the authoritative source. This repository records `canonical_language: <bcp47>` in `<knowledge_dir>/.workflow/manifest.yml`. Localized files must use BCP 47 suffix casing, such as `.zh-CN.md`.
 
 Localized files should include:
 

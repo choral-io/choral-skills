@@ -38,7 +38,7 @@ Allowed `type` values:
 
 ## Rules
 
-- Keep delivery status centralized in `{{knowledge_dir}}/planning/KANBAN.md`.
+- Keep delivery status centralized in `<knowledge_dir>/planning/KANBAN.md`.
 - Use task items for durable task context.
 - Keep process documents focused on rules that Agents and members can follow.
 - Use `assignees` for active planning ownership, such as sprint planning or migration work.

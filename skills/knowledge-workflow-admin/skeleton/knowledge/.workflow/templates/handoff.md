@@ -14,12 +14,12 @@ tags:
 <!--
 Use this template for durable shared handoffs under:
 
-{{knowledge_dir}}/workspace/<from-member-id>/handoffs/<short-topic>.md
+<knowledge_dir>/workspace/<from-member-id>/handoffs/<short-topic>.md
 
 This is a lightweight reference template, not a lifecycle system.
 
 The frontmatter above uses only the common workspace document fields from
-{{knowledge_dir}}/.workflow/schemas/workspace.md.
+<knowledge_dir>/.workflow/schemas/workspace.md.
 
 Field notes:
 - owners: member wikilinks for people responsible for maintaining this handoff document.

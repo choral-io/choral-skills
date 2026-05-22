@@ -56,7 +56,7 @@ Contract field values:
 Build `run-loop` and `run-goal` execution rules from three sources:
 
 1. Skill baseline rules: this skill, workflow rules, and repository safety rules. This is the hard floor.
-2. Project rules: root `AGENTS.md` -> `Project-Specific Rules`.
+2. Project rules: repository workflow runtime and project-specific rules.
 3. Prompt rules: the current user instruction for this run.
 
 Merge rules:

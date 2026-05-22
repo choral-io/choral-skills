@@ -13,22 +13,22 @@ This document defines source precedence, knowledge placement, schema use, assets
 
 ## Required Reads
 
-- Before writing knowledge, read `{{knowledge_dir}}/.workflow/schemas/common.md` and the target area schema.
-- Before changing delivery status, read `{{knowledge_dir}}/.workflow/rules/delivery.md`.
-- Before using member-local material, read `{{knowledge_dir}}/.workflow/rules/workspace.md`.
+- Before writing knowledge, read `<knowledge_dir>/.workflow/schemas/common.md` and the target area schema.
+- Before changing delivery status, read `<knowledge_dir>/.workflow/rules/delivery.md`.
+- Before using member-local material, read `<knowledge_dir>/.workflow/rules/workspace.md`.
 
 ## Source Of Truth
 
-| Area                  | Source of truth                               | Notes                                            |
-| --------------------- | --------------------------------------------- | ------------------------------------------------ |
-| Project facts         | `{{knowledge_dir}}/` canonical files and code | Canonical-language files are authoritative.      |
-| Workflow rules        | `{{knowledge_dir}}/.workflow/rules/*.md`      | Operational rules, not project facts.            |
-| Schemas               | `{{knowledge_dir}}/.workflow/schemas/*.md`    | Writing contracts, not project facts.            |
-| Templates             | `{{knowledge_dir}}/.workflow/templates/*.md`  | Starting points, not project facts.              |
-| Delivery status       | `{{knowledge_dir}}/planning/KANBAN.md`        | Board edits require approved Kanban maintenance. |
-| Personal work context | `{{knowledge_dir}}/workspace/<member-id>/`    | Context, not team consensus.                     |
+| Area                  | Source of truth                             | Notes                                            |
+| --------------------- | ------------------------------------------- | ------------------------------------------------ |
+| Project facts         | `<knowledge_dir>/` canonical files and code | Canonical-language files are authoritative.      |
+| Workflow rules        | `<knowledge_dir>/.workflow/rules/*.md`      | Operational rules, not project facts.            |
+| Schemas               | `<knowledge_dir>/.workflow/schemas/*.md`    | Writing contracts, not project facts.            |
+| Templates             | `<knowledge_dir>/.workflow/templates/*.md`  | Starting points, not project facts.              |
+| Delivery status       | `<knowledge_dir>/planning/KANBAN.md`        | Board edits require approved Kanban maintenance. |
+| Personal work context | `<knowledge_dir>/workspace/<member-id>/`    | Context, not team consensus.                     |
 
-When sources conflict, apply precedence from `{{knowledge_dir}}/.workflow/schemas/common.md`. Local notes and current conversation can trigger updates, but they do not replace canonical knowledge until approved capture or maintenance happens.
+When sources conflict, apply precedence from `<knowledge_dir>/.workflow/schemas/common.md`. Local notes and current conversation can trigger updates, but they do not replace canonical knowledge until approved capture or maintenance happens.
 
 ## Workflow Stages
 
@@ -69,22 +69,22 @@ Do not treat `.workflow/**` files as project facts, graph nodes, delivery candid
 
 ## Assets
 
-Store binary or exported supporting materials under `{{knowledge_dir}}/assets/<asset-type>/<topic>/`, for example `{{knowledge_dir}}/assets/design/<feature-name>/`, and link to them from Markdown files.
+Store binary or exported supporting materials under `<knowledge_dir>/assets/<asset-type>/<topic>/`, for example `<knowledge_dir>/assets/design/<feature-name>/`, and link to them from Markdown files.
 
 `assets/design/` is only an example asset-type path. The project may organize assets under `assets/` by asset type, such as `design`, `image`, `export`, `research`, or another clear type.
 
 ## Localized Versions
 
-`canonical_language: {{canonical_language}}` in `{{knowledge_dir}}/.workflow/manifest.yml` is the source language for canonical knowledge. Localized files may help readers but must declare translation metadata and must not introduce new facts, decisions, requirements, or delivery status.
+`canonical_language: <bcp47>` in `<knowledge_dir>/.workflow/manifest.yml` is the source language for canonical knowledge. Localized files may help readers but must declare translation metadata and must not introduce new facts, decisions, requirements, or delivery status.
 
 ## Agent Rules
 
 Agents working in this workflow must:
 
-- preserve repository safety and root `AGENTS.md` instructions;
+- preserve repository safety and workflow runtime instructions;
 - use schemas before writing knowledge;
 - use delivery rules before delivery changes;
-- keep `workspace/<member-id>/local/` and worktree contents under `{{worktree_dir}}/` local-only, except the managed `{{worktree_dir}}/.gitignore`;
+- keep `workspace/<member-id>/local/` and worktree contents under `<worktrees_dir>/` local-only, except the managed `<worktrees_dir>/.gitignore`;
 - avoid localized files and local-only notes as planning inputs;
 - stop and report secrets, sensitive data, or scope conflicts;
 - update durable product, discovery, design, architecture, decision, or guideline knowledge when delivery changes it.

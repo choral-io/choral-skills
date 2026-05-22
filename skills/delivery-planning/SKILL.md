@@ -7,7 +7,7 @@ description: Use when delivery work needs a proposal before editing task candida
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to propose Kanban changes from project knowledge. This skill produces a dry-run only.
 
@@ -46,7 +46,7 @@ When decomposing one requirement into several dependent tasks, propose dependent
 Use `<knowledge_dir>/workspace/*/summaries/**`, `<knowledge_dir>/workspace/*/handoffs/**`, or `<knowledge_dir>/workspace/*/research/**` only when the owner or maintainer explicitly selects it.
 
 Never use `<knowledge_dir>/workspace/*/local/**` as planning input.
-Do not read member `local/AGENTS.md` for team planning.
+Do not read member local workspace instructions for team planning.
 
 ## Output
 

@@ -68,7 +68,7 @@ low | medium | high
 ## Worklog Draft
 ```
 
-The main Agent reviews changed files, worker commits, allowed paths, relevant diff, validation, risks, and follow-ups before integrating changes or updating WORKLIST/logs. Use reviewer subagents only for large diffs, workflow/schema/AGENTS/Skill changes, subtle regressions, or failed-worker follow-up.
+The main Agent reviews changed files, worker commits, allowed paths, relevant diff, validation, risks, and follow-ups before integrating changes or updating WORKLIST/logs. Use reviewer subagents only for large diffs, workflow/schema/Skill changes, subtle regressions, or failed-worker follow-up.
 
 If a worker is blocked, fails, leaves dirty state, or reports unusable state, make one bounded non-destructive recovery decision. If recovery would need reset, clean, rebase, merge, delete, rebuild, credentials, business judgment, or scope change, stop or use `references/worktree-lifecycle.md`.
 

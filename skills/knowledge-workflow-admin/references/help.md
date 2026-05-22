@@ -17,7 +17,7 @@ It is not the ordinary distributed help surface for team members. Do not route n
 | "Check this workflow installation." | `check`          | Read-only; report setup, migration needs, and Skill availability issues.    |
 | "Upgrade or migrate this workflow." | `check` first    | Read-only inventory first; any file move or manifest update needs approval. |
 | "Explain manager manifest fields."  | `help`           | Read-only.                                                                  |
-| "Change configuration."             | `config`         | Dry-run first; edit manifest or root `AGENTS.md` after approval.            |
+| "Change configuration."             | `config`         | Dry-run first; edit manifest or platform hint block after approval.         |
 
 For ordinary team questions, recommend `knowledge-assistant`.
 
@@ -25,19 +25,18 @@ For ordinary team questions, recommend `knowledge-assistant`.
 
 Before answering setup questions:
 
-1. Read the root `AGENTS.md` Knowledge Workflow block when it exists.
-2. Read `<knowledge_dir>/.workflow/manifest.yml` when it exists.
-3. If neither exists, give pre-install guidance and ask for required initialization choices:
+1. Resolve `<knowledge_dir>` using runtime bootstrap rules, then read runtime, manifest, and the platform hint block when present.
+2. If runtime or manifest files do not exist, give pre-install guidance and ask for required initialization choices:
     - repository-relative `knowledge_dir`;
     - explicit `canonical_language`;
     - whether required Skills are available to the current Agent;
-    - `worktree_dir`.
+    - `worktrees_dir`.
 
 Do not silently choose a canonical language. `knowledge/`, required Skills, and `.worktrees/` are examples or defaults only where the main skill instructions allow them.
 
 ## Installed Content Rule
 
-Installed repository `AGENTS.md` and ordinary knowledge documents should not tell regular team members to call this maintainer Skill directly. They may keep workflow block markers and manifest metadata required for upgrades, but normal routing should use `knowledge-assistant` and the ordinary workflow Skills.
+Installed platform hint files and ordinary knowledge documents should not tell regular team members to call this maintainer Skill directly. They may keep workflow block markers and manifest metadata required for upgrades, but normal routing should use `knowledge-assistant` and the ordinary workflow Skills.
 
 When a maintainer operation is needed, describe it as maintainer administration unless the user has explicitly chosen this Skill.
 

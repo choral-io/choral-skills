@@ -16,10 +16,10 @@ The default workflow assumes a software product development loop across product,
 
 ## Required Reads
 
-- Before changing delivery cards, read this document and `{{knowledge_dir}}/.workflow/schemas/tasks.md`.
-- Before updating durable knowledge during delivery, read `{{knowledge_dir}}/.workflow/rules/knowledge.md`.
-- Before using member-local execution state, read `{{knowledge_dir}}/.workflow/rules/workspace.md`.
-- Determine the current member id with `git config user.name`; do not infer it from the OS, shell, machine, or chat name.
+- Before changing delivery cards, read this document and `<knowledge_dir>/.workflow/schemas/tasks.md`.
+- Before updating durable knowledge during delivery, read `<knowledge_dir>/.workflow/rules/knowledge.md`.
+- Before using member-local execution state, read `<knowledge_dir>/.workflow/rules/workspace.md`.
+- Resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`.
 
 ## Operating Model
 
@@ -27,13 +27,13 @@ The default workflow assumes a software product development loop across product,
 member workspace -> project knowledge -> task item -> Kanban -> implementation -> review -> updated knowledge
 ```
 
-| Area                  | Source of truth                               | Notes                                            |
-| --------------------- | --------------------------------------------- | ------------------------------------------------ |
-| Project facts         | `{{knowledge_dir}}/` canonical files and code | Canonical-language files are authoritative.      |
-| Personal work context | `{{knowledge_dir}}/workspace/<member-id>/`    | Context, not team consensus.                     |
-| Delivery status       | `{{knowledge_dir}}/planning/KANBAN.md`        | Board edits require approved Kanban maintenance. |
-| Task context          | `{{knowledge_dir}}/tasks/*.md`                | Kanban cards should link to task items.          |
-| Workflow rules        | `{{knowledge_dir}}/.workflow/rules/*.md`      | Operational rules, not project facts.            |
+| Area                  | Source of truth                             | Notes                                            |
+| --------------------- | ------------------------------------------- | ------------------------------------------------ |
+| Project facts         | `<knowledge_dir>/` canonical files and code | Canonical-language files are authoritative.      |
+| Personal work context | `<knowledge_dir>/workspace/<member-id>/`    | Context, not team consensus.                     |
+| Delivery status       | `<knowledge_dir>/planning/KANBAN.md`        | Board edits require approved Kanban maintenance. |
+| Task context          | `<knowledge_dir>/tasks/*.md`                | Kanban cards should link to task items.          |
+| Workflow rules        | `<knowledge_dir>/.workflow/rules/*.md`      | Operational rules, not project facts.            |
 
 ## Flow
 
@@ -47,7 +47,7 @@ member workspace -> project knowledge -> task item -> Kanban -> implementation -
 
 ## Task Items
 
-Task items live directly under `{{knowledge_dir}}/tasks/` and follow `{{knowledge_dir}}/.workflow/schemas/tasks.md`.
+Task items live directly under `<knowledge_dir>/tasks/` and follow `<knowledge_dir>/.workflow/schemas/tasks.md`.
 
 Use task items for durable delivery context:
 
@@ -59,16 +59,16 @@ Use task items for durable delivery context:
 Allowed planning inputs:
 
 ```text
-{{knowledge_dir}}/discovery/**
-{{knowledge_dir}}/product/**
-{{knowledge_dir}}/design/**
-{{knowledge_dir}}/concepts/**
-{{knowledge_dir}}/architecture/**
-{{knowledge_dir}}/decisions/**
-{{knowledge_dir}}/guidelines/**
-{{knowledge_dir}}/planning/**
-{{knowledge_dir}}/tasks/*.md
-{{knowledge_dir}}/workspace/*/{summaries,handoffs,research}/** only when selected
+<knowledge_dir>/discovery/**
+<knowledge_dir>/product/**
+<knowledge_dir>/design/**
+<knowledge_dir>/concepts/**
+<knowledge_dir>/architecture/**
+<knowledge_dir>/decisions/**
+<knowledge_dir>/guidelines/**
+<knowledge_dir>/planning/**
+<knowledge_dir>/tasks/*.md
+<knowledge_dir>/workspace/*/{summaries,handoffs,research}/** only when selected
 ```
 
 Do not plan from `.workflow/**`, `.feedback/**`, `workspace/*/local/**`, localized files, raw personal notes, secrets, or private material.
@@ -79,7 +79,7 @@ Use `blocked_by` and `related_to` with task wikilinks instead of a generic depen
 
 Use `readiness: needs-refinement` for vague or incomplete task items. Use `readiness: blocked` when a blocker, decision, external condition, or required access prevents work.
 
-Use `readiness: ready` only when the task satisfies the Ready Checklist in `{{knowledge_dir}}/.workflow/schemas/tasks.md`. In summary:
+Use `readiness: ready` only when the task satisfies the Ready Checklist in `<knowledge_dir>/.workflow/schemas/tasks.md`. In summary:
 
 - `## Goal`, `## Sources`, `## In scope`, `## Out of scope`, and `## Acceptance criteria` sections are present;
 - acceptance criteria are observable pass/fail criteria;
@@ -103,7 +103,7 @@ Agents may propose readiness changes in dry-run output. Writing `readiness: read
 
 ## Kanban
 
-- `{{knowledge_dir}}/planning/KANBAN.md` tracks delivery status.
+- `<knowledge_dir>/planning/KANBAN.md` tracks delivery status.
 - Board movement requires explicit approved `kanban-maintenance`.
 - `Backlog` and `Ready` are candidate pools; `Doing`, `Reviewing`, `Blocked`, `Done`, and `Cancelled` have explicit state meaning here.
 - `Done` requires delivered work, relevant checks or documented skips, updated durable knowledge when needed, local execution closure, delivery review acceptance, and approved board movement.
@@ -134,9 +134,9 @@ When a requirement is decomposed into several accepted tasks with planned depend
 
 Before any Kanban write, produce a dry-run table and wait for explicit approval:
 
-| Title                 | Sources                                            | Module | Priority | Sprint   | Owners                 | Blockers | Target |
-| --------------------- | -------------------------------------------------- | ------ | -------- | -------- | ---------------------- | -------- | ------ |
-| Example delivery task | `{{knowledge_dir}}/tasks/example-delivery-task.md` | app    | P1       | Sprint 1 | `[[members/Gavroche]]` | None     | Ready  |
+| Title                 | Sources                                          | Module | Priority | Sprint   | Owners                 | Blockers | Target |
+| --------------------- | ------------------------------------------------ | ------ | -------- | -------- | ---------------------- | -------- | ------ |
+| Example delivery task | `<knowledge_dir>/tasks/example-delivery-task.md` | app    | P1       | Sprint 1 | `[[members/Gavroche]]` | None     | Ready  |
 
 Use `next-task-selection` to recommend accepted Kanban cards. Selection is read-only by default:
 
@@ -192,7 +192,7 @@ No knowledge update is required for purely local implementation details that cre
 
 Use `delivery-review` before Done for:
 
-- workflow, schema, AGENTS, or Skill changes;
+- workflow, schema, or Skill changes;
 - authentication, authorization, security, privacy, or data handling changes;
 - cross-package interfaces, public APIs, persistence schemas, or migration behavior;
 - user-visible product behavior or UI interaction changes;

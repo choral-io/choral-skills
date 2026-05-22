@@ -52,9 +52,9 @@ Use sections that fit the document:
 
 ## Rules
 
-- Store discovery evidence, business analysis, market context, environmental research, and opportunity framing in `{{knowledge_dir}}/discovery/`.
-- Store product intent, requirements, user journeys, and feature behavior in `{{knowledge_dir}}/product/`.
-- Store accepted tradeoffs or commitments in `{{knowledge_dir}}/decisions/`.
-- Store raw or personal research in `{{knowledge_dir}}/workspace/<member-id>/research/` until it is promoted into shared discovery knowledge.
+- Store discovery evidence, business analysis, market context, environmental research, and opportunity framing in `<knowledge_dir>/discovery/`.
+- Store product intent, requirements, user journeys, and feature behavior in `<knowledge_dir>/product/`.
+- Store accepted tradeoffs or commitments in `<knowledge_dir>/decisions/`.
+- Store raw or personal research in `<knowledge_dir>/workspace/<member-id>/research/` until it is promoted into shared discovery knowledge.
 - Keep public facts, field observations, and project-specific inferences clearly separated when possible.
 - Link discovery documents from product requirements or decisions that depend on them.

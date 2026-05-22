@@ -6,7 +6,7 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 
 - Start with `check`; do not use `init` as a migration shortcut.
 - Discovery is read-only. Produce a dry run and require explicit approval before writing.
-- Generic migration may update support files by default: the root `AGENTS.md` marked block, `<knowledge_dir>/.workflow/manifest.yml`, rules, schemas, templates, workflow README text, and support ignore files.
+- Generic migration may update support files by default: optional `.knowledge-workflow`, the root platform hint block, `<knowledge_dir>/.workflow/runtime.md`, `<knowledge_dir>/.workflow/manifest.yml`, rules, schemas, templates, workflow README text, and support ignore files.
 - Project facts and local state are not automatically overwritten.
 - Project facts may still receive path-level edits when needed to align with current templates, schemas, rules, or an approved migration note. List each edit in the dry run and get maintainer approval.
 - Do not stage or commit local state.
@@ -25,7 +25,7 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 
 ## Discovery
 
-1. Read root `AGENTS.md` and locate the Knowledge Workflow block.
+1. Resolve `<knowledge_dir>` using runtime bootstrap rules and locate the platform hint Knowledge Workflow block when present.
 2. Read `<knowledge_dir>/.workflow/manifest.yml` when present.
 3. Read `references/manifest.md` for the current baseline.
 4. Inventory existing support files and current-baseline targets.
@@ -40,8 +40,8 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 - Prefer plain path references when project facts need to mention support files such as rules, schemas, templates, or manifest paths.
 - Do not rewrite project fact links automatically. Propose link edits in the dry run and explain whether each edit fixes a `dead-link`, changes a knowledge link into a path reference, or removes a `non-knowledge-link`.
 - Preserve existing manifest values unless the current baseline requires a new field. Use the current safe default for new optional fields.
-- Keep `knowledge_dir`, `worktree_dir`, and `canonical_language` stable unless the maintainer explicitly asks for a relocation plan.
-- Update root `AGENTS.md` only inside the marked Knowledge Workflow block.
+- Keep `knowledge_dir`, `worktrees_dir`, and `canonical_language` stable unless the maintainer explicitly asks for a relocation plan.
+- Update root platform hint files only inside the marked Knowledge Workflow block.
 
 ## Dry Run Shape
 
@@ -51,7 +51,7 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 ### Current Installation
 
 - knowledge_dir: <knowledge_dir>
-- worktree_dir: <worktree_dir>
+- worktrees_dir: <worktrees_dir>
 - manifest_version: <value or missing>
 - template_version: <value or missing>
 
@@ -72,7 +72,7 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 
 - support file moves/creates: ...
 - manifest changes: ...
-- root AGENTS.md marked-block changes: ...
+- platform hint marked-block changes: ...
 - project fact edits: ...
 - link fixes: ...
 
@@ -80,7 +80,7 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 
 - file moves or creates;
 - manifest updates;
-- root `AGENTS.md` marked-block update;
+- platform hint marked-block update;
 - project fact structure, link, frontmatter, or similar edits;
 - conflict resolution choices.
 ```
@@ -96,4 +96,4 @@ After approved writes:
 5. Verify local state was not modified or staged.
 6. Verify project fact files do not contain unresolved internal links or knowledge-style links to support files/local state, unless explicitly accepted by the maintainer.
 7. Verify `.feedback/` is ignored when `feedback.enabled: true`.
-8. Verify `<worktree_dir>/.gitignore` excludes worktree contents while keeping its own `.gitignore` trackable.
+8. Verify `<worktrees_dir>/.gitignore` excludes worktree contents while keeping its own `.gitignore` trackable.

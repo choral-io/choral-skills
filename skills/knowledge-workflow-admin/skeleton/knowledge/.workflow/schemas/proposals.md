@@ -79,14 +79,14 @@ Do not skip `accepted` when a proposal needs owner review before conversion. Dir
 
 ## Conversion Rules
 
-| `proposal_type` | Conversion target                              | Owning workflow                               |
-| --------------- | ---------------------------------------------- | --------------------------------------------- |
-| `knowledge`     | canonical knowledge document in target area    | `knowledge-capture`                           |
-| `task`          | `{{knowledge_dir}}/tasks/<task-id>.md`         | `knowledge-capture`, then `delivery-planning` |
-| `decision`      | `{{knowledge_dir}}/decisions/<decision-id>.md` | `knowledge-capture`                           |
+| `proposal_type` | Conversion target                            | Owning workflow                               |
+| --------------- | -------------------------------------------- | --------------------------------------------- |
+| `knowledge`     | canonical knowledge document in target area  | `knowledge-capture`                           |
+| `task`          | `<knowledge_dir>/tasks/<task-id>.md`         | `knowledge-capture`, then `delivery-planning` |
+| `decision`      | `<knowledge_dir>/decisions/<decision-id>.md` | `knowledge-capture`                           |
 
 After conversion, update `proposal_status: converted`, set or confirm `target`, and keep source evidence and review rationale in the proposal. Do not use an accepted-but-unconverted proposal as a canonical source.
 
 ## Template
 
-Use `{{knowledge_dir}}/.workflow/templates/proposal.md` as the reference template.
+Use `<knowledge_dir>/.workflow/templates/proposal.md` as the reference template.

@@ -12,7 +12,7 @@ tags:
 # <Display Name>
 
 <!--
-Create this file as {{knowledge_dir}}/groups/<group-id>.md.
+Create this file as <knowledge_dir>/groups/<group-id>.md.
 
 Before writing:
 - Ask the user for a lowercase kebab-case group id and display name.

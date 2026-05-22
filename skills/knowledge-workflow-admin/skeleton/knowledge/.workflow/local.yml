@@ -6,5 +6,5 @@
 # current_member:
 #     member_id: Gavroche
 #
-# Use this only when the local Git identity is not the repository member id.
-# The member_id value must exactly match knowledge/members/<member-id>.md.
+# Use this when local operations need a default current member id.
+# The member_id value must exactly match <knowledge_dir>/members/<member-id>.md.

@@ -43,7 +43,7 @@ The suite is split so each Skill has a narrow authority boundary:
 
 ## Repository Model
 
-A repository using the workflow declares runtime context in root `AGENTS.md` and stores installation state in `<knowledge_dir>/.workflow/manifest.yml`. Required Skills are external Agent runtime capabilities; the workflow does not copy Skill files into target repositories.
+A repository using the workflow stores runtime instructions in `<knowledge_dir>/.workflow/runtime.md` and installation state in `<knowledge_dir>/.workflow/manifest.yml`. Default installations use `knowledge/` without a root bootstrap pointer; non-default knowledge directories use root `.knowledge-workflow` to record the selected repository-relative path. Root platform hint files such as `AGENTS.md` may point Agents to that runtime, but they are not the source of installation state. Required Skills are external Agent runtime capabilities; the workflow does not copy Skill files into target repositories.
 
 The knowledge directory is Markdown-first and editor-friendly. Support files live under `.workflow/`: schemas define writing contracts, templates provide starting points, rules define process boundaries, and the manifest records installation state. Task files hold durable delivery context, and `planning/KANBAN.md` tracks delivery status. Member `workspace/<member-id>/local/` content is local-only execution state and must not be treated as shared project knowledge.
 
@@ -76,7 +76,7 @@ For maintainers, additionally install or explicitly invoke `knowledge-workflow-a
 
 For reviewers who should avoid shared knowledge writes, install `knowledge-assistant`, `knowledge-schema-audit`, `task-metadata-audit`, `knowledge-status-report`, and `delivery-review`. Do not enable the assistant's local feedback capture unless the team wants local workflow-improvement notes.
 
-After Skills are installed in the Agent runtime, initialize or check a target repository with `knowledge-workflow-admin`. The target repository should declare runtime context in root `AGENTS.md`, including the knowledge directory, the manifest path, required Skills, and any project-specific rules under the Knowledge Workflow section.
+After Skills are installed in the Agent runtime, initialize or check a target repository with `knowledge-workflow-admin`. The target repository should have `<knowledge_dir>/.workflow/runtime.md`, `<knowledge_dir>/.workflow/manifest.yml`, any platform hint block needed by the Agent runtime, and a root `.knowledge-workflow` bootstrap pointer only when `<knowledge_dir>` is not the default `knowledge`.
 
 ## Upgrades
 

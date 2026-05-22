@@ -7,7 +7,7 @@ description: Use when a user asks how to use Knowledge Workflow in a repository,
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill as the ordinary team-facing entry point for understanding and navigating a Knowledge Workflow installation.
 
@@ -23,25 +23,25 @@ Use this skill for:
 - recording local workflow feedback under `<knowledge_dir>/.feedback/` only when explicitly requested;
 - recommending the next prompt or handoff path.
 
-This skill must not write shared knowledge or workflow state. Its only write authority is explicit local workflow feedback under `<knowledge_dir>/.feedback/`, and only when manifest `feedback.enabled` is `true` and that directory is excluded from SCM before writing. It must not install skills, change root `AGENTS.md`, edit the manifest, mutate Kanban, edit WORKLIST, create tasks, or change project facts.
+This skill must not write shared knowledge or workflow state. Its only write authority is explicit local workflow feedback under `<knowledge_dir>/.feedback/`, and only when manifest `feedback.enabled` is `true` and that directory is excluded from SCM before writing. It must not install skills, change platform hint files, edit the manifest, mutate Kanban, edit WORKLIST, create tasks, or change project facts.
 
 If the user explicitly asks this skill to perform any other write or state-changing operation, do not perform it. Explain the boundary and, when the requested action is clear, provide a concrete prompt the user can manually give to the owning write-capable skill.
 
 ## Workflow
 
 1. Read `references/assistant-guide.md`.
-2. Read the marked Knowledge Workflow block in root `AGENTS.md`.
-3. Extract the explicit knowledge directory, then read `<knowledge_dir>/.workflow/manifest.yml` when it exists.
-4. If the block or manifest is missing, give pre-install or repair guidance only; do not guess workflow paths as facts.
+2. Resolve `<knowledge_dir>` using runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md`.
+3. Read `<knowledge_dir>/.workflow/manifest.yml`.
+4. If runtime or manifest files are missing, give pre-install or repair guidance only; do not guess non-default workflow paths as facts.
 5. Read only the narrow `knowledge-assistant` reference and installed docs needed for the question.
-6. If the question is member-scoped, resolve the current member id using the order defined in root `AGENTS.md`; read member or local preference files only when they matter.
+6. If the question is member-scoped, resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`; read member or local preference files only when they matter.
 7. Infer the user's likely workflow intent from the current question and repository context.
 8. If the user asks to record workflow feedback, follow `references/project-guidance.md`: explain feedback mode and privacy first, verify manifest `feedback.enabled`, and either write allowed feedback or route confirmed enablement to `knowledge-workflow-admin:config`.
 9. Give one recommended path, the reason, and unsafe actions to avoid. Add a concrete next prompt only when the user's intent and execution direction are clear enough to make it useful.
 
 ## Project Rules Boundary
 
-This skill may explain or audit project-specific rules from root `AGENTS.md` read-only.
+This skill may explain or audit project-specific rules read-only.
 
 If rules are missing, partial, or need to be saved, ask a maintainer to use `knowledge-workflow-admin:config`. Do not produce or apply rule changes unless the user explicitly switches to a maintainer Skill that has write authority.
 

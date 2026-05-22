@@ -8,17 +8,17 @@ If the user asks this skill to write, install, move, create, update, run, or oth
 
 Read only what the question needs:
 
-1. Read the marked Knowledge Workflow block in root `AGENTS.md`.
-2. Extract the explicit knowledge directory from that block, then read `<knowledge_dir>/.workflow/manifest.yml`.
-3. Use the manifest `knowledge_dir`, `agent_skills`, `worktree_dir`, and `canonical_language`.
+1. Resolve `<knowledge_dir>` using runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md`.
+2. Read `<knowledge_dir>/.workflow/manifest.yml`.
+3. Use the manifest `knowledge_dir`, `agent_skills`, `worktrees_dir`, and `canonical_language`.
 4. Read installed docs only when needed:
     - `<knowledge_dir>/README.md`
     - relevant `<knowledge_dir>/.workflow/rules/*.md`
     - `<knowledge_dir>/.workflow/schemas/common.md`
     - relevant `<knowledge_dir>/.workflow/schemas/*.md`
-5. For member-scoped questions, resolve the current member id using the order defined in root `AGENTS.md`; read public member sections first and local workspace rules only when personal execution style matters.
+5. For member-scoped questions, resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`; read public member sections first and local workspace rules only when personal execution style matters.
 
-If the block or manifest is missing, give pre-install help only. Recommend defaults such as `knowledge/`, required Skills, and `.worktrees/` as examples, require an explicit canonical language for init, and route setup to `knowledge-workflow-admin:init`.
+If runtime or manifest files are missing, give pre-install help only. Recommend defaults such as `knowledge/`, required Skills, and `.worktrees/` as examples, require an explicit canonical language for init, and route setup to `knowledge-workflow-admin:init`.
 
 ## Reference Router
 

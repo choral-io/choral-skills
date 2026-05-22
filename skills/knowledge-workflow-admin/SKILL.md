@@ -15,7 +15,7 @@ This maintainer skill should run from an external installed copy. It supports fr
 Read only the reference needed for the active mode:
 
 - `references/help.md`: maintainer help for this Skill.
-- `references/install.md`: skeleton rendering, render inventory, init, and workflow checks.
+- `references/install.md`: skeleton copy rules, install inventory, init, and workflow checks.
 - `references/manifest.md`: manifest fields and managed-file tracking.
 - `references/config.md`: configuration design and approved update workflow.
 - `references/upgrade.md`: generic post-upgrade migration guidance when an existing installation differs from the current workflow baseline.
@@ -25,7 +25,7 @@ Read only the reference needed for the active mode:
 - `help`: explain this maintainer skill's modes, boundaries, and safe next setup step.
 - `init`: create a new workflow installation.
 - `check`: run read-only workflow checks, including required Skill availability.
-- `config`: design, update, or save approved configuration in the manifest or root `AGENTS.md`.
+- `config`: design, update, or save approved configuration in the manifest or platform hint block.
 
 Infer the mode from the user's request. If ambiguous, state the assumed mode before acting. If the user asks ordinary workflow help, routing, onboarding, or recovery questions, recommend `knowledge-assistant` instead of using this maintainer skill.
 
@@ -34,7 +34,7 @@ Infer the mode from the user's request. If ambiguous, state the assumed mode bef
 Use `help` only for questions about this maintainer skill itself, such as when to initialize, how to run checks, how the manifest is managed, or how maintainer configuration updates should be handled.
 
 1. Read `references/help.md`.
-2. If the question concerns an already initialized repository, read root `AGENTS.md` and `<knowledge_dir>/.workflow/manifest.yml` before answering.
+2. If the question concerns an already initialized repository, resolve `<knowledge_dir>` using runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml` before answering.
 3. Give the safest maintainer next step and name whether the operation is read-only, dry-run-only, or write-capable after approval.
 4. Route ordinary team workflow usage, content placement, recovery, and skill routing questions to `knowledge-assistant`.
 
@@ -46,7 +46,7 @@ This skill may answer setup/admin questions needed to run `init`, `check`, or ap
 
 ## Config Workflow
 
-Use `config` only when the user explicitly asks to define, update, or save configuration. Read `references/config.md`, summarize current configuration first, produce a dry run, and require approval before writing the manifest or root `AGENTS.md`.
+Use `config` only when the user explicitly asks to define, update, or save configuration. Read `references/config.md`, summarize current configuration first, produce a dry run, and require approval before writing the manifest or platform hint block.
 
 ## Init Workflow
 
@@ -54,14 +54,14 @@ Use `init` only for a maintainer-approved workflow installation. Read `reference
 
 ## Check Workflow
 
-Use `check` when the user asks to verify workflow setup, manifest consistency, managed/protected paths, root `AGENTS.md` workflow context, required Skill availability, or post-upgrade migration needs. Read `references/install.md`; read `references/upgrade.md` when an existing installation appears older than the current baseline or has layout mismatches. Report missing Skills with installation advice. Do not copy Skills into the target repository.
+Use `check` when the user asks to verify workflow setup, manifest consistency, managed/protected/local-only entries, platform hint workflow context, required Skill availability, or post-upgrade migration needs. Read `references/install.md`; read `references/upgrade.md` when an existing installation appears older than the current baseline or has layout mismatches. Report missing Skills with installation advice. Do not copy Skills into the target repository.
 
 ## Guardrails
 
 - Do not copy business drafts, member-specific notes, editor settings, package scripts, or project-specific build commands into the workflow skeleton.
 - Do not record unrelated repository files, dirty worktree artifacts, or untracked project files in the manifest.
 - Do not add protected or skipped patterns just because matching project documents currently exist. Add them only when they are part of the project rules or the user explicitly configures them.
-- Keep `<worktree_dir>/` local-only. It holds reusable worktrees and should contain a `.gitignore` that ignores worktree contents.
+- Keep `<worktrees_dir>/` local-only. It holds reusable worktrees and should contain a `.gitignore` that ignores worktree contents.
 - Require the installed manifest to record an explicit `canonical_language`; do not infer it from current skeleton language or local user locale.
 - Keep the installed workflow Markdown-first, Foam-compatible, and Obsidian-readable without plugin-only syntax.
 - For full installation guardrails, read `references/install.md`.

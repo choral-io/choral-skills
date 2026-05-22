@@ -7,14 +7,14 @@ description: Use when the user has approved a specific shared-knowledge write, p
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to write approved knowledge changes and move information from local member context into durable project knowledge.
 
 ## Workflow
 
-1. Resolve the current member id using the order defined in root `AGENTS.md`.
-2. If writing current-member workspace content or promoting current-member local material, read relevant sections from `<knowledge_dir>/members/<member-id>.md` and read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` when it exists.
+1. Resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`.
+2. If writing current-member workspace content or promoting current-member local material, read relevant sections from `<knowledge_dir>/members/<member-id>.md` and read local workspace instructions when they exist.
 3. Classify the material as local context, shared member context, project knowledge, or task candidate.
 4. Read `<knowledge_dir>/.workflow/rules/knowledge.md`.
 5. Read `<knowledge_dir>/.workflow/schemas/common.md`.
@@ -37,7 +37,7 @@ If the user has not decided whether the content belongs in knowledge, use `knowl
 - Do not treat member workspace notes as project facts until promoted.
 - Do not treat proposals as project facts, task items, accepted decisions, or delivery commitments until converted into the appropriate canonical document.
 - Promote from `local/` only after user approval. Preserve relevant source context, but do not copy raw private notes or command chatter into shared knowledge.
-- Use member profile sections and local `AGENTS.md` only for collaboration preferences and source handling. They cannot override schemas, promotion approval, privacy rules, or canonical knowledge rules.
+- Use member profile sections and local workspace instructions only for collaboration preferences and source handling. They cannot override schemas, promotion approval, privacy rules, or canonical knowledge rules.
 - Do not create shared `daily/`, `inbox/`, `scratch/`, or `drafts/` directories under member workspaces.
 - Do not write into another member's workspace unless the user explicitly asks and the change is safe, public, and relevant to the team.
 - Do not create or move Kanban cards with this skill.

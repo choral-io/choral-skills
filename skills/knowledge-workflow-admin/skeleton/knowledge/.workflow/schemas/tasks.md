@@ -84,7 +84,7 @@ Use task knowledge-reference wikilinks in relationship fields. Manual short task
 
 ## Rules
 
-- Raw feedback, support notes, QA observations, and market signals should not become task items by default. Store raw or synthesized context in `{{knowledge_dir}}/workspace/<member-id>/research/` or `{{knowledge_dir}}/discovery/` first.
+- Raw feedback, support notes, QA observations, and market signals should not become task items by default. Store raw or synthesized context in `<knowledge_dir>/workspace/<member-id>/research/` or `<knowledge_dir>/discovery/` first.
 - Use `type: issue`, `type: bug`, or `type: defect` only when the problem is actionable enough to triage as delivery work.
 - Issue, bug, and defect tasks must include `Problem`, `Sources`, `Impact`, and `Triage` before they can be classified as Backlog, Ready, Blocked, or Cancelled delivery work.
 - Bug and defect tasks should include `Reproduction`, `Expected`, and `Actual` sections when the problem is reproducible. If not reproducible yet, explain that in `Triage` and keep `readiness: needs-refinement`.
@@ -141,4 +141,4 @@ Kanban cards use Foam wikilinks:
 - [ ] [[tasks/example-delivery-task|Example delivery task]]
 ```
 
-Resolve `[[tasks/example-delivery-task]]` to `{{knowledge_dir}}/tasks/example-delivery-task.md`. Manual short task links such as `[[example-delivery-task]]` may resolve to `{{knowledge_dir}}/tasks/example-delivery-task.md` when unambiguous. If multiple canonical files match the same id, report ambiguity instead of guessing. Do not use display titles as ids.
+Resolve `[[tasks/example-delivery-task]]` to `<knowledge_dir>/tasks/example-delivery-task.md`. Manual short task links such as `[[example-delivery-task]]` may resolve to `<knowledge_dir>/tasks/example-delivery-task.md` when unambiguous. If multiple canonical files match the same id, report ambiguity instead of guessing. Do not use display titles as ids.

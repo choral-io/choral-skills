@@ -5,14 +5,14 @@ Use this reference when `workspace-worklist` chooses `shared-worktree` or `slot-
 The serial shared worker worktree is:
 
 ```text
-<worktree_dir>/shared/
+<worktrees_dir>/shared/
 ```
 
 Parallel worker slot worktrees are:
 
 ```text
-<worktree_dir>/slot-01/
-<worktree_dir>/slot-02/
+<worktrees_dir>/slot-01/
+<worktrees_dir>/slot-02/
 ...
 ```
 
@@ -35,7 +35,7 @@ Use slot worktrees only when `run-loop` or `run-goal` has explicit user authoriz
 
 Before dispatching a worker:
 
-1. Confirm `<worktree_dir>/.gitignore` exists and ignores worktree contents.
+1. Confirm `<worktrees_dir>/.gitignore` exists and ignores worktree contents.
 2. Confirm the selected worktree is not already in use.
 3. Check main worktree status.
 4. Check whether the selected item may conflict with existing dirty files.
@@ -65,9 +65,9 @@ Do not use remote sync as a hidden side effect of task selection. Mention it in 
 Use stable worktree paths:
 
 ```text
-<worktree_dir>/shared/
-<worktree_dir>/slot-01/
-<worktree_dir>/slot-02/
+<worktrees_dir>/shared/
+<worktrees_dir>/slot-01/
+<worktrees_dir>/slot-02/
 ```
 
 If a worktree needs a branch, prefer stable local branch names such as:
@@ -149,7 +149,7 @@ Worktree maintenance is a controlled operation, separate from normal worker reco
 
 Safety conditions:
 
-- The target path is under `<worktree_dir>/shared/` or `<worktree_dir>/slot-XX/`.
+- The target path is under `<worktrees_dir>/shared/` or `<worktrees_dir>/slot-XX/`.
 - The target is not the main worktree.
 - No worker is currently using the target.
 - There are no unintegrated worker results, or they are recorded and explicitly abandoned or already integrated.

@@ -7,7 +7,7 @@ description: Use when delivery work needs review, a PR or local diff needs valid
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to independently review delivery work after implementation and before completion. Review normally happens while the Kanban card is in `Reviewing`.
 
@@ -50,8 +50,8 @@ Create a formal shared handoff under `<knowledge_dir>/workspace/<member-id>/hand
 - Do not move the Kanban card unless the maintainer explicitly asks.
 - Do not fix implementation issues during review unless explicitly asked.
 - Do not use localized files as acceptance sources.
-- Do not read member `local/AGENTS.md` for objective delivery acceptance.
-- Treat workflow, schema, AGENTS, Skill, security, data handling, cross-package API, user-visible behavior, broad refactor, and failed-worker follow-up changes as review-required.
+- Do not read member local workspace instructions for objective delivery acceptance.
+- Treat workflow, schema, Skill, security, data handling, cross-package API, user-visible behavior, broad refactor, and failed-worker follow-up changes as review-required.
 - Stop and report possible secrets or sensitive data.
 - Keep review comments tied to concrete files, task criteria, or knowledge documents.
 

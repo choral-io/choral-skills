@@ -51,11 +51,11 @@ Accepted proposals remain non-canonical until converted. Task proposals must bec
 When sources conflict, recommend applying this order and reporting conflicts that affect facts, delivery scope, permissions, review, ownership, or another member:
 
 ```text
-root AGENTS.md and repository safety rules
+repository workflow runtime and repository safety rules
 > knowledge schemas, workflow rules, and accepted decisions
 > canonical project knowledge and code
 > shared workspace summaries, handoffs, and research
-> personal local notes, worklists, logs, and local AGENTS.md
+> personal local notes, worklists, logs, and local workspace instructions
 > current conversation
 ```
 

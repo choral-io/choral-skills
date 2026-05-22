@@ -12,7 +12,7 @@ Use predefined report templates for weekly delivery, knowledge health, proposal/
 
 ## Project Rules
 
-Use `knowledge-assistant` to understand or audit project-specific rules in root `AGENTS.md`. Ask a maintainer to use `knowledge-workflow-admin:config` only to define, update, or save project rules.
+Use `knowledge-assistant` to understand or audit project-specific rules exposed through the workflow runtime. Ask a maintainer to use `knowledge-workflow-admin:config` only to define, update, or save project rules.
 
 Rule topics include auto-review, approval gates, protected surfaces, validation baseline, Kanban automation, git/worktree automation, source stability, and parallel/subagent execution.
 
@@ -26,7 +26,7 @@ Feedback capture is explicit-only. Do not infer it from complaints, confusion, b
 
 `knowledge-assistant` may create feedback only when manifest `feedback.enabled` is `true` and the user explicitly asks to record feedback. Before writing:
 
-- resolve `<knowledge_dir>` from root `AGENTS.md` and the manifest;
+- resolve `<knowledge_dir>` from `.knowledge-workflow` when present, or from the default `knowledge` runtime/manifest fallback;
 - explain feedback mode before recording or enabling it:
     - feedback is local workflow-improvement material, not project knowledge;
     - feedback is written under `<knowledge_dir>/.feedback/`;
@@ -100,7 +100,7 @@ Call out these unsafe jumps:
 - work assigned to another member started without second confirmation
 - multi-item or parallel execution without explicit budget
 - Done move without review when delivery changed
-- changing `knowledge_dir`, `agent_skills.required`, `worktree_dir`, or `canonical_language` after init
+- changing `knowledge_dir`, `agent_skills.required`, `worktrees_dir`, or `canonical_language` after init
 
 ## Installation Help
 
@@ -109,7 +109,7 @@ For workflow installation questions, answer read-only and route maintainer work 
 - Maintainer workflow administration creates or checks a Knowledge Workflow installation.
 - Init records the required Skills and checks whether the current Agent can load the complete required set.
 - Missing required Skills should be installed through the Agent runtime's Skill installation mechanism, not copied into the target repository.
-- Root `AGENTS.md` receives only the marked workflow block.
+- Root platform hint files receive only the marked workflow block when generated.
 - The final `### Project-Specific Rules` heading inside that block is protected local project space.
 - The manifest is workflow state created by init.
 - For validation, use a fresh test repository or explicit manual cleanup instead of rewriting an existing installation from help mode.

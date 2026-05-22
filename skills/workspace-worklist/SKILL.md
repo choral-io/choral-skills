@@ -7,17 +7,17 @@ description: Use when the current member asks to manage or run their local WORKL
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill for personal, local member work under `<knowledge_dir>/workspace/<member-id>/local/`.
 
 ## Core Rules
 
-- Resolve the current member id using the order defined in root `AGENTS.md`.
+- Resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`.
 - Use `<knowledge_dir>/workspace/<member-id>/local/WORKLIST.md` as the local worklist for executable or nearly executable personal work.
 - Use `<knowledge_dir>/workspace/<member-id>/local/logs/YYYY-MM-DD.md` as the local daily execution log.
 - Treat `local/` as local-only personal state. Never stage or commit it.
-- Treat `<worktree_dir>/` as local-only worktree state. Never stage or commit worktree contents.
+- Treat `<worktrees_dir>/` as local-only worktree state. Never stage or commit worktree contents.
 - Do not write into another member's `local/` directory.
 - Do not use `local/` content as team planning input unless it is first summarized or promoted into shared knowledge.
 - Use `knowledge-capture`, `delivery-planning`, `kanban-maintenance`, `delivery-implementation`, or review skills when the selected item crosses into their ownership.
@@ -41,9 +41,9 @@ For mode details, read `references/local-workflow.md`.
 
 ## Workflow
 
-1. Resolve the current member id using the order defined in root `AGENTS.md`.
+1. Resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`.
 2. Read relevant sections from `<knowledge_dir>/members/<member-id>.md` if public member context is needed. Avoid full-file reads unless editing, auditing, or resolving ambiguity.
-3. Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if it exists. Treat it as subordinate to root `AGENTS.md`, workflow rules, schemas, task acceptance criteria, safety, privacy, approval, local-only, and review rules.
+3. Read local workspace instructions if they exist. Treat it as subordinate to workflow runtime, rules, schemas, task acceptance criteria, safety, privacy, approval, local-only, and review rules.
 4. Ensure the local worklist exists.
 5. Read `<knowledge_dir>/README.md`, `<knowledge_dir>/.workflow/rules/workspace.md`, and `<knowledge_dir>/.workflow/schemas/workspace.md`, then load the relevant reference:
     - `references/worklist-format.md` for worklist edits.
@@ -51,12 +51,12 @@ For mode details, read `references/local-workflow.md`.
     - `references/routing.md` for deciding whether to stay local, promote, or intake a team task.
     - `references/run-overview.md` for `run-next`, `run-loop`, `run-goal`, and narrower execution references.
     - `references/run-contract.md`, `references/run-selection.md`, `references/run-controls.md`, or `references/worker-protocol.md` when the selected mode needs that detail.
-    - `references/worktree-lifecycle.md` before using `<worktree_dir>/shared/`.
+    - `references/worktree-lifecycle.md` before using `<worktrees_dir>/shared/`.
 6. For `run-next`, `run-loop`, and `run-goal`, classify selected work item or Kanban task validity before implementation.
 7. Briefly report the selected item and validity result before making substantial changes.
 8. Make the smallest local worklist/log edit needed for the mode.
 9. If the work should become team knowledge or a formal task, propose the promotion path instead of hiding it in `local/`.
-10. Before any staging or commit, verify `local/` files and worktree contents under `<worktree_dir>/` are not staged, except the managed `<worktree_dir>/.gitignore`.
+10. Before any staging or commit, verify `local/` files and worktree contents under `<worktrees_dir>/` are not staged, except the managed `<worktrees_dir>/.gitignore`.
 
 ## Guardrails
 

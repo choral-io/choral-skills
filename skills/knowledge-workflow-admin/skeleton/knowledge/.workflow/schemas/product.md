@@ -47,7 +47,7 @@ Use sections that fit the document:
 
 ## Rules
 
-- Store product-level prototypes, user flows, and information architecture in `{{knowledge_dir}}/product/`.
-- Store requirement discovery, market and business analysis, customer context, environmental research, opportunity framing, and assumptions in `{{knowledge_dir}}/discovery/`.
-- Store implementation-facing UI design in `{{knowledge_dir}}/design/`.
+- Store product-level prototypes, user flows, and information architecture in `<knowledge_dir>/product/`.
+- Store requirement discovery, market and business analysis, customer context, environmental research, opportunity framing, and assumptions in `<knowledge_dir>/discovery/`.
+- Store implementation-facing UI design in `<knowledge_dir>/design/`.
 - Link related task items instead of duplicating delivery status.

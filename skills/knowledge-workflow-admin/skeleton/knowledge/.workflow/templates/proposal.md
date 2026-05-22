@@ -20,7 +20,7 @@ before becoming canonical knowledge, task items, or accepted decisions.
 
 Recommended path:
 
-{{knowledge_dir}}/proposals/<short-topic>.md
+<knowledge_dir>/proposals/<short-topic>.md
 
 proposal_type: knowledge | task | decision
 proposal_status: proposed | reviewing | accepted | rejected | converted | superseded

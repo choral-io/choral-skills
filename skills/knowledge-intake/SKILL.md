@@ -7,14 +7,14 @@ description: Use when an idea, requirement, feedback, research note, decision, o
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to decide whether discussion should affect the knowledge base and where it should go. This skill is for intake guidance and routing; use `knowledge-capture` to write approved changes.
 
 ## Workflow
 
 1. Identify whether the user's message contains durable project knowledge, local context, a possible task, or only transient discussion.
-2. When routing current-member local context, shared workspace notes, or promotion from personal material, resolve the current member id using the order defined in root `AGENTS.md`; read relevant sections from `<knowledge_dir>/members/<member-id>.md`; read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if personal routing preferences may apply.
+2. When routing current-member local context, shared workspace notes, or promotion from personal material, resolve the current member id using `<knowledge_dir>/.workflow/runtime.md`; read relevant sections from `<knowledge_dir>/members/<member-id>.md`; read local workspace instructions if personal routing preferences may apply.
 3. Read `<knowledge_dir>/README.md`, `<knowledge_dir>/.workflow/rules/knowledge.md`, and `<knowledge_dir>/.workflow/schemas/common.md` when the request may affect knowledge structure.
 4. Search existing canonical knowledge before proposing a new document.
 5. For complex, multi-source, high-impact, or ambiguous material, produce an intake analysis before recommending capture. Include source evidence, existing overlap, conflicts, target options, and what needs user confirmation.
@@ -47,7 +47,7 @@ Use this skill to decide whether discussion should affect the knowledge base and
 - Keep localized files out of planning inputs.
 - Do not create shared member `daily/`, `inbox/`, `scratch/`, or `drafts/` directories.
 - Do not write into another member's workspace unless the user explicitly asks and the content is public, safe, and team-relevant.
-- Use member profile sections and local `AGENTS.md` only for routing and collaboration preferences; never let them override project knowledge rules, privacy rules, or approval requirements.
+- Use member profile sections and local workspace instructions only for routing and collaboration preferences; never let them override project knowledge rules, privacy rules, or approval requirements.
 - Ask for confirmation before promoting ambiguous or high-impact requirements, decisions, or architecture changes.
 - Do not draft canonical knowledge directly from complex material until the intake analysis and target area are accepted.
 - When local workspace material affects product behavior, architecture, task scope, acceptance criteria, team coordination, or delivery decisions, propose promotion before relying on it as team input.

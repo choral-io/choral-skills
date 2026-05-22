@@ -7,7 +7,7 @@ description: Use when the user asks to implement an approved Kanban task or link
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to implement a selected Kanban card and keep code, tests, and knowledge aligned.
 
@@ -15,7 +15,7 @@ Use this skill to implement a selected Kanban card and keep code, tests, and kno
 
 1. Read the selected card in `<knowledge_dir>/planning/KANBAN.md`.
 2. Read the linked task item and source knowledge.
-3. If implementing as the current member, resolve the member id using the order defined in root `AGENTS.md`; read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` if it exists; read relevant sections from `<knowledge_dir>/members/<member-id>.md` only when assignment, ownership, review, or handoff context is needed.
+3. If implementing as the current member, resolve the member id using `<knowledge_dir>/.workflow/runtime.md`; read local workspace instructions if they exist; read relevant sections from `<knowledge_dir>/members/<member-id>.md` only when assignment, ownership, review, or handoff context is needed.
 4. If the developer is taking the task into personal execution, use `workspace-worklist:intake-task` to create or update the local WORKLIST item before implementation.
 5. Read `<knowledge_dir>/.workflow/rules/knowledge.md`, `<knowledge_dir>/.workflow/schemas/common.md`, and relevant area schemas under `<knowledge_dir>/.workflow/schemas/` before updating knowledge.
 6. Inspect relevant project code or documents before editing.
@@ -91,7 +91,7 @@ Create a formal shared handoff under `<knowledge_dir>/workspace/<member-id>/hand
 - Do not overwrite unrelated local changes.
 - Do not move Kanban cards without approval.
 - Do not start automatically when the task is blocked, lacks acceptance criteria, is assigned to another member without second confirmation, or conflicts with current dirty worktree changes.
-- Do not let member profile sections or local `AGENTS.md` instructions override task acceptance criteria, project checks, approval gates, safety rules, or review requirements.
+- Do not let member profile sections or local workspace instructions override task acceptance criteria, project checks, approval gates, safety rules, or review requirements.
 - Stop and report possible secrets or sensitive data.
 
 ## References

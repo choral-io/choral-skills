@@ -8,15 +8,17 @@ The target repository stores installation state at:
 
 ## Required Fields
 
+Manifest examples use concrete sample values. Installed manifests must contain normalized concrete values, not angle-bracket placeholders. Replace these sample values with maintainer-selected values during init.
+
 ```yaml
 template_id: knowledge-workflow
 template_version: 1
-manifest_version: 1
-knowledge_dir: <knowledge_dir>
-worktree_dir: <worktree_dir>
-canonical_language: "<bcp47>"
-installed_at: "<iso8601>"
-updated_at: "<iso8601>"
+manifest_version: 2
+knowledge_dir: knowledge # normalized repo-relative knowledge dir
+worktrees_dir: .worktrees # normalized repo-relative local worktrees dir
+canonical_language: "en" # selected BCP 47 tag
+installed_at: "2026-05-22T00:00:00Z" # ISO 8601 UTC
+updated_at: "2026-05-22T00:00:00Z" # ISO 8601 UTC
 
 feedback:
     enabled: false
@@ -27,16 +29,23 @@ agent_skills:
 append_blocks: []
 
 managed:
-    version: 1
-    paths: []
+    version: 2
+    repository: []
+    knowledge: []
+    worktrees: []
 
-protected: []
+protected:
+    knowledge: []
+
+local_only:
+    knowledge: []
+    worktrees: []
 
 local_overrides: []
 skipped_patterns: []
 ```
 
-`knowledge_dir`, `worktree_dir`, and `canonical_language` are stable installation keys after manifest creation.
+`knowledge_dir`, `worktrees_dir`, and `canonical_language` are stable installation keys after manifest creation.
 `feedback.enabled` records whether `knowledge-assistant` may write local workflow feedback under `<knowledge_dir>/.feedback/`; fresh init defaults it to `false`.
 `agent_skills.required` records the required Skill names this installation expects as external runtime capabilities.
 
@@ -47,12 +56,12 @@ Use grouped strategy sections, not one record per file:
 ```yaml
 template_id: knowledge-workflow
 template_version: 1
-manifest_version: 1
-knowledge_dir: <knowledge_dir>
-worktree_dir: <worktree_dir>
-canonical_language: "<bcp47>"
-installed_at: "<iso8601>"
-updated_at: "<iso8601>"
+manifest_version: 2
+knowledge_dir: knowledge # normalized repo-relative knowledge dir
+worktrees_dir: .worktrees # normalized repo-relative local worktrees dir
+canonical_language: "en" # selected BCP 47 tag
+installed_at: "2026-05-22T00:00:00Z" # ISO 8601 UTC
+updated_at: "2026-05-22T00:00:00Z" # ISO 8601 UTC
 
 feedback:
     enabled: false
@@ -73,68 +82,62 @@ agent_skills:
         - delivery-review
 
 append_blocks:
-    - path: AGENTS.md
+    - path: <platform_hint_file>
       block: knowledge-workflow
       version: 1
 
 managed:
-    version: 1
-    paths:
-        - <knowledge_dir>/.gitignore
-        - <worktree_dir>/.gitignore
-        - <knowledge_dir>/README.md
-        - <knowledge_dir>/.workflow/rules/knowledge.md
-        - <knowledge_dir>/.workflow/rules/delivery.md
-        - <knowledge_dir>/.workflow/rules/workspace.md
-        - <knowledge_dir>/.workflow/schemas/README.md
-        - <knowledge_dir>/.workflow/schemas/architecture.md
-        - <knowledge_dir>/.workflow/schemas/common.md
-        - <knowledge_dir>/.workflow/schemas/concepts.md
-        - <knowledge_dir>/.workflow/schemas/decisions.md
-        - <knowledge_dir>/.workflow/schemas/design.md
-        - <knowledge_dir>/.workflow/schemas/discovery.md
-        - <knowledge_dir>/.workflow/schemas/groups.md
-        - <knowledge_dir>/.workflow/schemas/guidelines.md
-        - <knowledge_dir>/.workflow/schemas/members.md
-        - <knowledge_dir>/.workflow/schemas/planning.md
-        - <knowledge_dir>/.workflow/schemas/product.md
-        - <knowledge_dir>/.workflow/schemas/proposals.md
-        - <knowledge_dir>/.workflow/schemas/sprints.md
-        - <knowledge_dir>/.workflow/schemas/tasks.md
-        - <knowledge_dir>/.workflow/schemas/workspace.md
-        - <knowledge_dir>/.workflow/templates/group.md
-        - <knowledge_dir>/.workflow/templates/member.md
-        - <knowledge_dir>/.workflow/templates/proposal.md
-        - <knowledge_dir>/.workflow/templates/worklist.md
-        - <knowledge_dir>/.workflow/templates/handoff.md
-        - <knowledge_dir>/.workflow/templates/task.md
+    version: 2
+    repository: []
+    knowledge:
+        - README.md
+        - .gitignore
+        - .workflow/runtime.md
+        - .workflow/rules/knowledge.md
+        - .workflow/rules/delivery.md
+        - .workflow/rules/workspace.md
+        - .workflow/schemas/**
+        - .workflow/templates/**
+    worktrees:
+        - .gitignore
 
 protected:
-    - <knowledge_dir>/planning/KANBAN.md
-    - <knowledge_dir>/planning/**
-    - <knowledge_dir>/tasks/**
-    - <knowledge_dir>/workspace/**
-    - <knowledge_dir>/workspace/*/local/**
-    - <knowledge_dir>/members/**
-    - <knowledge_dir>/groups/**
-    - <knowledge_dir>/proposals/**
-    - <knowledge_dir>/discovery/**
-    - <knowledge_dir>/product/**
-    - <knowledge_dir>/design/**
-    - <knowledge_dir>/architecture/**
-    - <knowledge_dir>/concepts/**
-    - <knowledge_dir>/decisions/**
-    - <knowledge_dir>/guidelines/**
+    knowledge:
+        - planning/**
+        - tasks/**
+        - workspace/**
+        - members/**
+        - groups/**
+        - proposals/**
+        - discovery/**
+        - product/**
+        - design/**
+        - architecture/**
+        - concepts/**
+        - decisions/**
+        - guidelines/**
+
+local_only:
+    knowledge:
+        - .workflow/local.yml
+        - .feedback/**
+        - workspace/*/local/**
+    worktrees:
+        - "**"
 
 local_overrides: []
 skipped_patterns: []
 ```
 
-Use rendered target paths, not placeholder paths, in the manifest. Required Skills are runtime capabilities but not managed project files. Render `<worktree_dir>` to the selected local-only worktree directory. `canonical_language` records the explicit BCP 47 language tag for canonical knowledge files.
+Use concrete values only for path anchors and repository-root paths that cannot be derived from an anchor. Required Skills are runtime capabilities but not managed project files. In the generic examples above, `<platform_hint_file>` stands for the installed root platform hint file when one is managed; the actual manifest must record the concrete file path. `canonical_language` records the explicit BCP 47 language tag for canonical knowledge files.
 
-Skeleton file `knowledge/_gitignore` renders to target `<knowledge_dir>/.gitignore`; the manifest records the rendered target path.
-Skeleton file `worktrees/_gitignore` renders to target `<worktree_dir>/.gitignore`; the manifest records the rendered target path.
-Skeleton file `knowledge/.workflow/local.yml` renders to target `<knowledge_dir>/.workflow/local.yml` as a local-only comment template; the manifest does not record it as managed, and `<knowledge_dir>/.gitignore` must exclude it from SCM.
+`managed.knowledge`, `protected.knowledge`, and `local_only.knowledge` entries are relative to `knowledge_dir`. `managed.worktrees` and `local_only.worktrees` entries are relative to `worktrees_dir`. `managed.repository` entries are repository-root-relative paths. Default `knowledge_dir: knowledge` installations use `managed.repository: []`; non-default installations record `.knowledge-workflow` under `managed.repository`.
+
+Skeleton file `.knowledge-workflow` writes repository root `.knowledge-workflow` only for non-default `knowledge_dir` values. When created, it contains one non-empty line: the repository-relative `knowledge_dir` value without a trailing slash. Trailing blank lines are allowed.
+Skeleton file `knowledge/_gitignore` copies to target `<knowledge_dir>/.gitignore`; the manifest records it as `.gitignore` under `managed.knowledge`.
+Skeleton file `worktrees/_gitignore` copies to target `<worktrees_dir>/.gitignore`; the manifest records it as `.gitignore` under `managed.worktrees`.
+Skeleton file `knowledge/.workflow/runtime.md` copies to target `<knowledge_dir>/.workflow/runtime.md`; the manifest records it as `.workflow/runtime.md` under `managed.knowledge`. Keep `<knowledge_dir>` and `<worktrees_dir>` placeholders in the copied file.
+Skeleton file `knowledge/.workflow/local.yml` copies to target `<knowledge_dir>/.workflow/local.yml` as a local-only comment template; the manifest does not record it as managed, and `<knowledge_dir>/.gitignore` must exclude it from SCM.
 
 `skipped_patterns` is only for workflow-scope paths that the workflow deliberately excludes during init. Do not use it to record arbitrary unrelated repository files, untracked artifacts, editor scratch files, build outputs, or project files outside the selected knowledge workflow surface.
 
@@ -142,7 +145,7 @@ Existing product notes, scratch files, or task items should not create new manif
 
 Recommended strategies:
 
-- `managed`: owned by the workflow; create from rendered skeleton files during init after dry-run confirmation.
+- `managed`: owned by the workflow; create from copied skeleton files during init after dry-run confirmation.
 - `append_block`: only a marked block may be inserted or updated.
 - `protected`: never replace from workflow skeleton files during init.
 - `local-override`: user-owned local version; skip unless the user explicitly asks for a manual merge.
@@ -154,12 +157,12 @@ Fresh init writes these baseline manifest values:
 ```yaml
 template_id: knowledge-workflow
 template_version: 1
-manifest_version: 1
-knowledge_dir: <knowledge_dir>
-worktree_dir: <worktree_dir>
-canonical_language: "<bcp47>"
-installed_at: "<iso8601>"
-updated_at: "<iso8601>"
+manifest_version: 2
+knowledge_dir: knowledge # normalized repo-relative knowledge dir
+worktrees_dir: .worktrees # normalized repo-relative local worktrees dir
+canonical_language: "en" # selected BCP 47 tag
+installed_at: "2026-05-22T00:00:00Z" # ISO 8601 UTC
+updated_at: "2026-05-22T00:00:00Z" # ISO 8601 UTC
 
 feedback:
     enabled: false
@@ -180,17 +183,53 @@ agent_skills:
         - delivery-review
 
 append_blocks:
-    - path: AGENTS.md
+    - path: <platform_hint_file>
       block: knowledge-workflow
       version: 1
 
 managed:
-    version: 1
+    version: 2
+    repository: []
+    knowledge:
+        - README.md
+        - .gitignore
+        - .workflow/runtime.md
+        - .workflow/rules/knowledge.md
+        - .workflow/rules/delivery.md
+        - .workflow/rules/workspace.md
+        - .workflow/schemas/**
+        - .workflow/templates/**
+    worktrees:
+        - .gitignore
+
+protected:
+    knowledge:
+        - planning/**
+        - tasks/**
+        - workspace/**
+        - members/**
+        - groups/**
+        - proposals/**
+        - discovery/**
+        - product/**
+        - design/**
+        - architecture/**
+        - concepts/**
+        - decisions/**
+        - guidelines/**
+
+local_only:
+    knowledge:
+        - .workflow/local.yml
+        - .feedback/**
+        - workspace/*/local/**
+    worktrees:
+        - "**"
 ```
 
-## Marked AGENTS Block
+## Marked Platform Hint Block
 
-Root `AGENTS.md` must be handled as `append_block`. Only this marked block is managed:
+Root platform hint files must be handled as `append_block`. Only this marked block is managed:
 
 ```text
 <!-- knowledge-workflow:start -->

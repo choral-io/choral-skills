@@ -7,7 +7,7 @@ description: Use when the user asks for a read-only summary of knowledge health,
 
 ## Runtime Context
 
-Before acting, use the repository Knowledge Workflow runtime context from root `AGENTS.md` and its manifest; do not assume workflow paths or default ids.
+Before acting, resolve `<knowledge_dir>` using the runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md` and `<knowledge_dir>/.workflow/manifest.yml`; do not assume non-default workflow paths or default ids.
 
 Use this skill to summarize repository knowledge status without changing files.
 
@@ -54,8 +54,8 @@ If the user asks for a statistic that does not fit a predefined scope, keep the 
 
 ## Workflow
 
-1. Read `<knowledge_dir>/.workflow/manifest.yml` when present; use its `knowledge_dir`, `agent_skills`, `worktree_dir`, and `canonical_language`.
-2. Read the knowledge workflow block in root `AGENTS.md`.
+1. Resolve `<knowledge_dir>` using runtime bootstrap rules, then read `<knowledge_dir>/.workflow/runtime.md`.
+2. Read `<knowledge_dir>/.workflow/manifest.yml`; use its `knowledge_dir`, `agent_skills`, `worktrees_dir`, and `canonical_language`.
 3. Read `<knowledge_dir>/README.md`, relevant rules under `<knowledge_dir>/.workflow/rules/`, `<knowledge_dir>/.workflow/schemas/common.md`, and the relevant schemas under `<knowledge_dir>/.workflow/schemas/`.
 4. Read only the knowledge areas needed for the requested mode.
 5. Read `<knowledge_dir>/planning/KANBAN.md` and task items only for delivery-related modes.

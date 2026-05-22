@@ -5,16 +5,16 @@ Use these details after `workspace-worklist` has triggered.
 ## Local Paths
 
 - Read relevant public sections from `<knowledge_dir>/members/<member-id>.md` when member context matters.
-- Read `<knowledge_dir>/workspace/<member-id>/local/AGENTS.md` before changing the member workspace or running worklist items when it exists.
+- Read local workspace instructions before changing the member workspace or running worklist items when they exist.
 - Use `local/scratch/` for raw observations, rough notes, and inbox-style captures that are not executable.
 - Use `local/drafts/` for structured personal drafts that may later be promoted.
 - Create missing `local/`, `WORKLIST.md`, and `logs/` files on demand from `<knowledge_dir>/.workflow/templates/worklist.md`.
 
 ## Worktrees
 
-- Use `<worktree_dir>/shared/` as the reusable serial worker worktree when isolated worker execution is useful.
-- Use `<worktree_dir>/slot-XX/` worktrees only when the user explicitly authorizes parallel subagent execution for independent work items.
-- If Superpowers worktree or subagent skills are available, align them with this workflow's `<worktree_dir>/` rules and main-Agent ownership boundaries. Do not let them bypass approval, local-only, log, review, or Kanban rules.
+- Use `<worktrees_dir>/shared/` as the reusable serial worker worktree when isolated worker execution is useful.
+- Use `<worktrees_dir>/slot-XX/` worktrees only when the user explicitly authorizes parallel subagent execution for independent work items.
+- If Superpowers worktree or subagent skills are available, align them with this workflow's `<worktrees_dir>/` rules and main-Agent ownership boundaries. Do not let them bypass approval, local-only, log, review, or Kanban rules.
 
 ## Mode Rules
 

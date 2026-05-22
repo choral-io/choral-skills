@@ -39,4 +39,4 @@ related_to: []
 - Use `type: sprint`.
 - Use sprint documents for goals, coordination notes, capacity assumptions, known risks, review summaries, and retrospective notes.
 - Keep detailed task scope and acceptance criteria in task items.
-- Keep current delivery status in `{{knowledge_dir}}/planning/KANBAN.md`.
+- Keep current delivery status in `<knowledge_dir>/planning/KANBAN.md`.
