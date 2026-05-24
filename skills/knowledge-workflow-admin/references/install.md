@@ -158,10 +158,11 @@ Missing required Skills are warnings, not blockers. Conflicts in managed target 
 3. Validate required manifest fields, grouped managed/protected/local-only shapes, current baseline entries, and the marked platform hint block.
 4. Read `agent_skills.required`.
 5. If `feedback.enabled` is `true`, verify `<knowledge_dir>/.gitignore` excludes `.feedback/`.
-6. Check whether each required Skill is available to the current Agent runtime.
-7. If an existing installation has old workflow support paths, missing current baseline paths, or manifest paths that no longer match the installed Skill baseline, read `references/upgrade.md` and report a migration-needed finding with the safest next maintainer prompt.
-8. Report available and missing Skills. For missing Skills, tell the maintainer to install the corresponding `skills/<skill-name>/` directory from the Choral Skills distribution into the Agent runtime's Skill directory or with a cross-Agent Skill manager such as `npx skills`.
-9. Do not copy Skill files into the target repository and do not update the manifest unless the required Skill list itself is intentionally changed.
+6. Verify `<knowledge_dir>/.gitignore` excludes `workspace/*/local/`, which covers local Superpowers output under `<knowledge_dir>/workspace/<member-id>/local/superpowers/**`.
+7. Check whether each required Skill is available to the current Agent runtime.
+8. If an existing installation has old workflow support paths, missing current baseline paths, or manifest paths that no longer match the installed Skill baseline, read `references/upgrade.md` and report a migration-needed finding with the safest next maintainer prompt.
+9. Report available and missing Skills. For missing Skills, tell the maintainer to install the corresponding `skills/<skill-name>/` directory from the Choral Skills distribution into the Agent runtime's Skill directory or with a cross-Agent Skill manager such as `npx skills`.
+10. Do not copy Skill files into the target repository and do not update the manifest unless the required Skill list itself is intentionally changed.
 
 ## Check Report Shape
 
@@ -178,11 +179,12 @@ Missing required Skills are warnings, not blockers. Conflicts in managed target 
 
 ### Findings
 
-| Severity | Area     | Finding                                              | Suggested next action                                        |
-| -------- | -------- | ---------------------------------------------------- | ------------------------------------------------------------ |
-| warning  | skills   | missing required Skill                               | install in Agent runtime                                     |
-| warning  | feedback | enabled but `.feedback/` is not ignored              | update `<knowledge_dir>/.gitignore` or disable feedback mode |
-| warning  | upgrade  | installed support files differ from current baseline | run approved migration dry run                               |
+| Severity | Area       | Finding                                              | Suggested next action                                                       |
+| -------- | ---------- | ---------------------------------------------------- | --------------------------------------------------------------------------- |
+| warning  | skills     | missing required Skill                               | install in Agent runtime                                                    |
+| warning  | feedback   | enabled but `.feedback/` is not ignored              | update `<knowledge_dir>/.gitignore` or disable feedback mode                |
+| warning  | local-only | `workspace/*/local/` is not ignored                  | update `<knowledge_dir>/.gitignore` before writing local Superpowers output |
+| warning  | upgrade    | installed support files differ from current baseline | run approved migration dry run                                              |
 
 ### Required Skills
 

@@ -63,6 +63,7 @@ If rules are missing, partial, or need to be saved, ask a maintainer to use `kno
 
 - `references/assistant-guide.md`: read order, reference router, answer shape.
 - `references/routing.md`: Skill routing, core flow, optional execution-method guidance.
+- `references/superpowers.md`: local-only output routing for Superpowers specs and plans.
 - `references/placement.md`: content placement, members/groups, proposals, source precedence.
 - `references/local-execution.md`: WORKLIST, run-next, run-loop, run-goal, worktrees, subagents.
 - `references/recovery.md`: stale, failed, obsolete, or conflicting workflow state.

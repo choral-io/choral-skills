@@ -61,6 +61,8 @@ The following paths are local-only and must stay excluded from SCM:
 - `<knowledge_dir>/workspace/*/local/`
 - `<worktrees_dir>/`
 
+This includes local Superpowers specs and plans under `<knowledge_dir>/workspace/<member-id>/local/superpowers/**`.
+
 `<knowledge_dir>/.workflow/local.yml` defaults to comments only and currently supports only the local current-member override:
 
 ```yaml

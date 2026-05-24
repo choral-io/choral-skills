@@ -68,4 +68,6 @@ Recommend Superpowers only as execution-method support when available. It is not
 | Verify before completion, commit, PR, or Done-readiness claim | `superpowers:verification-before-completion`                                 |
 | Isolate work or run authorized parallel Agents                | `superpowers:using-git-worktrees`, `superpowers:subagent-driven-development` |
 
-Knowledge Workflow still owns knowledge placement, task items, Kanban state, WORKLIST routing, approval gates, and delivery review. Put personal Superpowers plans under `<knowledge_dir>/workspace/<member-id>/local/drafts/` unless the user approves promotion to task items or proposals.
+When the current Agent will invoke any P0 Superpowers skill listed above, apply `references/superpowers.md` first. For `brainstorming` and `writing-plans`, explicitly pass the resolved output directory and commit behavior. For worktree, subagent, or verification skills, explicitly preserve `<worktrees_dir>`, main-Agent ownership, no self-approval, local-only, approval, and review-gate boundaries. When `knowledge-assistant` is only recommending the next prompt, include those instructions in the prompt instead of continuing into Superpowers.
+
+Knowledge Workflow still owns knowledge placement, task items, Kanban state, WORKLIST routing, approval gates, and delivery review. Local Superpowers specs and plans remain personal workspace material and must not be committed unless the user approves promotion through the owning Knowledge Workflow skill.

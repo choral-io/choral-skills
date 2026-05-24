@@ -4,23 +4,24 @@ Use this when the user asks where something should live.
 
 ## Placement Table
 
-| Content                                     | Place                                                              | Owning path                                                                   |
-| ------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| Raw observation or rough idea               | current member `local/scratch/`                                    | `knowledge-intake` if it may matter later                                     |
-| Structured personal draft                   | current member `local/drafts/`                                     | promote only after user approval                                              |
-| Personal executable action                  | current member `local/WORKLIST.md`                                 | `workspace-worklist`                                                          |
-| Public member summary, handoff, or research | `workspace/<member-id>/summaries/`, `handoffs/`, or `research/`    | `knowledge-capture` when writing shared files                                 |
-| Project member profile                      | `members/<member-id>.md`                                           | update group `members` when membership applies                                |
-| Group, team, review board, or working group | `groups/<group-id>.md`                                             | confirm members before writing                                                |
-| Discovery, market, customer, or assumption  | `discovery/`                                                       | `knowledge-capture`                                                           |
-| Product behavior or requirement             | `product/`                                                         | `knowledge-capture`                                                           |
-| UI, flow, visual design, or design asset    | `design/` plus `assets/<asset-type>/<topic>/` for supporting files | `knowledge-capture`                                                           |
-| Supporting asset                            | `assets/<asset-type>/<topic>/` with a canonical note that links it | `knowledge-capture`                                                           |
-| Concept, architecture, decision, guideline  | matching canonical area                                            | `knowledge-capture`                                                           |
-| Sprint or planning-period document          | `planning/sprints/`                                                | `knowledge-capture` for the document; `delivery-planning` for board proposals |
-| Valuable but unconfirmed candidate          | `proposals/`                                                       | convert before using as fact or delivery input                                |
-| Potential delivery work                     | `tasks/`                                                           | audit before planning                                                         |
-| Approved delivery status                    | `planning/KANBAN.md`                                               | `kanban-maintenance` after approval                                           |
+| Content                                     | Place                                                                   | Owning path                                                                   |
+| ------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Raw observation or rough idea               | current member `local/scratch/`                                         | `knowledge-intake` if it may matter later                                     |
+| Structured personal draft                   | current member `local/drafts/`                                          | use for non-Superpowers drafts; promote only after user approval              |
+| Superpowers spec or plan output             | current member `local/superpowers/specs/` or `local/superpowers/plans/` | personal execution aid; apply `references/superpowers.md` first               |
+| Personal executable action                  | current member `local/WORKLIST.md`                                      | `workspace-worklist`                                                          |
+| Public member summary, handoff, or research | `workspace/<member-id>/summaries/`, `handoffs/`, or `research/`         | `knowledge-capture` when writing shared files                                 |
+| Project member profile                      | `members/<member-id>.md`                                                | update group `members` when membership applies                                |
+| Group, team, review board, or working group | `groups/<group-id>.md`                                                  | confirm members before writing                                                |
+| Discovery, market, customer, or assumption  | `discovery/`                                                            | `knowledge-capture`                                                           |
+| Product behavior or requirement             | `product/`                                                              | `knowledge-capture`                                                           |
+| UI, flow, visual design, or design asset    | `design/` plus `assets/<asset-type>/<topic>/` for supporting files      | `knowledge-capture`                                                           |
+| Supporting asset                            | `assets/<asset-type>/<topic>/` with a canonical note that links it      | `knowledge-capture`                                                           |
+| Concept, architecture, decision, guideline  | matching canonical area                                                 | `knowledge-capture`                                                           |
+| Sprint or planning-period document          | `planning/sprints/`                                                     | `knowledge-capture` for the document; `delivery-planning` for board proposals |
+| Valuable but unconfirmed candidate          | `proposals/`                                                            | convert before using as fact or delivery input                                |
+| Potential delivery work                     | `tasks/`                                                                | audit before planning                                                         |
+| Approved delivery status                    | `planning/KANBAN.md`                                                    | `kanban-maintenance` after approval                                           |
 
 Project facts come from canonical knowledge and code. Shared workspace material is context. Local workspace material is personal execution state.
 

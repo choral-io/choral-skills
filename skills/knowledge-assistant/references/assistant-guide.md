@@ -27,6 +27,7 @@ Start here, then load only the narrow reference needed for the question:
 | Need                                                                                 | Reference                        |
 | ------------------------------------------------------------------------------------ | -------------------------------- |
 | choose the owning Skill or next prompt                                               | `references/routing.md`          |
+| route Superpowers brainstorming or writing-plans output                              | `references/superpowers.md`      |
 | decide where content belongs, including members/groups/assets                        | `references/placement.md`        |
 | WORKLIST, run-next, run-loop, run-goal, worktrees, or subagents                      | `references/local-execution.md`  |
 | stuck, stale, failed, obsolete, or conflicting workflow state                        | `references/recovery.md`         |

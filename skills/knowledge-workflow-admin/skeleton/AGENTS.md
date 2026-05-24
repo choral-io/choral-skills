@@ -11,6 +11,8 @@ Core boundaries:
 - Do not guess workflow paths, current member id, or local-only paths.
 - Do not write shared knowledge, Kanban, task metadata, or workflow state without the owning Skill and required approval.
 - Keep `<knowledge_dir>/.workflow/local.yml`, `<knowledge_dir>/.feedback/`, `<knowledge_dir>/workspace/*/local/`, and worktree contents under `<worktrees_dir>/` local-only.
+- When Knowledge Workflow guides Superpowers brainstorming or writing-plans output, prefer `<knowledge_dir>/workspace/<member-id>/local/superpowers/specs/` for specs and `<knowledge_dir>/workspace/<member-id>/local/superpowers/plans/` for plans unless the user explicitly specifies another safe path; local-only Superpowers output must not be committed.
+- Review any `docs/superpowers/**` files before commit; keep them when the user explicitly requested that shared path or confirms the specific file belongs in the repository.
 - Use `knowledge-assistant` for workflow help, routing, recovery, and project rules explanation; otherwise use the specific Skill whose description matches the request.
 - Use `knowledge-workflow-admin` only for explicit maintainer setup, check, migration, manifest, or approved configuration work.
 
