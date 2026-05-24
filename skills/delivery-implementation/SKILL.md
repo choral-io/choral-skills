@@ -43,7 +43,7 @@ When Superpowers skills are available, use them as execution-method guidance onl
 
 Superpowers usage does not replace task acceptance criteria, project checks, canonical knowledge updates, delivery review, or Kanban approval gates.
 
-Before invoking `superpowers:brainstorming` or `superpowers:writing-plans`, resolve and state the output directory and commit behavior using `knowledge-assistant/references/superpowers.md`: user-specified path first, then `<knowledge_dir>/workspace/<member-id>/local/superpowers/specs/` or `plans/` with SCM exclusion verified and no commit, and only then the Superpowers default when repair is not the next step and the user explicitly confirms writing to the shared path.
+Before invoking `superpowers:brainstorming` or `superpowers:writing-plans`, resolve and state the output directory and commit behavior using `knowledge-assistant/references/superpowers.md`: user-specified path first, then `<knowledge_dir>/workspace/<member-id>/local/superpowers/specs/` or `plans/` with SCM exclusion verified and no commit, and only then the Superpowers default when repair is not the next step and the user explicitly confirms using that default path.
 
 Before invoking `superpowers:subagent-driven-development`, require an accepted plan with independent tasks and keep the main Agent responsible for integration, review checkpoints, approvals, shared knowledge writes, commits, and Kanban state. Worker subagents must route approval or elevated-execution needs back to the main Agent and must not commit local-only output.
 

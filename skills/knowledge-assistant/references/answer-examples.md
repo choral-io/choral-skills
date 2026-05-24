@@ -151,7 +151,7 @@ Knowledge Workflow owns delivery context and shared state. If the current reques
 
 ## Do Not Do Yet
 
-Do not write to `docs/superpowers/plans/` by fallback unless runtime or current-member resolution failed and the user accepts the shared-repository risk. If the user explicitly asked for that path, treat it as the selected repository location and review it before commit.
+Do not use the Superpowers default plan path by fallback unless runtime or current-member resolution failed and the user accepts using that default path. If the user explicitly asked for another path, treat it as the selected location.
 ```
 
 ## Obsolete WORKLIST Item

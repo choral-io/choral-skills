@@ -20,7 +20,6 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 - `conflict`: both legacy and current targets exist, or content differs in a way that needs review.
 - `project-fact`: project knowledge, Kanban, tasks, members, groups, proposals, decisions, product, design, architecture, discovery, guidelines, concepts, or assets.
 - `local-state`: SCM-excluded or member-local state such as `workspace/*/local/**`, `.feedback/**`, or worktree contents.
-- `superpowers-output`: `docs/superpowers/**` specs or plans. Treat as intentional shared repository content only when the user requested that path or confirms the file belongs in the repository; otherwise report it for commit review.
 - `dead-link`: internal Markdown link or wikilink that no longer resolves.
 - `non-knowledge-link`: knowledge-style link that points to support files, local state, ignored paths, or files outside the knowledge boundary.
 
@@ -33,7 +32,6 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 5. Inventory links in project fact files. Resolve internal Markdown links and wikilinks. Do not treat external URLs as migration failures unless the project has an explicit URL validation rule.
 6. Classify paths and links with the categories above.
 7. Check Git status. Report unrelated dirty files and avoid touching them.
-8. If `docs/superpowers/**` exists, classify each file as `superpowers-output` and report whether it appears intentionally shared or needs user confirmation before commit.
 
 ## Strategy
 
@@ -59,17 +57,16 @@ Use this when the target repository's knowledge maintainer has upgraded the inst
 
 ### Inventory
 
-| Status             | Existing path | Proposed target | Action                        | Reason                                                         |
-| ------------------ | ------------- | --------------- | ----------------------------- | -------------------------------------------------------------- |
-| current-support    | ...           | ...             | keep                          | already matches baseline                                       |
-| legacy-support     | ...           | ...             | move                          | support file has new baseline location                         |
-| missing-support    | -             | ...             | create                        | required support file is absent                                |
-| conflict           | ...           | ...             | manual review                 | content or path conflict                                       |
-| project-fact       | ...           | -               | keep or propose explicit edit | no generic overwrite                                           |
-| local-state        | ...           | -               | keep untracked                | local-only state                                               |
-| superpowers-output | ...           | -               | keep or request confirmation  | keep when intentionally shared; otherwise review before commit |
-| dead-link          | ...           | ...             | propose explicit edit         | internal link no longer resolves                               |
-| non-knowledge-link | ...           | ...             | propose explicit edit         | knowledge-style link points outside project facts              |
+| Status             | Existing path | Proposed target | Action                        | Reason                                            |
+| ------------------ | ------------- | --------------- | ----------------------------- | ------------------------------------------------- |
+| current-support    | ...           | ...             | keep                          | already matches baseline                          |
+| legacy-support     | ...           | ...             | move                          | support file has new baseline location            |
+| missing-support    | -             | ...             | create                        | required support file is absent                   |
+| conflict           | ...           | ...             | manual review                 | content or path conflict                          |
+| project-fact       | ...           | -               | keep or propose explicit edit | no generic overwrite                              |
+| local-state        | ...           | -               | keep untracked                | local-only state                                  |
+| dead-link          | ...           | ...             | propose explicit edit         | internal link no longer resolves                  |
+| non-knowledge-link | ...           | ...             | propose explicit edit         | knowledge-style link points outside project facts |
 
 ### Proposed Changes
 
