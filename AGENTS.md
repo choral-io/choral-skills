@@ -4,14 +4,14 @@
 
 This repository distributes public Agent Skills from Choral. It is not a product repository and must not become a project knowledge base.
 
-Current Skills include a repository-backed knowledge workflow suite, but future public Choral Skills may cover other domains.
+Current Skills include a repository-backed workflow suite and tool-focused Skills, but this repository is a general public Skills collection.
 
 ## Layout
 
 - `skills/<skill-name>/SKILL.md` is the required entry point for each Skill.
 - `skills/<skill-name>/agents/openai.yaml` stores optional OpenAI/Codex UI metadata.
 - `skills/<skill-name>/references/` stores supporting instructions loaded only when needed.
-- `skills/knowledge-workflow-admin/skeleton/` stores the Knowledge Workflow skeleton rendered during init.
+- `skills/<skill-name>/scripts/`, templates, skeletons, or other bundled resources are optional and must be documented by that Skill.
 
 ## Skill Authoring Rules
 
@@ -36,16 +36,15 @@ Current Skills include a repository-backed knowledge workflow suite, but future 
 ## Public Content Boundary
 
 - Do not add product-specific names, source package paths, customer facts, task ids, private member details, personal notes, local workspace files, or absolute machine paths.
-- Keep examples generic. Use placeholder paths such as `<knowledge_dir>` and example member ids only when they are clearly examples.
-- Do not add local-only files such as `.DS_Store`, `.worktrees/`, generated reports, or test worktrees.
+- Keep examples generic. Use placeholder paths and ids only when they are clearly examples.
+- Do not add local-only files such as `.DS_Store`, generated reports, or test worktrees.
 
-## Knowledge Workflow Suite Rules
+## Suite Boundaries
 
-- `knowledge-assistant` is the ordinary team-facing help entry point. It must not modify shared knowledge or workflow state; its only write exception is explicit-only local workflow feedback under SCM-excluded `.feedback/` when manifest feedback mode is enabled.
-- `knowledge-workflow-admin` is the maintainer/admin entry point for setup, manifest state, workflow checks, and approved configuration updates. It must not become ordinary team help.
-- Audit Skills must remain read-only.
-- Write-capable workflow Skills must preserve their approval and ownership boundaries.
-- `workspace-worklist` owns current-member local execution flow and must not write into another member's workspace.
+- Keep suite-specific behavior in the owning Skill docs; `AGENTS.md` only preserves repository-wide release boundaries.
+- Maintainer-only or manual-only Skills must remain clearly separated from ordinary team help.
+- Read-only Skills must stay read-only.
+- Write-capable Skills must keep their approval, ownership, and local-only boundaries.
 
 ## README Sync
 
@@ -61,7 +60,5 @@ Before committing:
 
 - Run a formatter over changed Markdown/YAML files when one is available.
 - Search `skills/` for project-specific residue.
-- Verify `knowledge-workflow-admin` remains maintainer-scoped and `allow_implicit_invocation` stays disabled.
-- Verify `knowledge-workflow-admin` keeps `disable-model-invocation: true` in `SKILL.md`.
-- Verify `knowledge-assistant` does not modify shared knowledge or workflow state, and any local feedback path remains manifest-gated and SCM-excluded.
+- For suite-level changes, re-check that maintainer-only, read-only, write-capable, and local-only boundaries still hold.
 - Commit only intentional skill distribution changes.

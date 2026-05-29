@@ -30,6 +30,12 @@ The bundled Knowledge Workflow profile is optimized for software product develop
 | `delivery-review`          | Use when delivery work needs review, a PR or local diff needs validation, or Done readiness is in question.                                                                                               | Delivery, review   |
 | `workspace-worklist`       | Use when the current member asks to manage or run their local WORKLIST, including run-next, run-loop, run-goal, plan-only, grooming, or logs.                                                             | Personal execution |
 
+### Tool Skills
+
+| Skill            | Description                                                                                                                              | Audience |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `markitdown-cli` | Use when converting local document files such as PDFs, Office documents, HTML, text, or other MarkItDown-supported inputs into Markdown. | Team     |
+
 ## Installation
 
 Install or copy the needed `skills/<skill-name>/` directories into the Skill location supported by your Agent runtime. This repository does not assume a specific Agent program, package manager, editor, shell, or runtime.

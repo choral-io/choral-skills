@@ -1,0 +1,6 @@
+interface:
+  display_name: "MarkItDown CLI"
+  short_description: "Convert local documents to Markdown"
+  default_prompt: "Use $markitdown-cli to convert local document files into Markdown."
+policy:
+  allow_implicit_invocation: true
