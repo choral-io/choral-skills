@@ -1,6 +1,6 @@
 # Knowledge Workflow Skills Overview
 
-Knowledge Workflow Skills help teams build a repository-backed knowledge system for AI-assisted work. The workflow comes from repeated team practices: keep durable context close to the repository, let Agents help maintain the parts humans neglect, and make important conclusions survive beyond the current conversation.
+Knowledge Workflow Skills provide repository-backed knowledge governance for AI-assisted work. The workflow is the operating pattern, not the product: keep durable context close to the repository, let Agents help maintain the parts humans neglect, and make important conclusions survive beyond the current conversation.
 
 A repository knowledge system is different from a chat transcript, a document dump, or a query-time retrieval index. It gives Agents and humans a durable working surface where facts, decisions, task intent, delivery state, and local execution notes can be read, reviewed, corrected, linked, and versioned. The repository becomes the shared memory; the Agent helps maintain it.
 
@@ -34,10 +34,19 @@ Install the Skills with the Vercel Labs Skills CLI:
 npx skills add choral-io/choral-skills
 ```
 
-If your Agent runtime supports Codex plugins, you can alternatively install the packaged plugin from this repository's marketplace:
+If your Agent runtime supports plugins, you can alternatively install the packaged plugin from this repository's marketplace:
+
+Claude Code:
 
 ```bash
-codex plugin marketplace add choral-io/choral-skills --ref main
+claude plugin marketplace add choral-io/choral-skills
+claude plugin install knowledge-workflow@choral-skills
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add choral-io/choral-skills
 codex plugin add knowledge-workflow@choral-skills
 ```
 
@@ -88,7 +97,7 @@ In this model, the knowledge directory is not just where outputs are stored. It 
 
 ## Skill Set Guidance
 
-Install the Knowledge Workflow Skills into the Agent runtime that will work with the repository. Use the install methods in the repository [README](../README.md).
+Install the Knowledge Workflow governance Skills into the Agent runtime that will work with the repository. Use the install methods in the repository [README](../README.md).
 
 The full Knowledge Workflow suite is useful when a team wants repository-backed product knowledge, task planning, implementation, review, and local execution support.
 

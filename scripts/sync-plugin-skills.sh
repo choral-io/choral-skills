@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: scripts/sync-codex-plugin-skills.sh [--check] [plugin-name]
+Usage: scripts/sync-plugin-skills.sh [--check] [plugin-name]
 
 Synchronize materialized plugin Skill copies from root skills/ according to
 plugins/plugin-sync.txt. With --check, report drift without writing files.

@@ -8,7 +8,7 @@ This repository is not tied to a specific product repository. Each directory und
 
 ### Knowledge Workflow Skills
 
-This series supports repository-backed knowledge work: setup, guidance, intake, capture, audits, status reporting, delivery planning, implementation, review, and local execution. See [Knowledge Workflow Skills Overview](docs/knowledge-workflow-skills.md) for the workflow model, recommended Skill sets, setup guidance, boundaries, and upgrade guidance.
+This series supports repository-backed knowledge governance: setup, guidance, intake, capture, audits, status reporting, delivery planning, implementation, review, and local execution. See [Knowledge Workflow Skills Overview](docs/knowledge-workflow-skills.md) for the knowledge model, recommended Skill sets, setup guidance, boundaries, and upgrade guidance.
 
 | Skill                      | Description                                                                                                                                                                                               | Audience           |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
@@ -51,29 +51,42 @@ Recommended options:
 
 Treat third-party Skill managers and downloaded Skills as code: inspect `SKILL.md`, scripts, and bundled assets before installing.
 
-## Codex Plugin Installation
+## Plugin Installation
 
-Codex users can install plugins from this repository's marketplace. Add the marketplace once:
+Agent runtimes with plugin support can install packaged plugins from this repository's marketplace.
 
-```bash
-codex plugin marketplace add choral-io/choral-skills --ref main
-```
+Add the marketplace once:
+
+| Runtime     | Command                                                 |
+| ----------- | ------------------------------------------------------- |
+| Claude Code | `claude plugin marketplace add choral-io/choral-skills` |
+| Codex       | `codex plugin marketplace add choral-io/choral-skills`  |
 
 Then install the plugin you need:
 
-```bash
-codex plugin add <plugin-name>@choral-skills
-```
+| Runtime     | Command                                             |
+| ----------- | --------------------------------------------------- |
+| Claude Code | `claude plugin install <plugin-name>@choral-skills` |
+| Codex       | `codex plugin add <plugin-name>@choral-skills`      |
 
 Available plugins:
 
-| Plugin               | Install command                                     | Description                                                          |
-| -------------------- | --------------------------------------------------- | -------------------------------------------------------------------- |
-| `knowledge-workflow` | `codex plugin add knowledge-workflow@choral-skills` | Packages the Knowledge Workflow Skill suite for Codex as one plugin. |
+| Plugin               | Runtimes           | Description                                                  |
+| -------------------- | ------------------ | ------------------------------------------------------------ |
+| `knowledge-workflow` | Claude Code, Codex | Knowledge Workflow governance Skills packaged as one plugin. |
 
-After installing or updating the plugin, start a new Codex thread so the newly installed Skills are loaded.
+After installing or updating the plugin, start a new Agent session so the newly installed Skills are loaded.
 
 To refresh marketplace metadata and reinstall an existing plugin:
+
+Claude Code:
+
+```bash
+claude plugin marketplace update
+claude plugin install <plugin-name>@choral-skills
+```
+
+Codex:
 
 ```bash
 codex plugin marketplace upgrade
@@ -81,6 +94,15 @@ codex plugin add <plugin-name>@choral-skills
 ```
 
 For local development from a checkout:
+
+Claude Code:
+
+```bash
+claude plugin marketplace add /path/to/choral-skills
+claude plugin install <plugin-name>@choral-skills
+```
+
+Codex:
 
 ```bash
 codex plugin marketplace add /path/to/choral-skills
@@ -90,22 +112,24 @@ codex plugin add <plugin-name>@choral-skills
 Plugin contents under `plugins/` are installation-ready. When a plugin packages selected Skills from the root `skills/` directory, update the canonical Skill files first and then refresh the plugin copy before release. Plugin Skill membership is declared in `plugins/plugin-sync.txt`.
 
 ```bash
-./scripts/sync-codex-plugin-skills.sh knowledge-workflow
-./scripts/sync-codex-plugin-skills.sh --check knowledge-workflow
+./scripts/sync-plugin-skills.sh knowledge-workflow
+./scripts/sync-plugin-skills.sh --check knowledge-workflow
 ```
 
 On Windows PowerShell:
 
 ```powershell
-.\scripts\sync-codex-plugin-skills.ps1 knowledge-workflow
-.\scripts\sync-codex-plugin-skills.ps1 -Check knowledge-workflow
+.\scripts\sync-plugin-skills.ps1 knowledge-workflow
+.\scripts\sync-plugin-skills.ps1 -Check knowledge-workflow
 ```
 
 Sparse checkout installs only need the marketplace metadata and selected plugin wrapper:
 
 ```bash
+claude plugin marketplace add choral-io/choral-skills \
+    --sparse .claude-plugin plugins/knowledge-workflow
+
 codex plugin marketplace add choral-io/choral-skills \
-    --ref main \
     --sparse .agents \
     --sparse plugins/knowledge-workflow
 ```

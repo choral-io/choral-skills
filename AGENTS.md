@@ -4,7 +4,7 @@
 
 This repository distributes public Agent Skills from Choral. It is not a product repository and must not become a project knowledge base.
 
-Current Skills include a repository-backed workflow suite and tool-focused Skills, but this repository is a general public Skills collection.
+Current Skills include repository-backed knowledge governance capabilities and tool-focused Skills, but this repository is a general public Skills collection.
 
 ## Layout
 
@@ -13,9 +13,10 @@ Current Skills include a repository-backed workflow suite and tool-focused Skill
 - `skills/<skill-name>/references/` stores supporting instructions loaded only when needed.
 - `skills/<skill-name>/scripts/`, templates, skeletons, or other bundled resources are optional and must be documented by that Skill.
 - `.agents/plugins/marketplace.json` exposes repository plugins to Codex.
-- `plugins/<plugin-name>/` stores installation-ready Codex plugin packages.
+- `.claude-plugin/marketplace.json` exposes repository plugins to Claude Code.
+- `plugins/<plugin-name>/` stores installation-ready plugin packages.
 - `plugins/plugin-sync.txt` declares which root Skills are materialized into each plugin package.
-- `scripts/sync-codex-plugin-skills.sh` and `scripts/sync-codex-plugin-skills.ps1` refresh or check plugin Skill copies without assuming Python.
+- `scripts/sync-plugin-skills.sh` and `scripts/sync-plugin-skills.ps1` refresh or check plugin Skill copies without assuming Python.
 
 ## Skill Authoring Rules
 
@@ -58,21 +59,22 @@ When adding, removing, or changing a Skill:
 - Prefer the Skill's frontmatter `name` and `description` for table content.
 - Keep the `Audience` value concise and user-facing.
 
-## Codex Plugin Maintenance
+## Plugin Maintenance
 
 When changing a Skill that is listed in `plugins/plugin-sync.txt`:
 
 - Treat `skills/<skill-name>/` as the canonical source.
-- Refresh the materialized plugin copy with `./scripts/sync-codex-plugin-skills.sh <plugin-name>` or `.\scripts\sync-codex-plugin-skills.ps1 <plugin-name>`.
-- Run the corresponding check mode before finishing: `./scripts/sync-codex-plugin-skills.sh --check <plugin-name>` or `.\scripts\sync-codex-plugin-skills.ps1 -Check <plugin-name>`.
-- Do not use symlinks inside `plugins/<plugin-name>/skills/`; Codex plugin installation caches materialized files and can drop linked Skill contents.
+- Refresh the materialized plugin copy with `./scripts/sync-plugin-skills.sh <plugin-name>` or `.\scripts\sync-plugin-skills.ps1 <plugin-name>`.
+- Run the corresponding check mode before finishing: `./scripts/sync-plugin-skills.sh --check <plugin-name>` or `.\scripts\sync-plugin-skills.ps1 -Check <plugin-name>`.
+- Do not use symlinks inside `plugins/<plugin-name>/skills/`; plugin installation caches materialized files and can skip or lose linked Skill contents.
 
-When adding, removing, or renaming a Codex plugin:
+When adding, removing, or renaming a plugin:
 
-- Update `.agents/plugins/marketplace.json`.
+- Update `.agents/plugins/marketplace.json` for Codex distribution.
+- Update `.claude-plugin/marketplace.json` for Claude Code distribution.
 - Update `plugins/plugin-sync.txt` when the plugin packages root Skills.
-- Update the Codex Plugin Installation section in `README.md`.
-- Validate the plugin manifest before handoff with the plugin validator when available.
+- Update the relevant plugin installation sections in `README.md`.
+- Validate platform manifests before handoff with the relevant plugin validators when available.
 
 ## Checks
 

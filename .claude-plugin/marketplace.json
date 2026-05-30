@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "choral-skills",
+  "owner": {
+    "name": "Choral",
+    "url": "https://choral.io"
+  },
+  "description": "Public Agent Skills from Choral.",
+  "plugins": [
+    {
+      "name": "knowledge-workflow",
+      "source": "./plugins/knowledge-workflow",
+      "displayName": "Knowledge Workflow",
+      "description": "Repository-backed knowledge governance Skills.",
+      "category": "productivity",
+      "tags": ["knowledge-workflow", "skills", "markdown"]
+    }
+  ]
+}

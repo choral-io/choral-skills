@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "knowledge-workflow",
+  "displayName": "Knowledge Workflow",
+  "version": "0.1.0",
+  "description": "Repository-backed knowledge governance Skills for Claude Code.",
+  "author": {
+    "name": "Choral",
+    "url": "https://choral.io"
+  },
+  "homepage": "https://github.com/choral-io/choral-skills",
+  "repository": "https://github.com/choral-io/choral-skills",
+  "license": "MIT",
+  "keywords": ["knowledge-workflow", "skills", "markdown"],
+  "skills": "./skills/"
+}

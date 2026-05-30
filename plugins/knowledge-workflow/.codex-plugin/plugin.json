@@ -1,7 +1,7 @@
 {
   "name": "knowledge-workflow",
   "version": "0.1.0",
-  "description": "Codex plugin packaging for Knowledge Workflow Skills.",
+  "description": "Repository-backed knowledge governance Skills for Codex.",
   "author": {
     "name": "Choral",
     "url": "https://choral.io"
@@ -13,8 +13,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Knowledge Workflow",
-    "shortDescription": "Repository-backed workflow Skills.",
-    "longDescription": "Knowledge Workflow helps Codex maintain repository-backed project knowledge and delivery state. It includes Skills for routing, knowledge capture, audits, status reports, Kanban maintenance, implementation, review, local worklists, and maintainer administration, with write-capable actions kept behind explicit approval boundaries.",
+    "shortDescription": "Repository-backed knowledge governance Skills.",
+    "longDescription": "Knowledge Workflow helps Codex maintain repository-backed project knowledge, governance boundaries, and delivery state. It includes Skills for routing, knowledge capture, audits, status reports, Kanban maintenance, implementation, review, local worklists, and maintainer administration, with write-capable actions kept behind explicit approval boundaries.",
     "developerName": "Choral",
     "category": "Productivity",
     "capabilities": ["Read", "Write", "Review"],
