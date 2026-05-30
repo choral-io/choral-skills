@@ -1,0 +1,6 @@
+interface:
+  display_name: "Task Metadata Audit"
+  short_description: "Audit task metadata and blockers"
+  default_prompt: "Use $task-metadata-audit to inspect task items before planning."
+policy:
+  allow_implicit_invocation: true

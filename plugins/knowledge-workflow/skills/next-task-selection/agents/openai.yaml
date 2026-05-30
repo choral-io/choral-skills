@@ -1,0 +1,6 @@
+interface:
+  display_name: "Next Task Selection"
+  short_description: "Select dependency-aware next tasks"
+  default_prompt: "Use $next-task-selection to recommend the next delivery task."
+policy:
+  allow_implicit_invocation: true

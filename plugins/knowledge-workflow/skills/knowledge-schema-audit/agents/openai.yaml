@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Schema Audit"
+  short_description: "Audit non-task knowledge schemas"
+  default_prompt: "Use $knowledge-schema-audit to inspect knowledge files against schemas."
+policy:
+  allow_implicit_invocation: true

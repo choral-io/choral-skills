@@ -1,0 +1,20 @@
+{
+  "name": "choral-skills",
+  "interface": {
+    "displayName": "Choral Skills"
+  },
+  "plugins": [
+    {
+      "name": "knowledge-workflow",
+      "source": {
+        "source": "local",
+        "path": "./plugins/knowledge-workflow"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

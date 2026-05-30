@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Workflow Admin"
+  short_description: "Administer knowledge workflows"
+  default_prompt: "Use $knowledge-workflow-admin to initialize or administer the repository knowledge workflow."
+policy:
+  allow_implicit_invocation: false

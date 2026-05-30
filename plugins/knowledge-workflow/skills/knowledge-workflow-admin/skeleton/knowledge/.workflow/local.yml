@@ -1,0 +1,10 @@
+# Local-only Knowledge Workflow execution context.
+# This file is optional and must stay SCM-ignored.
+#
+# Currently supported setting:
+#
+# current_member:
+#     member_id: Gavroche
+#
+# Use this when local operations need a default current member id.
+# The member_id value must exactly match <knowledge_dir>/members/<member-id>.md.

@@ -1,0 +1,5 @@
+# Format:
+# <plugin-name>: <skill-name> [<skill-name> ...]
+#
+# Keep this list as the source for materialized plugin Skill copies.
+knowledge-workflow: knowledge-workflow-admin knowledge-assistant knowledge-intake knowledge-capture knowledge-schema-audit task-metadata-audit knowledge-status-report delivery-planning next-task-selection kanban-maintenance delivery-implementation delivery-review workspace-worklist

@@ -8,15 +8,11 @@ This repository is not tied to a specific product repository. Each directory und
 
 ### Knowledge Workflow Skills
 
-This series supports repository-backed knowledge work: setup, read-only guidance, knowledge intake and capture, schema/task audits, status reporting, Kanban delivery, review, and member-local execution. The table is ordered roughly from workflow setup and guidance toward delivery execution.
-
-Knowledge Workflow is a Markdown-first model for turning project knowledge into a durable, reviewable repository artifact. Instead of treating each Agent conversation as temporary context, the workflow keeps durable facts, decisions, tasks, and execution state in files that humans and Agents can inspect, update, validate, and version together.
-
-The bundled Knowledge Workflow profile is optimized for software product development teams: product and design knowledge, architecture decisions, delivery tasks, review flow, and product development experience that should accumulate in the repository. See [Knowledge Workflow Skills Overview](docs/knowledge-workflow-skills.md) for the underlying knowledge-system model and the Skill boundaries that govern it.
+This series supports repository-backed knowledge work: setup, guidance, intake, capture, audits, status reporting, delivery planning, implementation, review, and local execution. See [Knowledge Workflow Skills Overview](docs/knowledge-workflow-skills.md) for the workflow model, recommended Skill sets, setup guidance, boundaries, and upgrade guidance.
 
 | Skill                      | Description                                                                                                                                                                                               | Audience           |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `knowledge-workflow-admin` | Use when a maintainer explicitly needs Knowledge Workflow setup, checks, upgrade migration, manifest work, or approved configuration updates.                                                             | Maintainer         |
+| `knowledge-workflow-admin` | Use when a maintainer explicitly asks for Knowledge Workflow setup, checks, upgrade migration, manifest work, or approved configuration updates.                                                          | Maintainer         |
 | `knowledge-assistant`      | Use when a user asks how to use Knowledge Workflow in a repository, where content belongs, which skill applies, what project rules mean, how to recover safely, or how to record local workflow feedback. | Team               |
 | `knowledge-intake`         | Use when an idea, requirement, feedback, research note, decision, or fact may become shared knowledge but the target is not yet approved.                                                                 | Team               |
 | `knowledge-capture`        | Use when the user has approved a specific shared-knowledge write, promotion, reorganization, or update.                                                                                                   | Team               |
@@ -36,7 +32,7 @@ The bundled Knowledge Workflow profile is optimized for software product develop
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `markitdown-cli` | Use when converting local document files such as PDFs, Office documents, HTML, text, or other MarkItDown-supported inputs into Markdown. | Team     |
 
-## Installation
+## Skill Installation
 
 Install or copy the needed `skills/<skill-name>/` directories into the Skill location supported by your Agent runtime. This repository does not assume a specific Agent program, package manager, editor, shell, or runtime.
 
@@ -55,11 +51,64 @@ Recommended options:
 
 Treat third-party Skill managers and downloaded Skills as code: inspect `SKILL.md`, scripts, and bundled assets before installing.
 
-For Knowledge Workflow setup guidance, recommended Skill sets, and target repository configuration, see [Knowledge Workflow Skills Overview](docs/knowledge-workflow-skills.md).
+## Codex Plugin Installation
 
-## Upgrading Knowledge Workflow
+Codex users can install plugins from this repository's marketplace. Add the marketplace once:
 
-Upgrading Skills in an Agent runtime does not automatically migrate repositories that were initialized with an older Knowledge Workflow layout. After upgrading the installed Skills, the target repository's knowledge maintainer should run `knowledge-workflow-admin:check`. If the check reports layout or manifest differences, use the admin Skill's migration dry run and approve changes only after reviewing the affected paths.
+```bash
+codex plugin marketplace add choral-io/choral-skills --ref main
+```
+
+Then install the plugin you need:
+
+```bash
+codex plugin add <plugin-name>@choral-skills
+```
+
+Available plugins:
+
+| Plugin               | Install command                                     | Description                                                          |
+| -------------------- | --------------------------------------------------- | -------------------------------------------------------------------- |
+| `knowledge-workflow` | `codex plugin add knowledge-workflow@choral-skills` | Packages the Knowledge Workflow Skill suite for Codex as one plugin. |
+
+After installing or updating the plugin, start a new Codex thread so the newly installed Skills are loaded.
+
+To refresh marketplace metadata and reinstall an existing plugin:
+
+```bash
+codex plugin marketplace upgrade
+codex plugin add <plugin-name>@choral-skills
+```
+
+For local development from a checkout:
+
+```bash
+codex plugin marketplace add /path/to/choral-skills
+codex plugin add <plugin-name>@choral-skills
+```
+
+Plugin contents under `plugins/` are installation-ready. When a plugin packages selected Skills from the root `skills/` directory, update the canonical Skill files first and then refresh the plugin copy before release. Plugin Skill membership is declared in `plugins/plugin-sync.txt`.
+
+```bash
+./scripts/sync-codex-plugin-skills.sh knowledge-workflow
+./scripts/sync-codex-plugin-skills.sh --check knowledge-workflow
+```
+
+On Windows PowerShell:
+
+```powershell
+.\scripts\sync-codex-plugin-skills.ps1 knowledge-workflow
+.\scripts\sync-codex-plugin-skills.ps1 -Check knowledge-workflow
+```
+
+Sparse checkout installs only need the marketplace metadata and selected plugin wrapper:
+
+```bash
+codex plugin marketplace add choral-io/choral-skills \
+    --ref main \
+    --sparse .agents \
+    --sparse plugins/knowledge-workflow
+```
 
 ## Cross-Agent Compatibility
 

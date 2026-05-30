@@ -26,6 +26,43 @@ The bundled profile in this repository is intentionally oriented toward software
 - Member-local execution support through `workspace-worklist`, with local-only worklists and logs kept out of project facts.
 - Maintainer-only administration through `knowledge-workflow-admin` for init, checks, upgrade migration, manifest state, and approved configuration updates.
 
+## Quick Start
+
+Install the Skills with the Vercel Labs Skills CLI:
+
+```bash
+npx skills add choral-io/choral-skills
+```
+
+If your Agent runtime supports Codex plugins, you can alternatively install the packaged plugin from this repository's marketplace:
+
+```bash
+codex plugin marketplace add choral-io/choral-skills --ref main
+codex plugin add knowledge-workflow@choral-skills
+```
+
+Start a new Agent session after installing or updating Skills.
+
+Then initialize or check the target repository:
+
+```text
+Use knowledge-workflow-admin to initialize Knowledge Workflow in this repository.
+```
+
+If the repository may already have a Knowledge Workflow installation, start with a check instead:
+
+```text
+Use knowledge-workflow-admin to check this repository's Knowledge Workflow setup.
+```
+
+Once the repository is initialized, begin with the routing Skill:
+
+```text
+Use knowledge-assistant to help me route this project note or task.
+```
+
+`knowledge-assistant` will point you to the narrower Skill for capture, audit, planning, implementation, review, or local worklist execution.
+
 ## Responsibility Boundaries
 
 The suite is split so each Skill has a narrow authority boundary:

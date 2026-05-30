@@ -1,0 +1,6 @@
+interface:
+  display_name: "Workspace Worklist"
+  short_description: "Route local notes and run personal work"
+  default_prompt: "Use $workspace-worklist to route local notes, intake team tasks, groom, resume, run-goal, or run my local worklist."
+policy:
+  allow_implicit_invocation: true

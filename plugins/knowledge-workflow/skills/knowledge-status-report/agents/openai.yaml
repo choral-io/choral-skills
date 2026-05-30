@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Status Report"
+  short_description: "Report knowledge and delivery status"
+  default_prompt: "Use $knowledge-status-report to summarize current project knowledge status."
+policy:
+  allow_implicit_invocation: true
